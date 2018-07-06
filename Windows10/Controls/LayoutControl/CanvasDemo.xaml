@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.CanvasDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+        <!--
+            Canvas - 绝对定位布局控件（Canvas 的子元素使用绝对定位）
+                
+            Canvas.Left - 与上一层 Canvas 的 Y轴 间的距离，左上角为原点。仅在 Canvas 的子元素中设置有效
+            Canvas.Top - 与上一层 Canvas 的 X轴 间的距离，左上角为原点。仅在 Canvas 的子元素中设置有效
+            Canvas.ZIndex - 用于设置控件的 z-index 值（数值大的在前面）。 不要求必须在 Canvas 内
+        
+            注：Canvas 不会因为自身的大小而限制子元素的大小
+        -->
+
+        <!--
+            这里指定 Canvas.Left 和 Canvas.Top 是没用的，因为它的父亲不是 Canvas
+        -->
+        <Canvas Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Orange" Width="100" Height="100"
+                Canvas.Left="100" Canvas.Top="100">
+
+            <Canvas Background="Blue" Width="200" Height="200" Canvas.Left="100" Canvas.Top="100">
+                <!--
+                    Canvas 不会因为自身的大小而限制子元素的大小 
+                -->
+                <TextBlock Text="TextBlock TextBlock TextBlock TextBlock TextBlock" />
+
+                <!--
+                    Canvas.ZIndex 大的在前面，所以此处黑色会压着白色
+                -->
+                <StackPanel Background="Black" Width="50" Height="50" Canvas.Left="50" Canvas.Top="50" Canvas.ZIndex="10" />
+                <StackPanel Background="White" Width="50" Height="50" Canvas.Left="75" Canvas.Top="75" Canvas.ZIndex="1" />
+            </Canvas>
+
+        </Canvas>
+    </Grid>
+</Page>

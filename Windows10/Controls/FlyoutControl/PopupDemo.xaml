@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.PopupDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Popup - 弹出框控件
+                    Child - 弹出框的内容（[ContentProperty(Name = "Child")]），一个 UIElement 类型的对象
+                    ChildTransitions - 显示弹出框时，其内容的过渡效果
+                    IsLightDismissEnabled - 点击非 Popup 区域时否关闭 Popup
+                    HorizontalOffset - 水平方向上的偏移量
+                    VerticalOffset - 垂直方向上的偏移量
+            -->
+            <Popup Name="popup" Margin="5" 
+                   HorizontalOffset="200" VerticalOffset="10" IsLightDismissEnabled="{Binding IsChecked, ElementName=chkIsLightDismissEnabled}">
+                <Border BorderBrush="Red" BorderThickness="1" Background="Orange" Width="200" Height="200">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="我是 Popup" HorizontalAlignment="Center" />
+                        <Button Name="btnClosePopup" Content="关闭" HorizontalAlignment="Center" Click="btnClosePopup_Click" />
+                    </StackPanel>
+                </Border>
+                <!--为弹出框增加 PopupThemeTransition 效果-->
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+            </Popup>
+            <TextBlock Name="lblMsg" Margin="5" />
+
+
+            <!--
+                显示 xaml 方式定义的 popup
+            -->
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Name="btnOpenPopup" Content="弹出 Popup" Click="btnOpenPopup_Click" />
+                <CheckBox Name="chkIsLightDismissEnabled" IsChecked="False" Content="IsLightDismissEnabled" Margin="10 0 0 0" />
+            </StackPanel>
+
+
+            <!--
+                显示 code-behind 方式定义的 popup
+            -->
+            <Button Name="btnOpenPopupToast" Content="弹出仿 toast 的 Popup" Click="btnOpenPopupToast_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

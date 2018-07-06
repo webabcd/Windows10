@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="Windows10.BackgroundTask.PushNotification"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.BackgroundTask"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnCreateChannel" Content="create the channel" Margin="5" Click="btnCreateChannel_Click" />
+
+            <TextBox Name="txtUri" Margin="5" />
+
+            <TextBlock Margin="5">
+                <Run>1、应用为推送通知通道向通知客户端平台发送请求。</Run>
+                <LineBreak />
+                <Run>2、通知客户端平台要求 WNS 创建通知通道。此通道以统一资源标识符 (URI) 的形式返回到调用设备。</Run>
+                <LineBreak />
+                <Run>3、通知通道 URI 由 Windows 返回到应用。</Run>
+                <LineBreak />
+                <Run>4、你的应用将 URI 发送到你自己的云服务。此回调机制是你自己的应用和你自己的服务之间的接口。使用安全的 Web 标准实现此回调是你的责任。</Run>
+                <LineBreak />
+                <Run>5、当你的云服务有要发送的更新时，它使用通道 URI 通知 WNS。通过安全套接字层 (SSL) 发送 TTP POST 请求（包括通知负载）来执行此操作。此步骤需要身份验证。</Run>
+                <LineBreak />
+                <Run>6、WNS 接收请求，并将通知路由到相应的设备。</Run>
+            </TextBlock>
+            <Image Source="wns.png" Margin="5" HorizontalAlignment="Left" Width="800" />
+
+        </StackPanel>
+    </Grid>
+    
+</Page>

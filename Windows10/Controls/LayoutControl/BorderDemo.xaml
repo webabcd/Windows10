@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.BorderDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Border - 边框控件
+                    Child - 边框里的内容（[ContentProperty(Name = "Child")]）
+                    BorderThickness - 边框的宽度（像素值：上下左右；左右,上下；左,上,右,下）
+                        注：边框控件的边框是绘制在控件内部的
+                    BorderBrush - 边框的画笔
+                    Background - 边框里内容的背景画笔
+                    CornerRadius - 边框角的半径（左上 右上 右下 左下）
+                    ChildTransitions - 过渡效果集合
+            -->
+
+            <Border Name="border1" Width="400" Height="100" HorizontalAlignment="Left" Margin="5"
+                    BorderThickness="1,10,20,30" BorderBrush="Red" Background="Blue" CornerRadius="10" >
+                <Border.Child>
+                    <TextBlock Text="我是 border1 里的内容" TextAlignment="Center" />
+                </Border.Child>
+            </Border>
+
+            <Border Name="border2" Width="400" Height="100" HorizontalAlignment="Left" Margin="5">
+                <TextBlock Text="我是 border2 里的内容" />
+                <!--进入页面的时候，此 Border 里的内容会有 EntranceThemeTransition 的主题过渡效果-->
+                <Border.ChildTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition />
+                    </TransitionCollection>
+                </Border.ChildTransitions>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Page>

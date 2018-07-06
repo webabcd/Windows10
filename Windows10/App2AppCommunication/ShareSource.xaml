@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="Windows10.App2AppCommunication.ShareSource"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.App2AppCommunication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Content="Share Text" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Web Link" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Application Link" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Image" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share File" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Html" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Custom Protocol" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share With Deferral" Click="Button_Click" Margin="5" />
+
+            <Button Content="Share Failed" Click="Button_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

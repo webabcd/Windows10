@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Windows10.Controls.IconControl.IconElementDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.IconControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                SymbolIcon - 符号图标，继承自 IconElement，下面介绍 IconElement 的相关知识点
+                    Foreground - 图标的颜色
+            
+                注：IconElement 的派生类有: SymbolIcon, FontIcon, PathIcon, BitmapIcon
+            -->
+
+            <SymbolIcon Foreground="Red" Symbol="Accept" HorizontalAlignment="Left" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

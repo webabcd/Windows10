@@ -1,0 +1,19 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        在 themes/generic.xaml 中定义自定义控件的默认样式
+    -->
+    <ResourceDictionary.MergedDictionaries>
+        <!--
+            注意：
+            此处在指定 xaml 路径时，要以“项目名”为根路径（因为这个自定控件的项目是要被别的项目引用的）
+            这个是对的 ms-appx:///MyControls/themes/MyControl1.xaml
+            这个是错的 ms-appx:///themes/MyControl1.xaml（编译时不会报错，运行时会报错 Failed to assign to property 'Windows.UI.Xaml.ResourceDictionary.Source' because the type 'Windows.Foundation.String' cannot be assigned to the type 'Windows.Foundation.Uri'）
+        -->
+        <ResourceDictionary Source="ms-appx:///MyControls/themes/MyControl1.xaml"/>
+        <ResourceDictionary Source="ms-appx:///MyControls/themes/MyControl3.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

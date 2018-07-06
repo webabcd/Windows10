@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.FlyoutBaseDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!--
+            通过资源的方式定义 flyout 的样式和内容
+        -->
+        <Flyout x:Key="MyFlyout">
+            <StackPanel>
+                <TextBlock Text="我是 Flyout 中的内容" />
+            </StackPanel>
+        </Flyout>
+
+    </Page.Resources>
+    
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Flyout - 弹出框控件，继承自 FlyoutBase，下面介绍 FlyoutBase 的相关知识点
+                    Placement - 弹出框的显示位置
+                        Top - 目标元素的上边（默认值）
+                        Bottom - 目标元素的下边
+                        Left - 目标元素的左边
+                        Right - 目标元素的右边
+                        Full - 屏幕中央
+                    Opening - 弹出框准备显示时触发的事件
+                    Opened - 弹出框显示之后触发的事件
+                    Closed - 弹出框隐藏之后触发的事件
+            -->
+
+
+            <!--
+                FlyoutBase 的用法 1
+                部分控件本身有 Flyout 属性，比如 Button 控件，可以通过其 Flyout 属性直接为其绑定 FlyoutBase 控件及行为（单击按钮后就会显示此 FlyoutBase 控件）
+            -->
+            <Button Name="button1" Margin="5" Content="按我弹出 Flyout">
+                <Button.Flyout>
+                    <Flyout x:Name="flyout1" Placement="Right" Opening="flyout1_Opening" Opened="flyout1_Opened" Closed="flyout1_Closed">
+                        <StackPanel>
+                            <TextBlock>我是 Flyout 中的内容</TextBlock>
+                            <Button x:Name="button1CloseFlyout" Click="button1CloseFlyout_Click">隐藏 Flyout</Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <TextBlock Name="lblMsg1" Margin="5" />
+            
+
+            <!--
+                FlyoutBase 的用法 2
+                通过附加属性 FlyoutBase.AttachedFlyout 为指定的控件绑定 FlyoutBase 控件（何时显示需要在 CodeBehind 中控制）
+            -->
+            <TextBlock Name="textBlock1" Margin="5" Text="按我弹出 Flyout" Tapped="textBlock1_Tapped" FontSize="18">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout Placement="Right">
+                        <TextBlock Text="我是 Flyout 中的内容" />
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </TextBlock>
+
+            
+            <!--
+                FlyoutBase 的用法 3
+                此用法同用法 2，不同之处在于这里把 flyout 的样式和内容放到资源中定义了
+            -->
+            <TextBlock Name="textBlock2" Margin="5" Text="按我弹出 Flyout" Tapped="textBlock2_Tapped" FontSize="18"
+                       FlyoutBase.AttachedFlyout="{StaticResource MyFlyout}" />
+
+
+            <!--
+                FlyoutBase 的用法 4
+                在 CodeBehind 中创建 FlyoutBase 控件后，将其绑定到指定的控件上，并显示
+            -->
+            <TextBlock Name="textBlock3" Margin="5" Text="按我弹出 Flyout" Tapped="textBlock3_Tapped" FontSize="18" />
+
+
+            <!--
+                FlyoutBase 的用法 5
+                在 CodeBehind 中创建 FlyoutBase 控件后，在不设置绑定的情况下，使其显示在指定的控件上
+            -->
+            <TextBlock Name="textBlock4" Margin="5" Text="按我弹出 Flyout" Tapped="textBlock4_Tapped" FontSize="18" />
+
+        </StackPanel>
+    </Grid>
+</Page>

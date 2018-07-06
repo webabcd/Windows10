@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.RichTextBlockDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent" >
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                RichTextBlock - 用于显示富文本的控件
+                    Blocks - 富文本的内容
+                        Paragraph - 每一个 Paragraph 代表一段内容，其继承自 Block
+                            Inlines - 每个 Paragraph 下都有一个内联元素集合，其用法与 TextBlock 的 Inlines 基本相同（可以把 Paragraph 当做 Inlines 来使用）
+                            InlineUIContainer - 用于放置任意 UI 元素
+                            TextIndent - 指定此段文本的首行的缩进量
+                    OverflowContentTarget - 当此 RichTextBlock 中的内容溢出时，将溢出文字输出到指定的 RichTextBlockOverflow 中（此知识点的演示参见：RichTextBlockOverflowDemo.xaml）
+                    HasOverflowContent - 是否有溢出内容可显示（只读）
+            
+                注：其他属性、方法和事件与 TextBlock 基本相同，相关演示请参见 TextBlockDemo1.xaml 和 TextBlockDemo2.xaml
+            -->
+
+            <!--如果需要处理 Tapped, PointerPressed 之类的事件，简单的方式就是把 IsTextSelectionEnabled 设置为 false-->
+            <RichTextBlock Name="richTextBlock" HorizontalAlignment="Left" Margin="5" IsTextSelectionEnabled="False" Tapped="richTextBlock_Tapped">
+                <RichTextBlock.Blocks>
+                    <Paragraph TextIndent="0">
+                        Windows 10 是美国微软公司所研发的新一代跨平台及设备应用的操作系统。
+                    </Paragraph>
+                    <Paragraph TextIndent="10">
+                        Windows 10是微软发布的最后一个独立Windows版本，下一代Windows将作为更新形式出现。Windows10共有7个发行版本，分别面向不同用户和设备。
+                    </Paragraph>
+                    <Paragraph TextIndent="20">
+                        在正式版本发布一年内，所有符合条件的Windows7、Windows 8.1的用户都将可以免费升级到Windows 10，Windows Phone 8.1则可以免费升级到Windows 10 Mobile版。所有升级到Windows 10的设备，微软都将在该设备生命周期内提供支持(所有windows设备生命周期被微软单方面设定为2-4年)。
+                    </Paragraph>
+                    <Paragraph TextIndent="30">
+                        2015年7月29日起，微软向所有的Windows 7、Windows 8.1用户通过Windows Update免费推送Windows 10，用户亦可以使用微软提供的系统部署工具进行升级。
+                    </Paragraph>
+                    <Paragraph TextIndent="40">
+                        2015年11月12日，Windows 10的首个重大更新TH2（版本1511，10.0.10586）正式推送，所有Windows10用户均可升级至此版本。
+                    </Paragraph>
+                    <Paragraph>
+                        <LineBreak />
+                        <Span>可以把 Paragraph 当做 Inlines 来使用</Span>
+                        <LineBreak />
+                        <LineBreak />
+                        <InlineUIContainer>
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBlock Text="下面演示如何显示一张图片" />
+                                <Image Source="/Assets/StoreLogo.png" Width="100" Height="100" />
+                            </StackPanel>
+                        </InlineUIContainer>
+                    </Paragraph>
+                </RichTextBlock.Blocks>
+            </RichTextBlock>
+
+            <TextBlock Name="textBlock" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.PivotDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Pivot - Pivot 控件
+                    Title, TitleTemplate - 标题
+                    LeftHeader, LeftHeaderTemplate - 左侧 header
+                    RightHeader, RightHeaderTemplate - 右侧 header
+                    HeaderTemplate - PivotItem 的 Header 的 DataTemplate
+                    SelectionChanged - 选中的 item 发生变化时触发的事件
+                    PivotItemUnloading - Pivot 内的某个 PivotItem 准备变成选中项时触发的事件
+                    PivotItemLoaded - Pivot 内的某个 PivotItem 已经变成选中项时触发的事件
+                    PivotItemUnloading - Pivot 内的某个 PivotItem 准备从选中项变为非选中项时触发的事件
+                    PivotItemUnloaded - Pivot 内的某个 PivotItem 已经从选中项变为非选中项时触发的事件
+            
+                PivotItem - PivotItem 控件
+                    Header - 用于指定 PivotItem 的 Header，需要通过 Pivot.HeaderTemplate 来设置其 DataTemplate
+            -->
+            
+            <Pivot Name="pivot" Title="pivot title" Margin="5" 
+                   SelectionChanged="pivot_SelectionChanged" 
+                   PivotItemLoading="pivot_PivotItemLoading" PivotItemLoaded="pivot_PivotItemLoaded" PivotItemUnloading="pivot_PivotItemUnloading" PivotItemUnloaded="pivot_PivotItemUnloaded">
+                <Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Red" />
+                    </DataTemplate>
+                </Pivot.HeaderTemplate>
+                <Pivot.LeftHeader>
+                    <TextBlock Text="left header" />
+                </Pivot.LeftHeader>
+                <Pivot.RightHeader>
+                    <TextBlock Text="right header" />
+                </Pivot.RightHeader>
+
+                <PivotItem Header="pivot item header 1">
+                    <TextBlock Text="pivot item content 1" />
+                </PivotItem>
+                <PivotItem Header="pivot item header 2">
+                    <TextBlock Text="pivot item content 2" />
+                </PivotItem>
+                <PivotItem Header="pivot item header 3">
+                    <TextBlock Text="pivot item content 3" />
+                </PivotItem>
+            </Pivot>
+
+            <Button Name="btnLock" Content="对 pivot 锁定或解除锁定" Margin="5" Click="btnLock_Click" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="lblMsg1" Margin="5" />
+                <TextBlock Name="lblMsg2" Margin="5" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

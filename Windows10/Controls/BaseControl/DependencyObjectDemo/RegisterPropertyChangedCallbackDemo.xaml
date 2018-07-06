@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.DependencyObjectDemo.RegisterPropertyChangedCallbackDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.DependencyObjectDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.Resources>
+            <BeginStoryboard x:Name="sb">
+                <Storyboard>
+                    <DoubleAnimation 
+                        EnableDependentAnimation="True"
+                        Storyboard.TargetName="rect1" 
+                        Storyboard.TargetProperty="Width" 
+                        From="0" 
+                        To="200" 
+                        Duration="0:0:3">
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </Grid.Resources>
+        
+        <StackPanel Margin="10 0 10 10">
+
+            <Rectangle Name="rect1" Height="50" Fill="Red" HorizontalAlignment="Left" Margin="5" />
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

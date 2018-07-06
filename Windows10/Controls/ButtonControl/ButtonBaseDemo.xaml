@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="Windows10.Controls.ButtonControl.ButtonBaseDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ButtonControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Name="root">
+
+            <!--
+                Button - 按钮控件，继承自 ButtonBase，下面介绍 ButtonBase 的相关知识点
+                    Click - 单击事件
+                    ClickMode - 引发 Click 事件的模式：ClickMode.Release（默认值）, ClickMode.Press, ClickMode.Hover
+                    IsPointerOver - 设备指针（鼠标或手指等）是否在按钮上
+                    IsPressed - 当前按钮是否处于按下的状态
+                    Command - 参见“绑定”部分
+                    CommandParameter - 参见“绑定”部分
+            -->
+            <Button Name="button1" Content="我是 button1" ClickMode="Release" Click="button1_Click" Margin="5" />
+            <Button Name="button2" Content="我是 button2" ClickMode="Press" Click="button2_Click" Margin="5" />
+            <Button Name="button3" Content="我是 button3" ClickMode="Hover" Click="button3_Click" Margin="5" />
+
+            <TextBlock Name="lblMsg1" Margin="5" />
+            <TextBlock Name="lblMsg2" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

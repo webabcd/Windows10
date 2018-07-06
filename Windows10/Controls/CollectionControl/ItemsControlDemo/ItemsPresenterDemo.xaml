@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsPresenterDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ItemsPresenter - 用来呈现 ItemsControl 的 Items
+                    Padding - 全部 Items 与 ItemsPresenter 之间的 Padding
+                    Header, HeaderTemplate, Footer, HeaderTransitions - 顾名思义，不用解释
+                    HeaderTransitions - header 的过渡效果
+                    FooterTransitions - footer 的过渡效果
+            -->
+            <ItemsControl Margin="5" HorizontalAlignment="Left">
+                <ItemsControl.Items>
+                    <Rectangle Width="100" Height="100" Fill="Red" />
+                    <Rectangle Width="100" Height="100" Fill="Green" />
+                    <Rectangle Width="100" Height="100" Fill="Blue" />
+                </ItemsControl.Items>
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <Border BorderBrush="Orange" BorderThickness="1" Width="400" Height="400">
+                            <ItemsPresenter VerticalAlignment="Center" HorizontalAlignment="Center"
+                                            Padding="0">
+                                <ItemsPresenter.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="header" Foreground="Orange" />
+                                    </DataTemplate>
+                                </ItemsPresenter.HeaderTemplate>
+                                <ItemsPresenter.FooterTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="footer" Foreground="Orange" />
+                                    </DataTemplate>
+                                </ItemsPresenter.FooterTemplate>
+                                <ItemsPresenter.HeaderTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromVerticalOffset="1000"/>
+                                    </TransitionCollection>
+                                </ItemsPresenter.HeaderTransitions>
+                                <ItemsPresenter.FooterTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromVerticalOffset="1000"/>
+                                    </TransitionCollection>
+                                </ItemsPresenter.FooterTransitions>
+                            </ItemsPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
+
+        </StackPanel>
+    </Grid>
+</Page>

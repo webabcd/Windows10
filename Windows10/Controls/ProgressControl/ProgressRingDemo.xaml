@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Windows10.Controls.ProgressControl.ProgressRingDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ProgressControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ProgressRing - 进度圈控件
+                    IsActive - 是否显示
+            -->
+            <ProgressRing Margin="5" Foreground="White" Width="200" Height="200" HorizontalAlignment="Left" 
+                          IsActive="{Binding IsChecked, ElementName=chkIsActive}"/>
+
+            <CheckBox Name="chkIsActive" Margin="5" Content="IsActive" IsChecked="True" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

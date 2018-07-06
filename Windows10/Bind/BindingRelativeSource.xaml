@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Windows10.Bind.BindingRelativeSource"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                演示 Binding 中的一个扩展标记 RelativeSource 的应用，其用于指定关联数据源为 Self 或 TemplatedParent
+            -->
+
+            <!--
+                RelativeSource={RelativeSource TemplatedParent} - 仅在 ControlTemplate 中适用，用于指定数据源来自引用了该 ControlTemplate 的 Control
+            -->
+            <StackPanel.Resources>
+                <Style x:Key="ButtonStyle" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <StackPanel>
+                                    <ContentPresenter Foreground="White" />
+                                    <!--
+                                        TemplateBinding 是一个简单版的 Binding，他是 OneWay 的
+                                    
+                                        如果在设计 ControlTemplate 时需要 Binding 的其他特性（比如我想要 TwoWay 的模式）该怎么办呢？
+                                        那就需要通过 Binding 来做绑定（这样就可以使用 Binding 的各种特性了），然后通过 RelativeSource={RelativeSource TemplatedParent} 来指定数据源来自引用了该 ControlTemplate 的 Control
+                                    -->
+                                    <Slider Minimum="1" Maximum="100" Foreground="White" IsThumbToolTipEnabled="False"
+                                            Width="{TemplateBinding Width}" Value="{Binding Content, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Width="300" Content="50" Style="{StaticResource ButtonStyle}" Margin="5" />
+
+
+            
+            <!--
+                RelativeSource={RelativeSource Self} - 指定数据源为自己本身
+            -->
+            <TextBlock Text="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Tag="webabcd" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

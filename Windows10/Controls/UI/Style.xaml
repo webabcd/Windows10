@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Windows10.Controls.UI.Style"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Name="grid" Background="Transparent">
+
+        <!--
+            注：在 Grid.Resources 指定的资源（支持 ResourceDictionary 方式），其作用域仅在 Grid 之内，全局资源需要在 App.xaml 中配置
+        -->
+        <Grid.Resources>
+
+            <!--
+                Style - 样式
+                    x:Key - 标识（不指定此值，则样式会应用于所有 TargetType 所指定的类型）
+                    TargetType - 目标对象类型
+                    BasedOn - 指定当前样式的父样式（此样式会继承指定的父样式）
+                    Setter - 属性设置器
+                        Property - 需要设置的属性名称
+                        Value - 需要设置的属性值
+            -->
+
+            <!--
+                自定义一个基础样式
+            -->
+            <Style x:Key="TextBoxStyleBase" TargetType="TextBox">
+                <Setter Property="Foreground" Value="Red"/>
+            </Style>
+
+            <!--
+                这是自定义了全局样式，但是其他的自定义样式并不会自动继承这个自定义全局样式
+                所以，此处用 BasedOn 继承基础样式，然后其他自定义样式也继承基础样式就好（这就相当于继承了这个自定义全局样式）
+            -->
+            <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyleBase}">
+
+            </Style>
+
+            <!--
+                不会自动继承上面的自定义全局样式
+            -->
+            <Style x:Key="TextBoxStyleBig1" TargetType="TextBox">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Height" Value="60"/>
+            </Style>
+
+            <!--
+                继承了基础样式（相当于继承了上面的自定义全局样式）
+            -->
+            <Style x:Key="TextBoxStyleBig2" TargetType="TextBox" BasedOn="{StaticResource TextBoxStyleBase}">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Height" Value="60"/>
+            </Style>
+            
+        </Grid.Resources>
+
+
+        <StackPanel Margin="10 0 10 10">
+
+            <!--默认使用自定义全局样式-->
+            <TextBox Name="textBox1" Text="我是 TextBox" Margin="5" />
+
+            <!--指定样式资源-->
+            <TextBox Name="textBox2" Text="我是 TextBox" Margin="5" Style="{StaticResource TextBoxStyleBig1}" />
+
+            <!--动态改变 FrameworkElement 的样式-->
+            <Button Name="btnChangeStyle" Margin="5" Content="改变样式" Click="btnChangeStyle_Click" />
+
+            <!--内联样式-->
+            <TextBox Name="textBox3" Text="我是 TextBox" Margin="5">
+                <ToolTipService.ToolTip>
+                    <ToolTip Name="toolTip" Content="ToolTipService.ToolTip" Placement="Bottom">
+                        <ToolTip.Style>
+                            <Style TargetType="ToolTip">
+                                <Setter Property="Foreground" Value="Blue" />
+                            </Style>
+                        </ToolTip.Style>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Background" Value="Green"/>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <!--在 c# 中定义样式-->
+            <TextBox Name="textBox4" Text="我是 TextBox" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

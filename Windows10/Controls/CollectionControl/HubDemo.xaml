@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.HubDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <TextBlock Name="lblMsg" Margin="10 0 10 10" Width="200" TextWrapping="Wrap" HorizontalAlignment="Left" />
+        
+        <SemanticZoom Margin="210 0 10 10">
+            <SemanticZoom.ZoomedInView>
+
+                <!--
+                    Hub - Hub 控件
+                        DefaultSectionIndex - hub 初始化时，被选中的 HubSection 的索引位置
+                        Header, HeaderTemplate - hub 的 header
+                        Orientation - hub 的子元素们的排列方式（Horizontal, Vertical）
+                        Sections - hub 的 HubSection（[ContentProperty(Name = "Sections")]）
+                        SectionHeaderClick - 点击 HubSection 右上角的“查看更多”按钮时触发的事件
+                        SectionsInViewChanged - 可视区中的 HubSection 发生变化时触发的事件
+                
+                
+                    HubSection - HubSection 控件
+                        Header, HeaderTemplate - HubSection 的 header
+                        ContentTemplate - HubSection 的控件模板（[ContentProperty(Name = "ContentTemplate")]）
+                        IsHeaderInteractive - 是否显示 HubSection 右上角的“查看更多”按钮
+                -->
+
+                <Hub Name="hub" Orientation="Horizontal" Header="hub title" DefaultSectionIndex="1" SectionHeaderClick="hub_SectionHeaderClick" SectionsInViewChanged="hub_SectionsInViewChanged">
+                    <HubSection Background="Orange" IsHeaderInteractive="False" Header="hub section header 1">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 1" />
+                        </DataTemplate>
+                    </HubSection>
+                    <HubSection Background="Orange" IsHeaderInteractive="False" Header="hub section header 2">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 2" />
+                        </DataTemplate>
+                    </HubSection>
+                    <HubSection Background="Orange" IsHeaderInteractive="False" Header="hub section header 3">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 3" />
+                        </DataTemplate>
+                    </HubSection>
+                    <HubSection Background="Orange" IsHeaderInteractive="True" Header="hub section header 4">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 4" />
+                        </DataTemplate>
+                    </HubSection>
+                    <HubSection Background="Orange" IsHeaderInteractive="True" Header="hub section header 5">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 5" />
+                        </DataTemplate>
+                    </HubSection>
+                    <HubSection Background="Orange" IsHeaderInteractive="True" Header="hub section header 6">
+                        <DataTemplate>
+                            <TextBlock Text="hub section content 6" />
+                        </DataTemplate>
+                    </HubSection>
+                </Hub>
+            </SemanticZoom.ZoomedInView>
+
+            <SemanticZoom.ZoomedOutView>
+                <ListView x:Name="listView"/>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+    </Grid>
+</Page>

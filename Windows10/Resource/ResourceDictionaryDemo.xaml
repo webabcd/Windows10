@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Windows10.Resource.ResourceDictionaryDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Resource"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        
+        <!--
+            FrameworkElement.Resources 就是一个 ResourceDictionary 对象
+        
+            1、在 ResourceDictionary 中可以一条一条地定义资源
+            2、可以设置 ResourceDictionary 的 Source 属性来引用一个以 ResourceDictionary 为根节点的 xaml 文件
+            3、通过 MergedDictionaries 可以集成多个 ResourceDictionary
+            4、通过 ThemeDictionaries 可以设置不同主题下的 ResourceDictionary，详见：ThemeResourceDemo.xaml
+        -->
+        
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionary1.xaml" />
+                <ResourceDictionary Source="ms-appx:///Resource/ResourceDictionary2.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="ColorOrange">#FFFFA500</Color>
+            <SolidColorBrush x:Key="BrushOrange" Color="{ThemeResource ColorOrange}" />
+            
+        </ResourceDictionary>
+
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="textBlock1" Margin="5" Text="我是 TextBlock" Foreground="{StaticResource BrushRed}" />
+            <TextBlock Name="textBlock2" Margin="5" Text="我是 TextBlock" Foreground="{StaticResource BrushGreen}" />
+            <TextBlock Name="textBlock3" Margin="5" Text="我是 TextBlock" Foreground="{StaticResource BrushOrange}" />
+
+            <!--
+                演示如何通过 C# 端引入新的 ResourceDictionary 并使用其中的资源
+            -->
+            <TextBlock Name="textBlock4" Margin="5" Text="我是 TextBlock" />
+
+            <!--
+                演示如何获取指定资源的值
+            -->
+            <TextBlock Name="lblMsg" Margin="5" TextWrapping="Wrap" />
+            <Button Name="btnGetResourceValue" Margin="5" Content="获取指定资源的值" Click="btnGetResourceValue_Click" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

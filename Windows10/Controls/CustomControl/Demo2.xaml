@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Windows10.Controls.CustomControl.Demo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CustomControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:myControls="using:MyControls">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                演示元素的 Layout 系统
+                本例所用到的自定义控件请参看：MyControls/MyControl2.cs
+            -->
+            <myControls:MyControl2 Margin="5" Background="Orange" HorizontalAlignment="Left" Width="800">
+                <myControls:MyControl2.Children>
+                    <TextBlock Text="aaaaaaaa" Margin="5" />
+                    <TextBlock Text="bbbbbbbb" Margin="5" />
+                    <TextBlock Text="cccccccc" Margin="5" />
+                    <TextBlock Text="dddddddd" Margin="5" />
+                </myControls:MyControl2.Children>
+            </myControls:MyControl2>
+            
+        </StackPanel>
+    </Grid>
+</Page>

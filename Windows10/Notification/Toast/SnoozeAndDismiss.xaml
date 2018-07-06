@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="Windows10.Notification.Toast.SnoozeAndDismiss"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Toast"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="10 0 10 10">
+
+        <Button Name="buttonShowToast1" Content="弹出 snooze and dismiss toast 通知（由系统设置下拉框和按钮）" Click="buttonShowToast1_Click" Margin="5" />
+
+        <Button Name="buttonShowToast2" Content="弹出 snooze and dismiss toast 通知（自定义下拉框，由系统设置按钮文字）" Click="buttonShowToast2_Click" Margin="5" />
+
+        <Button Name="buttonShowToast3" Content="弹出 snooze and dismiss toast 通知（自定义下拉框，自定义按钮文字）" Click="buttonShowToast3_Click" Margin="5" />
+
+    </StackPanel>
+</Page>

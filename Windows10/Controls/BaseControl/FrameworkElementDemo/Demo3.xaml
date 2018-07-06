@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.FrameworkElementDemo.Demo3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.FrameworkElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Orange">
+        <StackPanel Name="stackPanel" Background="Blue" Margin="100" VerticalAlignment="Stretch">
+            
+            <ComboBox Name="cmbHorizontalAlignment" PlaceholderText="HorizontalAlignment" SelectionChanged="cmbHorizontalAlignment_SelectionChanged" Margin="5">
+                <ComboBoxItem>Left</ComboBoxItem>
+                <ComboBoxItem>Center</ComboBoxItem>
+                <ComboBoxItem>Right</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Stretch</ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox Name="cmbVerticalAlignment" PlaceholderText="VerticalAlignment" SelectionChanged="cmbVerticalAlignment_SelectionChanged" Margin="5">
+                <ComboBoxItem>Top</ComboBoxItem>
+                <ComboBoxItem>Center</ComboBoxItem>
+                <ComboBoxItem>Bottom</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Stretch</ComboBoxItem>
+            </ComboBox>
+            
+        </StackPanel>
+    </Grid>
+</Page>

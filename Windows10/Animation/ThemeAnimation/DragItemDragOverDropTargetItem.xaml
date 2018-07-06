@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeAnimation.DragItemDragOverDropTargetItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeAnimation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock LineHeight="22">
+                <Run>顾名思义的 DragItemThemeAnimation, DragOverThemeAnimation, DropTargetItemThemeAnimation</Run>
+                <LineBreak />
+                <Run>具体的用法参见 GridViewItem 或 ListViewItem 的 ControlTemplate（另外，关于 GridViewItem 或 ListViewItem 的拖动项的说明，请参见控件部分的对应的示例代码）</Run>
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</Page>

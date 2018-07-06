@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Picker.MySavePickerDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Picker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5">
+                <Run>
+                    如果需要激活自定义的文件保存窗口，请在弹出的选取器窗口的左侧的导航列表中选择相应的 app
+                </Run>
+            </TextBlock>
+
+            <Button Name="btnMySavePicker" Content="弹出文件保存窗口" Click="btnMySavePicker_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

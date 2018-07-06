@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.SemanticZoomDemo.SemanticZoomDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.SemanticZoomDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+
+        <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Top">
+            <Button Name="btnToggleActiveView" Content="ToggleActiveView" Click="btnToggleActiveView_Click" />
+            <TextBlock Name="lblMsg" Margin="10 0 0 0" />
+        </StackPanel>
+        
+        <!--
+            SemanticZoom - SemanticZoom 控件
+                IsZoomOutButtonEnabled - 是否显示用于切换视图的按钮（在 ZoomedInView 时，右下角会有个小按钮），默认值为 false
+                ZoomedInView - 放大后的视图（需要实现 ISemanticZoomInformation 接口）
+                ZoomedOutView - 缩小后的视图（需要实现 ISemanticZoomInformation 接口）
+                IsZoomedInViewActive - ZoomedInView 视图是否为当前的活动视图，默认值为 true
+                CanChangeViews - 是否可以在两个视图之间切换（如果禁止的话则用户将无法切换视图，程序通过 IsZoomedInViewActive 或 ToggleActiveView() 来切换的话则会抛出异常），默认值为 true
+        
+            如果需要通过缩放手势来切换 ZoomedInView 和 ZoomedOutView 的话，别忘了设置 ScrollViewer.ZoomMode="Enabled"
+        
+        
+            注：
+            1、ListViewBase 实现了 ISemanticZoomInformation 接口，其通过绑定 CollectionViewSource 数据即可使 SemanticZoom 中的两个视图进行有关联的切换
+            2、以下以 ListViewBase 和 SemanticZoom 和 CollectionViewSource 相结合为例，说明其行为
+                a) ZoomedInView 用于显示全部数据，包括组标题和每组的详细数据，点击组标题会进入到 ZoomedOutView 视图
+                b) ZoomedOutView 用于只显示组标题，单击组标题会进入到 ZoomedInView 视图，并自动定位到对应的组
+            3、关于如何自定义 ISemanticZoomInformation 实现，请参见 /Controls/CollectionControl/SemanticZoomDemo/ISemanticZoomInformationDemo.xaml
+        -->
+
+        <SemanticZoom Name="semanticZoom" Margin="5 50 5 5" 
+                      ScrollViewer.ZoomMode="Enabled"
+                      IsZoomOutButtonEnabled="True" IsZoomedInViewActive="False" CanChangeViews="True">
+            
+            <SemanticZoom.ZoomedInView>
+                <GridView x:Name="gridViewDetails" Margin="5" ItemsSource="{x:Bind MyData.View}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="common:NavigationModel">
+                            <Grid Width="120" Background="Orange">
+                                <TextBlock TextWrapping="Wrap" Text="{x:Bind Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="common:NavigationModel">
+                                    <TextBlock Text="{x:Bind Title}" />
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </GridView.GroupStyle>
+                </GridView>
+            </SemanticZoom.ZoomedInView>
+
+            <SemanticZoom.ZoomedOutView>
+                <GridView x:Name="gridViewSummary" Margin="5" ItemsSource="{x:Bind MyData.View.CollectionGroups}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="Orange" Width="100" Height="100">
+                                <!--
+                                    上下文数据为 ICollectionViewGroup 类型，其 Group 属性保存着组对象（本例中 Group 就是每组的 NavigationModel 类型的对象）
+                                    ListViewBase 实现了 ISemanticZoomInformation 接口，其在 StartViewChangeTo(SemanticZoomLocation source, SemanticZoomLocation destination) 时，通过 source.Item 获取到的是一个 ICollectionViewGroup 类型的数据，其有两个属性：Group 和 GroupItems。关于 ISemanticZoomInformation 接口请参见：/Controls/CollectionControl/SemanticZoomDemo/MyFlipView.cs
+                                -->
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Group.Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+            
+        </SemanticZoom>
+    </Grid>
+</Page>

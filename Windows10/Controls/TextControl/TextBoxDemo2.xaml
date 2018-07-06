@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.TextBoxDemo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--用于显示 Segoe UI Emoji 字符-->
+            <TextBox Name="textBox1" Margin="5" TextWrapping="Wrap" />
+
+            <TextBox Name="textBox2" Margin="5" />
+            <TextBlock Name="textBlock2" Margin="5" />
+
+            <TextBox Name="textBox3" Margin="5" />
+            <ScrollViewer Margin="5" Height="300">
+                <TextBlock Name="textBlock3" />
+            </ScrollViewer>
+
+        </StackPanel>
+    </Grid>
+</Page>

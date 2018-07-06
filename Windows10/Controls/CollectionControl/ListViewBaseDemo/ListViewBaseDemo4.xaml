@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ListViewBaseDemo.ListViewBaseDemo4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ListViewBaseDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <!--
+            ListViewBase(基类) - 列表控件基类
+                ContainerContentChanging - 数据虚拟化时，项容器的内容发生变化时触发的事件（仅 ItemsStackPanel 和 ItemsWrapGrid 有效）
+        -->
+        
+        <GridView x:Name="gridView" Margin="10 0 10 10" ContainerContentChanging="gridView_ContainerContentChanging">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Width="80" Height="80" Background="Blue">
+                        <Rectangle x:Name="placeholderRectangle" Fill="Red" Height="10" Opacity="0" />
+                        <TextBlock x:Name="lblName" Text="{Binding Name}" Foreground="Yellow" />
+                        <TextBlock x:Name="lblAge" Text="{Binding Age}" Foreground="Aqua" />
+                        <TextBlock x:Name="lblIsMale" Text="{Binding IsMale}" Foreground="Gray" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        
+    </Grid>
+</Page>

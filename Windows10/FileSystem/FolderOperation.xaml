@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.FolderOperation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnCreateFolder" Content="创建文件夹" Click="btnCreateFolder_Click" Margin="5" />
+
+            <Button Name="btnRenameFolder" Content="重命名文件夹" Click="btnRenameFolder_Click" Margin="5" />
+
+            <Button Name="btnDeleteFolder" Content="删除文件夹" Click="btnDeleteFolder_Click" Margin="5" />
+
+            <Button Name="btnCreateFile" Content="在指定的文件夹中创建文件" Click="btnCreateFile_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

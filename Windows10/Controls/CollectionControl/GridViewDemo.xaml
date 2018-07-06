@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.GridViewDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Page.Resources>
+        <Style x:Key="GridViewItemStyle" TargetType="GridViewItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewItem">
+                        <!--
+                            ListViewItemPresenter - GridViewItem 的 Presenter（继承自 ContentPresenter, 请参见 /Controls/BaseControl/ContentControlDemo/ContentPresenterDemo.xaml）
+                                默认样式就是 generic.xaml 中的 <Style TargetType="GridViewItem"> 节点
+                                如果需要自定义的话，那么就在 generic.xaml 中的 <Style TargetType="GridViewItem" x:Key="GridViewItemExpanded"> 节点的基础上修改
+                                如果还不能满足要求的话就通过继承 ContentPresenter 来实现自定义的 ContentPresenter
+                        -->
+                        <ListViewItemPresenter Margin="10" SelectionCheckMarkVisualEnabled="True" SelectedBackground="Red" CheckBrush="Yellow" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+
+        <!--
+            GridView - GridView 控件（继承自 ListViewBase, 请参见 /Controls/CollectionControl/ListViewBaseDemo/）
+                GridView 的默认布局控件是 ItemsWrapGrid，请参见 /Controls/CollectionControl/ItemsControlDemo/LayoutControl/ItemsWrapGridDemo.xaml
+                GridView 的 ItemContainer 是 GridViewItem
+        -->
+
+        <GridView x:Name="gridView" Margin="10 0 10 10" 
+                  ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                  SelectionMode="Multiple"
+                  ItemsSource="{x:Bind Employees}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="common:Employee">
+                    <StackPanel Height="100" Width="100" Background="Blue">
+                        <TextBlock x:Name="lblName" Text="{x:Bind Name}" Foreground="Yellow" />
+                        <TextBlock x:Name="lblAge" Text="{x:Bind Age}" Foreground="Aqua" />
+                        <TextBlock x:Name="lblIsMale" Text="{x:Bind IsMale}" Foreground="Gray" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        
+        <!--
+            通过 xaml 方式为 GridView 添加 item
+            <GridView>
+                <GridViewItem>
+                    <TextBlock Text="item1"/>
+                </GridViewItem>
+                <GridViewItem>
+                    <TextBlock Text="item2"/>
+                </GridViewItem>
+                <GridViewItem>
+                    <TextBlock Text="item3"/>
+                </GridViewItem>
+            </GridView>
+        -->
+        
+    </Grid>
+</Page>

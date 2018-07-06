@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="MyShareTarget.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyShareTarget"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource SystemAccentColor}">
+
+        <ScrollViewer Name="scrollView" Margin="10 0 10 10">
+            <StackPanel>
+                <TextBlock Name="lblMsg" Margin="5" />
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="Square30x30Logo: " />
+                    <Image Name="imgLogo" HorizontalAlignment="Left" Width="100" Height="100" />
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="分享图片的缩略图: " />
+                    <Image Name="imgThumbnail" HorizontalAlignment="Left" Width="300" />
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="分享图片的原图: " />
+                    <Image Name="imgBitmap" HorizontalAlignment="Left" Width="300" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

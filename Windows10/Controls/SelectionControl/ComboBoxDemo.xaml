@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="Windows10.Controls.SelectionControl.ComboBoxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.SelectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ComboBox - 下拉框控件
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                    PlaceholderText - 占位符水印
+            -->
+
+            <!--通过 xaml 方式为 ComboBox 添加数据-->
+            <ComboBox x:Name="comboBox1" Margin="5" Width="200" HorizontalAlignment="Left" 
+                      Header="comboBox1" PlaceholderText="PlaceholderText">
+                <ComboBoxItem Content="ComboBoxItem1" />
+                <ComboBoxItem Content="ComboBoxItem2" />
+                <ComboBoxItem Content="ComboBoxItem3" />
+            </ComboBox>
+            <TextBlock Name="lblMsg1" Margin="5" />
+
+            <!--为 ComboBox 绑定数据-->
+            <ComboBox x:Name="comboBox2" ItemsSource="{x:Bind Employees}" Margin="5 20 5 5" Width="200" HorizontalAlignment="Left">
+                <ComboBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="comboBox2" Foreground="Red" />
+                    </DataTemplate>
+                </ComboBox.HeaderTemplate>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Name}" />
+                            <TextBlock Text="{x:Bind Age}" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <!--通过 xaml 方式为 ComboBox 添加数据（直接用字符串的方式），在 code-behind 中可以通过 SelectedValue 直接获取选中的字符串-->
+            <ComboBox Name="comboBox3" SelectedIndex="0" Width="200" HorizontalAlignment="Left" Margin="5 60 5 5">
+                <x:String>Red</x:String>
+                <x:String>Green</x:String>
+                <x:String>Blue</x:String>
+            </ComboBox>
+            
+        </StackPanel>
+    </Grid>
+</Page>

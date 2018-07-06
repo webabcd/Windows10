@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.VariableSizedWrapGridDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid Margin="5">
+
+            <!--
+                VariableSizedWrapGrid - 用于 Wrap 子元素集合的控件
+                    Orientation - 控件内元素的排列方向
+                        Horizontal - 水平排列
+                        Vertical - 垂直排列
+                    MaximumRowsOrColumns - 最大行数或最大列数（默认值为 -1）
+                    ItemWidth - 每个 item 的宽度（默认值为 double.NaN）
+                    ItemHeight - 每个 item 的高度（默认值为 double.NaN）
+                    HorizontalChildrenAlignment - 看不出有啥用
+                    VerticalChildrenAlignment - 看不出有啥用
+            
+                    VariableSizedWrapGrid.RowSpan - 合并的行数（附加属性）
+                        code-behind: int GetRowSpan(UIElement element), SetRowSpan(UIElement element, int value)
+                    VariableSizedWrapGrid.ColumnSpan - 合并的列数（附加属性）
+                        code-behind: int GetColumnSpan(UIElement element), SetColumnSpan(UIElement element, int value)
+            -->
+            
+            <VariableSizedWrapGrid HorizontalAlignment="Left" Background="Green"
+                                   Orientation="Horizontal" MaximumRowsOrColumns="5"
+                                   ItemWidth="120" ItemHeight="120">
+                <VariableSizedWrapGrid.Children>
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="2" />
+                    <!--
+                        注：如果剩余的网格显示不下的话，就另起一行或列
+                    -->
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" VariableSizedWrapGrid.ColumnSpan="3" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                    <Image Source="/Assets/StoreLogo.png" Margin="10" />
+                </VariableSizedWrapGrid.Children>
+            </VariableSizedWrapGrid>
+
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.ItemsWrapGridDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+
+            <StackPanel Margin="5">
+                <!--
+                    ItemsWrapGrid - 虚拟化布局控件，GridView 的默认布局控件
+                        Orientation - 子元素的排列方向
+                            Vertical - 垂直排列，默认值
+                            Horizontal - 水平排列
+                        ItemWidth - 每个 item 的宽
+                        ItemHeight - 每个 item 的高
+                        MaximumRowsOrColumns - 最大行数或最大列数（默认值为 -1）
+                        CacheLength - 可见区外的需要缓存的数据的大小（以可见区条数大小的倍数为单位），默认值为 4.0
+                            比如当可见区可以显示 10 条数据，CacheLength 为 4 时，可见区外的需要缓存的数据的大小则为 4 * 10 = 40，也就是说整个缓存数据的大小为 10 + 4 * 10 = 50
+                            实际测试发现，可能会有一定的偏差，但是大体是准确的
+                -->
+                <GridView Name="gridView1" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" ItemsSource="{x:Bind MyData.View}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="common:NavigationModel">
+                            <Grid Background="Blue">
+                                <TextBlock Text="{x:Bind Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" ItemWidth="120" ItemHeight="50" MaximumRowsOrColumns="3" CacheLength="4" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+                <TextBlock Name="lblMsg1" Margin="5" />
+            </StackPanel>
+
+            <StackPanel Margin="5">
+                <!--
+                    ItemsWrapGrid - 虚拟化布局控件，GridView 的默认布局控件
+                        GroupPadding - 每一个数据组的 padding
+                        GroupHeaderPlacement - 每一个数据组的 header 的显示位置
+                            Top - 顶部。默认值
+                            Left - 左侧
+                        AreStickyGroupHeadersEnabled - 组 header 是否是固定的，即不随组数据的滚动而滚动。默认值为 true
+                -->
+                <ListView Name="gridView2" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" ItemsSource="{x:Bind MyData.View}">
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" />
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" Width="100" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"
+                                           GroupPadding="4"
+                                           GroupHeaderPlacement="Top" 
+                                           AreStickyGroupHeadersEnabled="{Binding IsChecked, ElementName=chkAreStickyGroupHeadersEnabled}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <ComboBox x:Name="cmbGroupHeaderPlacement" Margin="5" PlaceholderText="GroupHeaderPlacement" SelectionChanged="cmbGroupHeaderPlacement_SelectionChanged">
+                    <ComboBoxItem>Top</ComboBoxItem>
+                    <ComboBoxItem>Left</ComboBoxItem>
+                </ComboBox>
+                <CheckBox Name="chkAreStickyGroupHeadersEnabled" Content="AreStickyGroupHeadersEnabled" IsChecked="True" Margin="5" />
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Page>

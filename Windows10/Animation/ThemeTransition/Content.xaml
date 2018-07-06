@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeTransition.Content"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeTransition"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ContentThemeTransition - 内容改变时的过渡效果
+                    FromHorizontalOffset - 初始位置的水平偏移量
+                    FromVerticalOffset - 初始位置的垂直偏移量
+            -->
+            <ContentControl Name="contentControl" PointerPressed="contentControl_PointerPressed">
+                <ContentControl.ContentTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition />
+                    </TransitionCollection>
+                </ContentControl.ContentTransitions>
+                <ContentControl.Content>
+                    <Rectangle Height="200" Width="200" Fill="Orange" />
+                </ContentControl.Content>
+            </ContentControl>
+
+
+            <!--
+                如果要在 ScrollViewer 或其他继承了 ContentControl 的控件中应用 ContentThemeTransition 的话，应该用如下方式
+            -->
+            <ScrollViewer Name="scrollViewer" Margin="0 10 0 0" PointerPressed="scrollViewer_PointerPressed">
+                <ContentControl Content="{Binding}">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Rectangle Height="200" Width="200" Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                    <ContentControl.ContentTransitions>
+                        <TransitionCollection>
+                            <ContentThemeTransition/>
+                        </TransitionCollection>
+                    </ContentControl.ContentTransitions>
+                </ContentControl>
+            </ScrollViewer>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.VirtualizingStackPanelDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+
+            <!--
+                VirtualizingStackPanel - 虚拟化布局控件，ListBox 的默认布局控件
+                    Orientation - 子元素的排列方向
+                        Vertical - 垂直排列，默认值
+                        Horizontal - 水平排列
+                    VirtualizingStackPanel.VirtualizationMode - 虚拟化模式（附加属性）
+                        Recycling - 重复利用容器。默认值
+                        Standard - 新建容器，用后丢弃
+                    CleanUpVirtualizedItemEvent - 虚拟化缓存中的某一项数据被移除时触发的事件
+            -->
+            <ListBox x:Name="listBox" Margin="5" ItemsSource="{x:Bind Employees}" Width="200" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Name}" />
+                            <TextBlock Text="{x:Bind Age}" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical" CleanUpVirtualizedItemEvent="VirtualizingStackPanel_CleanUpVirtualizedItemEvent" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <TextBlock Name="lblMsg" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

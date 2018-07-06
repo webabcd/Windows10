@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.Tips"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                文本类控件使用自定义字体
+                1、将字体文件复制到项目中
+                2、通过 FontFamily 指定字体文件的路径，在路径后加“#”并在其后写上字体名称（通过“Windows 字体查看器”可以查看字体文件的字体名称）
+            -->
+            <TextBlock Text="逐浪大雪钢笔体" FontSize="36" Margin="5" 
+                       FontFamily="/Controls/TextControl/MyFont.otf#逐浪大雪钢笔体">
+                
+            </TextBlock>
+
+
+            <!--
+                文本类控件使用 Unicode 编码
+                1、无法在 xaml 中使用 \u（在 code-behind 中可以）
+                2、通过 &#0000; 的方式来显示 Unicode 字符（注：unicode 的 0 - 127 与 ascii 一样）
+            -->
+            <TextBlock Text="&#0034;123&#0034;&#0013;123" FontSize="36" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

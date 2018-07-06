@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.FileOperation2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <Image Name="image1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" />
+            <Image Name="image2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" />
+            <Image Name="image3" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" />
+            <Image Name="image4" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" />
+            <Image Name="image5" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" />
+
+            <Button Name="btnGetFile" Content="获取指定的本地 uri 的文件" Click="btnGetFile_Click" Margin="5" />
+            <Button Name="btnCreateFile1" Content="通过 StreamedFileDataRequest 创建文件" Click="btnCreateFile1_Click" Margin="5" />
+            <Button Name="btnCreateFile2" Content="通过远程 uri 创建文件" Click="btnCreateFile2_Click" Margin="5" />
+            <Button Name="btnReplaceFile1" Content="通过 StreamedFileDataRequest 替换文件" Click="btnReplaceFile1_Click" Margin="5" />
+            <Button Name="btnReplaceFile2" Content="通过远程 uri 替换文件" Click="btnReplaceFile2_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

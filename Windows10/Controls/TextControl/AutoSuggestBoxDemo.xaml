@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.AutoSuggestBoxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Margin="5" Text="{x:Bind autoSuggestBox.Text,Mode=OneWay}" />
+            <TextBlock Name="lblMsg1" Margin="5" />
+            <TextBlock Name="lblMsg2" Margin="5" />
+            
+            <!--
+                AutoSuggestBox - 自动建议文本框（继承自 Windows.UI.Xaml.Controls.ItemsControl）
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    PlaceholderText - 占位符水印
+                    Text - 文本框内显示的文本
+                    AutoMaximizeSuggestionArea - 建议框（即下拉部分）的区域是否最大化
+                    MaxSuggestionListHeight - 建议框（即下拉部分）的最大高度
+                    IsSuggestionListOpen -  建议框（即下拉部分）是否是打开状态
+                    QueryIcon - 文本框右侧显示的 icon（IconElement 类型），关于 IconElement 请参见 /Controls/IconControl/IconElementDemo.xaml
+                        本例中指定为 Find，也就是说设置的是 SymbolIcon 类型（当然也可以指定为 IconElement 的其他派生类型）
+            -->
+            <AutoSuggestBox Name="autoSuggestBox" Margin="5" ItemsSource="{x:Bind Suggestions}"
+                            Header="AutoSuggestBox" PlaceholderText="AutoSuggestBox" QueryIcon="Find">
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="local:SuggestionModel">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{x:Bind ImageUrl}" Width="20" Height="20" />
+                            <TextBlock Text="{x:Bind Title}" FontSize="20" />
+                        </StackPanel>
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+            </AutoSuggestBox>
+
+
+            <!--
+            可以将 QueryIcon 设置为 SymbolIcon 或 FontIcon 或 PathIcon 或 BitmapIcon
+            <AutoSuggestBox>
+                <AutoSuggestBox.QueryIcon>
+                    <BitmapIcon UriSource="" />
+                </AutoSuggestBox.QueryIcon>
+            </AutoSuggestBox>
+            -->
+            
+        </StackPanel>
+    </Grid>
+</Page>

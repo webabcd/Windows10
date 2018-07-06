@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Windows10.Controls.DateControl.DatePickerDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.DateControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" />
+
+            <!--
+                DatePicker - 日期选择控件
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                    DateChanged - 选中的日期发生变化时触发的事件
+                    Orientation - 经测试，无效
+                    YearFormat, MonthFormat, DayFormat - 格式化年, 月, 日数据（支持 format templates 和 format patterns）
+            
+            
+                注：关于 format templates 和 format patterns 请参见
+                http://msdn.microsoft.com/en-us/library/windows/apps/windows.globalization.datetimeformatting.datetimeformatter.aspx
+            -->
+            
+            <DatePicker x:Name="datePicker" Header="Date" DateChanged="datePicker_DateChanged" Margin="5" Orientation="Vertical" />
+
+
+            <!-- 
+                通过格式模板（format templates）设置 DatePicker 的显示格式
+            -->
+            <DatePicker DayFormat="day" MonthFormat="month.numeric" YearFormat="year.abbreviated" Margin="5" />
+
+
+            <!-- 
+                通过格式模式（format patterns）设置 DatePicker 的显示格式
+            -->
+            <DatePicker DayFormat="{}{day.integer}({dayofweek.abbreviated})" MonthFormat="{}{month.integer(2)}" YearFormat="{}{year.full}" Margin="5" />
+            <DatePicker DayFormat="{}{day.integer}日 ({dayofweek.abbreviated})" MonthFormat="{}{month.integer(2)}月" YearFormat="{}{year.full}年" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

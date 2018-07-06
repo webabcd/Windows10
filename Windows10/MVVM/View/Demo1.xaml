@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Windows10.MVVM.View.Demo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.MVVM.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:vm="using:Windows10.MVVM.ViewModel1">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                View 层
+            -->
+
+            <!--
+                本例通过 Binding 结合 Command 实现 MVVM（用 x:Bind 结合 Command 实现 MVVM 也是一样的），通过 ButtonBase 触发命令
+            -->
+
+            <StackPanel.DataContext>
+                <vm:ProductViewModel />
+            </StackPanel.DataContext>
+
+            <ListView Name="listView" ItemsSource="{Binding Products}" Width="300" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" />
+                            <TextBlock Text="{Binding Category}" HorizontalAlignment="Left" Margin="10 0 0 0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0" DataContext="{Binding Product}">
+                <TextBlock Text="Name：" VerticalAlignment="Center" />
+                <TextBox Name="txtName" Text="{Binding Name, Mode=TwoWay}" Width="100" />
+                <TextBlock Text="Category：" VerticalAlignment="Center" Margin="20 0 0 0" />
+                <TextBox Name="txtCategory" Text="{Binding Category, Mode=TwoWay}" Width="100" />
+            </StackPanel>
+
+            <!--
+                ButtonBase
+                    Command - 指定关联的 ICommand
+                    CommandParameter - 传递给 ICommand 的参数
+            -->
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <Button Name="btnSearch" Content="查询" Command="{Binding GetProductsCommand}" Margin="10 0 0 0" />
+                <Button Name="btnAdd" Content="添加" Command="{Binding AddProductCommand}" Margin="10 0 0 0" />
+                <Button Name="btnUpdate" Content="更新" Command="{Binding UpdateProductCommand}" CommandParameter="{Binding SelectedItem, ElementName=listView}" Margin="10 0 0 0" />
+                <Button Name="btnDelete" Content="删除" Command="{Binding DeleteProductCommand}" CommandParameter="{Binding SelectedItem, ElementName=listView}" Margin="10 0 0 0" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

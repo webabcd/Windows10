@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.UIElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="5">
+
+            <Grid Name="dragGrid" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid_DragStarting">
+                <TextBlock Name="sourceTextBlock" Text="i am webabcd" Margin="20" />
+            </Grid>
+
+            <Grid Name="dropGrid1" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid1_Drop"
+                  DragEnter="dropGrid1_DragEnter">
+                <TextBlock Name="targetTextBlock1" TextWrapping="Wrap" Height="80" Margin="20" />
+            </Grid>
+
+            <Grid Name="dropGrid2" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid2_Drop"
+                  DragEnter="dropGrid2_DragEnter">
+                <TextBlock Name="targetTextBlock2" TextWrapping="Wrap" Height="80" Margin="20" />
+            </Grid>
+
+            <Grid Name="dropGrid3" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid3_Drop"
+                  DragEnter="dropGrid3_DragEnter">
+                <TextBlock Name="targetTextBlock3" TextWrapping="Wrap" Height="80" Margin="20" />
+            </Grid>
+
+            <Grid Name="dropGrid4" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid4_Drop"
+                  DragEnter="dropGrid4_DragEnter">
+                <TextBlock Name="targetTextBlock4" TextWrapping="Wrap" Height="80" Margin="20" />
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

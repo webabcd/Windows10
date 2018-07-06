@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.MessageDialogDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnShowMessageDialogSimple" Margin="5" Content="弹出一个简单的 MessageDialog" Click="btnShowMessageDialogSimple_Click" />
+
+            <Button Name="btnShowMessageDialogCustomCommand" Margin="5" Content="弹出一个自定义命令按钮的 MessageDialog" Click="btnShowMessageDialogCustomCommand_Click" />
+
+        </StackPanel>
+    </Grid>
+</Page>

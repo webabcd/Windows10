@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.AssociationLaunching.LaunchUri"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.AssociationLaunching"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+        <StackPanel Margin="10 0 10 10">
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <RadioButton Content="使用默认打开方式打开指定的 Uri" Name="radDefault" GroupName="LaunchType" IsChecked="True" />
+            <RadioButton Content="使用默认打开方式打开指定的 Uri，打开前弹出警告框" Name="radWarning" GroupName="LaunchType" />
+            <RadioButton Content="选择指定的打开方式打开指定的 Uri" Name="radOpenWith" GroupName="LaunchType" />
+
+            <Button Content="打开一个 uri" Name="btnLaunchUri" Click="btnLaunchUri_Click" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

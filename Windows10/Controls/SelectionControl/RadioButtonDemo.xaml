@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="Windows10.Controls.SelectionControl.RadioButtonDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.SelectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+            
+            <!--
+                RadioButton - 单选框控件
+                    GroupName - 单选框的组名，同一组单选框只能有一个为选中状态
+            
+                注：RadioButton 继承自 ToggleButton，关于 ToggleButton 的知识点请参见“/Controls/ButtonControl/ToggleButtonDemo.xaml”
+            -->
+
+            <RadioButton Name="rad1" GroupName="groupName1" Margin="5" IsChecked="True" Content="groupName1 - RadioButton1" />
+            <RadioButton Name="rad2" GroupName="groupName1" Margin="5" Content="groupName1 - RadioButton2" />
+
+            <RadioButton Name="rad3" GroupName="groupName2" Margin="5" IsChecked="True" Content="groupName2 - RadioButton1" />
+            <RadioButton Name="rad4" GroupName="groupName2" Margin="5" Content="groupName2 - RadioButton2" />
+
+        </StackPanel>
+    </Grid>
+</Page>

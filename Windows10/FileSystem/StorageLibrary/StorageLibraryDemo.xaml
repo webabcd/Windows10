@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.StorageLibrary.StorageLibraryDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem.StorageLibrary"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnAddFolder" Content="增加一个文件夹引用到图片库" Click="btnAddFolder_Click" Margin="5" />
+
+            <Button Name="btnRemoveFolder" Content="从图片库移除之前添加的全部文件夹引用" Click="btnRemoveFolder_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

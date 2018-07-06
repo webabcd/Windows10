@@ -1,0 +1,198 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.UIElementDemo.Transform3DDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.UIElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+        <!--
+            UIElement - UIElement
+                Transform3D - 3D 变换（通过 CompositeTransform3D 结合 PerspectiveTransform3D 来完成 3D 变换）
+        -->
+        
+        <Grid.Transform3D>
+            <!--
+                PerspectiveTransform3D - 让指定的空间内的元素支持通过 CompositeTransform3D 来实现 3D 变换
+                    OffsetX - 透视原点相对于元素中心的 x 方向的偏移量
+                    OffsetY - 透视原点相对于元素中心的 y 方向的偏移量
+                    Depth - 到 z=0 的平面的距离，必须大于 0，默认值为 1000
+            -->
+            <PerspectiveTransform3D OffsetX="{x:Bind sliderOX.Value, Mode=OneWay}" 
+                                    OffsetY="{x:Bind sliderOY.Value, Mode=OneWay}" 
+                                    Depth="{x:Bind sliderD.Value, Mode=OneWay}">
+                
+            </PerspectiveTransform3D>
+        </Grid.Transform3D>
+
+        <StackPanel HorizontalAlignment="Center">
+            <Image Source="/Assets/hololens.jpg" Width="200" Height="200" Name="image" Margin="5">
+                <Image.Transform3D>
+                    <!--
+                        CompositeTransform3D - 为 UIElement 实现 3D 变换（此 UIElement 的祖辈必须要设置了 PerspectiveTransform3D）
+                            CenterX, CenterY, CenterZ - 3D 变换的中心点位置（单位：像素）
+                            RotationX, RotationY, RotationZ - 3D 变换的旋转角度（单位：度）
+                            ScaleX, ScaleY, ScaleZ - 3D 变换的缩放比例
+                            TranslateX, TranslateY, TranslateZ - 3D 变换的位移距离（单位：像素）
+                    
+                        注意：x 坐标向右为正，y 坐标向下为正，z 坐标向你为正（左手坐标系）
+                    -->
+                    <CompositeTransform3D CenterX="{x:Bind sliderCX.Value, Mode=OneWay}" 
+                                          CenterY="{x:Bind sliderCY.Value, Mode=OneWay}" 
+                                          CenterZ="{x:Bind sliderCZ.Value, Mode=OneWay}"
+                                          
+                                          RotationX="{x:Bind sliderRX.Value, Mode=OneWay}" 
+                                          RotationY="{x:Bind sliderRY.Value, Mode=OneWay}" 
+                                          RotationZ="{x:Bind sliderRZ.Value, Mode=OneWay}"
+                                          
+                                          ScaleX="{x:Bind sliderSX.Value, Mode=OneWay}" 
+                                          ScaleY="{x:Bind sliderSY.Value, Mode=OneWay}" 
+                                          ScaleZ="{x:Bind sliderSZ.Value, Mode=OneWay}"
+                                          
+                                          TranslateX="{x:Bind sliderTX.Value, Mode=OneWay}" 
+                                          TranslateY="{x:Bind sliderTY.Value, Mode=OneWay}" 
+                                          TranslateZ="{x:Bind sliderTZ.Value, Mode=OneWay}">
+                    </CompositeTransform3D>
+                </Image.Transform3D>
+            </Image>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Slider Name="sliderOX" Minimum="-100" Maximum="100" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="OffsetX: "/>
+                            <TextBlock Text="{x:Bind sliderOX.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderOY" Minimum="-100" Maximum="100" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="OffsetY: "/>
+                            <TextBlock Text="{x:Bind sliderOY.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderD" Minimum="100" Maximum="5000" Value="1000" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Depth: "/>
+                            <TextBlock Text="{x:Bind sliderD.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Slider Name="sliderCX" Minimum="-300" Maximum="300" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CenterX: "/>
+                            <TextBlock Text="{x:Bind sliderCX.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderCY" Minimum="-300" Maximum="300" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CenterY: "/>
+                            <TextBlock Text="{x:Bind sliderCY.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderCZ" Minimum="-300" Maximum="300" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CenterZ: "/>
+                            <TextBlock Text="{x:Bind sliderCZ.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Slider Name="sliderRX" Minimum="0" Maximum="360" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="RotationX: "/>
+                            <TextBlock Text="{x:Bind sliderRX.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderRY" Minimum="0" Maximum="360" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="RotationY: "/>
+                            <TextBlock Text="{x:Bind sliderRY.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderRZ" Minimum="0" Maximum="360" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="RotationZ: "/>
+                            <TextBlock Text="{x:Bind sliderRZ.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Slider Name="sliderSX" Minimum="0.1" Maximum="10" StepFrequency="0.1" Value="1" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ScaleX: "/>
+                            <TextBlock Text="{x:Bind sliderSX.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderSY" Minimum="0.1" Maximum="10" StepFrequency="0.1" Value="1" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ScaleY: "/>
+                            <TextBlock Text="{x:Bind sliderSY.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderSZ" Minimum="0.1" Maximum="10" StepFrequency="0.1" Value="1" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ScaleZ: "/>
+                            <TextBlock Text="{x:Bind sliderSZ.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Slider Name="sliderTX" Minimum="-100" Maximum="100" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="TranslateX: "/>
+                            <TextBlock Text="{x:Bind sliderTX.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderTY" Minimum="-100" Maximum="100" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="TranslateY: "/>
+                            <TextBlock Text="{x:Bind sliderTY.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+                <Slider Name="sliderTZ" Minimum="-100" Maximum="100" Width="200" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" Margin="10">
+                    <Slider.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="TranslateZ: "/>
+                            <TextBlock Text="{x:Bind sliderTZ.Value, Mode=OneWay}" />
+                        </StackPanel>
+                    </Slider.Header>
+                </Slider>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

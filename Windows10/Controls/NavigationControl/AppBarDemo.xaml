@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="Windows10.Controls.NavigationControl.AppBarDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.NavigationControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <CheckBox Name="chkIsSticky" Margin="5" Content="IsSticky" IsChecked="False" Checked="chkIsSticky_Checked" Unchecked="chkIsSticky_Unchecked" />
+            <CheckBox Name="chkIsCompact" Margin="5" Content="IsCompact" IsChecked="False" Checked="chkIsCompact_Checked" Unchecked="chkIsCompact_Unchecked" />
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <RadioButton Name="radioButtonMinimal" GroupName="myGroup" IsChecked="True" Content="AppBarClosedDisplayMode.Minimal" Checked="radioButtonMinimal_Checked" />
+                <RadioButton Name="radioButtonHidden" GroupName="myGroup" Margin="10 0 0 0" Content="AppBarClosedDisplayMode.Hidden" Checked="radioButtonHidden_Checked" />
+                <RadioButton Name="radioButtonCompact" GroupName="myGroup" Margin="10 0 0 0" Content="AppBarClosedDisplayMode.Compact" Checked="radioButtonCompact_Checked" />
+            </StackPanel>
+
+            <Button Name="btnOpen" Margin="5" Content="打开 AppBar" Click="btnOpen_Click" />
+            <Button Name="btnClose" Margin="5" Content="关闭 AppBar" Click="btnClose_Click" />
+
+        </StackPanel>
+    </Grid>
+
+    <!--
+        Page.BottomAppBar - 下方应用程序栏控件
+        Page.TopAppBar - 上方应用程序栏控件
+    
+        AppBar - 应用程序栏控件
+            IsOpen - 是否打开 AppBar
+            IsSticky - 是否是粘性的 AppBar（即在点击非 AppBar 区域时，是否不会关闭 AppBar），默认值 false
+            ClosedDisplayMode - 应用程序栏关闭状态下的显示模式
+                Minimal - 最小化模式，只显示省略号，此值为默认值（CommandBar 的 ClosedDisplayMode 的默认值为 Compact）
+                Hidden - 隐藏
+                Compact - 显示 icon，但是不会给 label 留出位置
+            Opening, Opened, Closing, Closed - 几个事件，不解释
+    -->
+    <Page.BottomAppBar>
+        <AppBar x:Name="appBar">
+            <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                <!--
+                    关于 AppBarButton 请参见 /Controls/ButtonControl/AppBarButtonDemo.xaml
+                    关于 AppBarToggleButton 请参见 /Controls/ButtonControl/AppBarToggleButtonDemo.xaml
+                -->
+
+                <AppBarButton Icon="Play" Label="SymbolIcon" />
+                
+                <AppBarSeparator />
+                
+                <AppBarToggleButton Label="BitmapIcon" >
+                    <AppBarToggleButton.Icon>
+                        <BitmapIcon UriSource="ms-appx:///Assets/StoreLogo.png"/>
+                    </AppBarToggleButton.Icon>
+                </AppBarToggleButton>
+
+                <AppBarSeparator />
+                
+                <!--
+                    AppBarButton 是支持 Flyout 的
+                -->
+                <AppBarButton Icon="Add" Label="Add">
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="MenuFlyout Item 1"/>
+                            <MenuFlyoutItem Text="MenuFlyout Item 2"/>
+                            <MenuFlyoutItem Text="MenuFlyout Item 3"/>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                
+                <AppBarSeparator />
+
+                <!--
+                    AppBar 内可以包含任意元素
+                -->
+                <TextBlock Text="abc" />
+
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+</Page>

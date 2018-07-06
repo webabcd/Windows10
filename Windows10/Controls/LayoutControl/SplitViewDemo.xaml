@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.SplitViewDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Page.Resources>
+        <common:NullableBooleanToBooleanConverter x:Key="NullableBooleanToBooleanConverter" />
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <CheckBox Name="chkIsPaneOpen" Margin="5" Content="IsPaneOpen" IsChecked="True" />
+
+            <ComboBox x:Name="cmbDisplayMode" Margin="5" PlaceholderText="DisplayMode" SelectionChanged="cmbDisplayMode_SelectionChanged">
+                <ComboBoxItem>Overlay</ComboBoxItem>
+                <ComboBoxItem>CompactOverlay</ComboBoxItem>
+                <ComboBoxItem>Inline</ComboBoxItem>
+                <ComboBoxItem>CompactInline</ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox x:Name="cmbPanePlacement" Margin="5" PlaceholderText="PanePlacement" SelectionChanged="cmbPanePlacement_SelectionChanged">
+                <ComboBoxItem>Left</ComboBoxItem>
+                <ComboBoxItem>Right</ComboBoxItem>
+            </ComboBox>
+
+            <!--
+                SplitView - Pane/Content 控件
+                    Pane - 导航视图
+                    Content - 内容视图（[ContentProperty(Name = "Content")]）
+                    PaneBackground - 导航视图的背景画笔
+                    IsPaneOpen - 是否显示导航视图（默认值为 true）
+                    OpenPaneLength - 导航视图完全展开时的宽度（默认值为 320）
+                    CompactPaneLength - 紧凑模式下导航视图的宽度（默认值为 48）
+                    PanePlacement - 导航视图相对于内容视图的显示位置
+                        Left - 导航视图显示在内容视图的左侧（默认值）
+                        Right - 导航视图显示在内容视图的右侧
+                    DisplayMode - 显示方式
+                        Overlay - 导航视图打开时，其会覆盖在内容视图上面（点击其他区域会自动关闭）；导航视图关闭时，其会隐藏
+                        CompactOverlay - 导航视图打开时，其会覆盖在内容视图上面（点击其他区域会自动关闭）；导航视图关闭时，其会以紧凑模式显示
+                        Inline - 导航视图打开时，其会以与内容视图并行显示（点击其他区域不会自动关闭）；导航视图关闭时，其会隐藏
+                        CompactInline - 导航视图打开时，其会以与内容视图并行显示（点击其他区域不会自动关闭）；导航视图关闭时，其会以紧凑模式显示
+                    PaneClosing - 导航视图准备关闭时触发的事件
+                    PaneClosed - 导航视图关闭后触发的事件
+            -->
+            
+            <SplitView x:Name="splitView" Margin="5" 
+                       PaneBackground="#FF2B2B2B" 
+                       IsPaneOpen="{x:Bind chkIsPaneOpen.IsChecked, Mode=TwoWay, Converter={StaticResource NullableBooleanToBooleanConverter}}" 
+                       OpenPaneLength="320" 
+                       CompactPaneLength="48"
+                       DisplayMode="Overlay"
+                       PanePlacement="Left">
+                <SplitView.Pane>
+                    <StackPanel Height="200">
+                        <TextBlock Text="我是 SplitView.Pane" />
+                    </StackPanel>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <StackPanel Height="200" Width="400" HorizontalAlignment="Left" Background="Orange">
+                        <TextBlock Text="SplitView.Content" />
+                    </StackPanel>
+                </SplitView.Content>
+            </SplitView>
+
+        </StackPanel>
+    </Grid>
+</Page>

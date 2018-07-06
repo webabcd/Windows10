@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Windows10.Controls.MediaControl.MediaElementDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.MediaControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid Margin="10 0 10 10">
+
+            <!--
+                MediaElement - 视频控件
+            -->
+            <MediaElement Source="http://media.w3.org/2010/05/sintel/trailer.mp4" 
+                          PosterSource="/Assets/StoreLogo.png"
+                          AutoPlay="True"
+                          AreTransportControlsEnabled="True">
+
+                <!--
+                    MediaTransportControls - 用于定义 MediaElement 的控制条的样式（当 MediaElement 的 AreTransportControlsEnabled 设置为 true 时）
+                        有很多属性可以设置，详见文档
+                -->
+                <MediaElement.TransportControls>
+                    <MediaTransportControls IsCompact="True" />
+                </MediaElement.TransportControls>
+                
+            </MediaElement>
+
+        </Grid>
+    </Grid>
+</Page>

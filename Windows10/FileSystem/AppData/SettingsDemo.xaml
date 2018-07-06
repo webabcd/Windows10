@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.AppData.SettingsDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem.AppData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnReadWrite" Content="读写 Settings" Click="btnReadWrite_Click" Margin="5" />
+
+            <Button Name="btnReadWriteWithContainer" Content="分组 Settings" Click="btnReadWriteWithContainer_Click" Margin="5" />
+
+            <Button Name="btnReadWriteWithComposite" Content="父子 Settings" Click="btnReadWriteWithComposite_Click" Margin="5" />
+
+            <Button Name="btnSetVersion0" Content="将 Application Data 的版本号设置为 0" Click="btnSetVersion0_Click" Margin="5" />
+
+            <Button Name="btnSetVersion1" Content="将 Application Data 的版本号设置为 1" Click="btnSetVersion1_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

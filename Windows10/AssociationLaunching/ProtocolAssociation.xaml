@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.AssociationLaunching.ProtocolAssociation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.AssociationLaunching"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Name="grid" Background="Transparent">
+        
+        <StackPanel Margin="10 0 10 10">
+            <TextBlock Name="lblMsg" Margin="5">
+                <Run>本程序可以处理 webabcd: 协议</Run>
+            </TextBlock>
+
+            <Button Name="btnProtocol" Content="打开自定义协议 webabcd:data" Click="btnProtocol_Click" Margin="5" />
+        </StackPanel>
+        
+    </Grid>
+</Page>

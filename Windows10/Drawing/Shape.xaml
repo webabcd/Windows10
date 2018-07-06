@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="Windows10.Drawing.Shape"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Drawing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Windows.UI.Xaml.Shapes.Shape - 图形
+                    注：对于封闭图形的 stroke 来说，其是绘制在控件内部的
+            -->
+            
+
+            <!--
+                Line - 画直线
+            -->
+            <!--
+                X1, Y1 - 直线起点坐标
+                X2, Y2 - 直线终点坐标
+            -->
+            <Line X1="0" Y1="0" X2="300" Y2="100" Stroke="Blue" StrokeThickness="3" />
+
+            
+            <!--
+                Rectangle - 画矩形
+            -->
+            <!--
+                Width - 矩形宽
+                Height - 矩形高
+            -->
+            <Rectangle Width="200" Height="50" Fill="Red" Stroke="Yellow" StrokeThickness="3" />
+
+            
+            <!--
+                Polyline - 画折线（即多条连接起来的直线）
+            -->
+            <!--
+                Points - 折线的每个点的坐标
+            -->
+            <Polyline Points="10,100 50,10 100,100" Stroke="Green" StrokeThickness="3" />
+
+            
+            <!--
+                Polygon - 画多边形
+            -->
+            <!--
+                Points - 多边形的每个点的坐标
+            -->
+            <Polygon Points="50,50 100,50 300,100 200,100 100,200" Fill="Yellow" Stroke="Red" StrokeThickness="6" />
+
+            
+            <!--
+                Ellipse - 画椭圆
+            -->
+            <!--
+                Width - 椭圆宽
+                Height - 椭圆高
+            -->
+            <Ellipse Width="100" Height="50" Fill="Orange" Stroke="Red" StrokeThickness="6" />
+
+
+            <!--
+                矩形或椭圆在不设置宽和高时，可以指定其 Stretch 用以指定其相对于其容器的拉伸方式
+                Stretch - 拉伸方式（Windows.UI.Xaml.Media.Stretch 枚举）
+                    Fill - 充满容器，不保留长宽比
+                    None - 不做任何处理，如果图片比容器大，则多出的部分被剪裁
+                    Uniform - 等比缩放到容器（默认值）
+                    UniformToFill - 充满容器，且保留长宽比，多出的部分被剪裁
+            -->
+            <Grid Width="200" Height="100" HorizontalAlignment="Left" Background="Black">
+                <Ellipse Fill="Orange" Stroke="Red" StrokeThickness="6" Stretch="UniformToFill" />
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

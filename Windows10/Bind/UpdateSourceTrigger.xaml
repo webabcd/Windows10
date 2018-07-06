@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="Windows10.Bind.UpdateSourceTrigger"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Foreground="Orange" Margin="5" />
+
+            <!--
+                UpdateSourceTrigger - 数据更新的触发方式
+                    Default - 失去焦点后触发
+                    PropertyChanged - 属性值发生改变后触发
+                    Explicit - 需要通过 BindingExpression.UpdateSource() 显示触发
+            -->
+
+            <TextBox Text="{Binding Text, Mode=TwoWay, ElementName=lblMsg, UpdateSourceTrigger=Default}" Margin="5" />
+            <TextBox Text="{Binding Text, Mode=TwoWay, ElementName=lblMsg, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+            <TextBox Name="txtExplicit" Text="{Binding Text, Mode=TwoWay, ElementName=lblMsg, UpdateSourceTrigger=Explicit}" Margin="5" />
+
+            <Button Name="btnBinding" Content="显示触发更新" Click="btnBinding_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

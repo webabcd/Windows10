@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Windows10.Controls.IconControl.FontIconDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.IconControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+            
+            <!--
+                FontIcon - 字体图标
+                    FontFamily - 首选字体，多个用“,”分隔，找不到第 1 个就用第 2 个，找不到第 2 个就用第 3 个，以此类推
+                    Glyph - 字符代码
+                    FontSize, FontStyle, FontWeight - 不解释
+            
+                注：
+                1、在 xaml 中指定 Glyph 的 Unicode 编码时，不能使用 \u 来指定（code-behind 中可以），而是应该通过 &#x0000; 的方式来指定
+                2、在“运行”中输入“字符映射表”，打开后可在其中找到不同字体的不同字符的 Unicode 编码
+                3、除了通过“字符映射表”查找字符的编码外，如果想要查看“Segoe MDL2 Assets”中的各种编码的显示效果请参见 https://docs.microsoft.com/zh-cn/windows/uwp/style/segoe-ui-symbol-font 或者本目录下的“Segoe MDL2 Assets.mht”文件
+                4、对于 FontIcon 来说，其 FontFamily 的默认值为 Segoe MDL2 Assets
+                5、支持自定义字体
+            -->
+
+            <FontIcon Name="fontIcon1" FontFamily="Segoe UI Emoji" Glyph="&#x2713;" HorizontalAlignment="Left" Margin="5" />
+
+            <FontIcon Name="fontIcon2" FontFamily="Segoe MDL2 Assets" Glyph="&#xEC52;" HorizontalAlignment="Left" Margin="5" />
+
+            <!--
+                在 code-behind 中指定 Glyph
+                FontIcon 的 FontFamily 的默认值为 Segoe MDL2 Assets
+            -->
+            <FontIcon Name="fontIcon3" HorizontalAlignment="Left" Margin="5" />
+
+            <!--
+                演示如何只用自定义字体中的字符（以比较流行的 FontAwesome 为例）
+                1、将字体文件复制到项目中
+                2、通过 FontFamily 指定字体文件的路径，在路径后加“#”并在其后写上字体名称（通过“Windows 字体查看器”可以查看字体文件的字体名称）
+                3、关于 FontAwesome 的各种图标的效果及对应的编码请参见：http://fontawesome.io/cheatsheet/
+            -->
+            <FontIcon Name="fontIcon4" FontFamily="/Controls/IconControl/FontAwesome.otf#FontAwesome" Glyph="&#xf0e7;" HorizontalAlignment="Left" Margin="5" />
+
+            
+
+            <!--
+                用 TextBlock 或 TextBox 之类的，也是可以显示字体图标的
+            -->
+            <TextBlock Name="textBlock" FontFamily="Segoe UI Emoji" Text="&#x2713;" HorizontalAlignment="Left" Margin="5" />
+            <TextBox Name="textBox" FontFamily="/Controls/IconControl/FontAwesome.otf#FontAwesome" Text="&#xf0e7;" HorizontalAlignment="Left" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

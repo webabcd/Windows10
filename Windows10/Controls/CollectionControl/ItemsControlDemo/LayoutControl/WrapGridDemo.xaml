@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.WrapGridDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                WrapGrid - 虚拟化布局控件，原 GridView 的默认布局控件（在 uwp 中 GridView 的默认布局控件是 ItemsWrapGrid）
+                    Orientation - 子元素的排列方向
+                        Vertical - 垂直排列，默认值
+                        Horizontal - 水平排列
+                    MaximumRowsOrColumns - 最大行数或最大列数（默认值为 -1）
+                    ItemWidth - 每个 item 的宽
+                    ItemHeight - 每个 item 的高
+                    HorizontalChildrenAlignment - 看不出有啥用
+                    VerticalChildrenAlignment - 看不出有啥用
+            -->
+            <GridView Name="gridView" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" ItemsSource="{x:Bind Employees}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <Grid Background="Blue">
+                            <TextBlock Text="{x:Bind Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3" ItemWidth="200" ItemHeight="200" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+
+        </StackPanel>
+    </Grid>
+</Page>

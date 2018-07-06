@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Windows10.Bind.PhaseDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:common="using:Windows10.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!--
+            关于 x:Phase 的相关说明：
+            1、x:Phase 可以实现元素的分阶段显示，用于避免绘制大量数据时的卡顿
+            2、ListView 和 GridView 均继承自 ListViewBase
+            3、在 windows 8.1 及以后版本中，ListViewBase 是支持 UI 虚拟化的
+            4、x:Phase 只适用于 ListViewBase 中的 DataTemplate 里的元素
+            5、x:Phase 属于 x:Bind 的一项功能，所以其必须在指定了 x:Bind 的元素中使用才有效
+            6、x:Phase 的作用是解决如下问题：当 ListViewBase 滚动时，如果一屏的 item 多，且每个 item 中的 element 也多，那么绘制时会占用大量的资源以至卡顿
+            7、在 windows 8.1 及以后版本中，我们可以通过 ContainerContentChanging 事件手动控制列表项的呈现，而 x:Phase 的原理其实就是在编译时自动生成这种手动控制代码（参见对应的 g.cs 代码）
+               关于如何手动控制列表项的呈现，请参见 /Controls/CollectionControl/ListViewBaseDemo/ListViewBaseDemo4.xaml
+        -->
+        
+        <DataTemplate x:Key="PhasedFileTemplate" x:DataType="common:Employee">
+            <StackPanel Width="200" Margin="10" Background="Blue">
+                <TextBlock Margin="5" Text="{x:Bind Name}" Foreground="Red" x:Phase="9" />
+                <TextBlock Margin="5" Text="{x:Bind Name}" Foreground="White" />
+                <TextBlock Margin="5" Text="{x:Bind Name}" Foreground="Green" x:Phase="1" />
+                <TextBlock Margin="5" Text="{x:Bind Name}" Foreground="Orange" x:Phase="2" />
+                <TextBlock Margin="5" Text="{x:Bind Name}" Foreground="Orange" x:Phase="2" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+
+        <!--
+            ShowsScrollingPlaceholders="false" - 不显示占位符
+            ContainerContentChanging - 项容器的内容发生变化时触发的事件（在本例中，其用于人为减慢每阶段的显示速度，以便演示）
+        
+            关于 ShowsScrollingPlaceholders, ContainerContentChanging 的详细说明请参见 ListView, GridView 部分
+        -->
+        <GridView Name="gridView" Margin="10 0 10 10" ShowsScrollingPlaceholders="false" ContainerContentChanging="gridView_ContainerContentChanging"
+                  ItemsSource="{x:Bind AllEmployees}" ItemTemplate="{StaticResource PhasedFileTemplate}" />
+
+    </Grid>
+</Page>

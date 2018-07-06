@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+
+            <!--
+                ItemsControl - 集合控件
+                    ItemsSource - 数据源
+                    DisplayMemberPath - 每个数据项需要显示的字段
+            -->
+            <ItemsControl Name="itemsControl" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top"
+                          ItemsSource="{x:Bind Employees}" DisplayMemberPath="Name" />
+
+
+
+            <!--
+                ItemsControl - 集合控件
+                    ItemsPanel - 用于指定 items 的布局控件，任何 Panel 类型的布局控件均可，所有 items 将在 Panel 内显示（Panel 是所有 items 的容器）
+                        给 ItemsControl 用的，可虚拟化的布局控件有：ItemsStackPanel, ItemsWrapGrid, VirtualizingStackPanel, WrapGrid. 请参见：/Controls/CollectionControl/ItemsControlDemo/LayoutControl/
+                    ItemContainerStyle - 每个数据项的容器的样式
+                        ListView 的 ItemContainer 是 ListViewItem
+                        GridView 的 ItemContainer 是 GridViewItem
+                    ItemTemplate - 每个数据项的数据模板
+            -->
+            <ListView Name="listView" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top"
+                      ItemsSource="{x:Bind Employees}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <Grid Background="Red">
+                            <TextBlock Text="{x:Bind Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="Background" Value="Orange" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+        </StackPanel>
+    </Grid>
+</Page>

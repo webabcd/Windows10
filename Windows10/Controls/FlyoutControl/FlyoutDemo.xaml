@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.FlyoutDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Flyout - 弹出框控件
+                    FlyoutPresenterStyle - 用于定义 Flyout 的样式
+            -->
+            
+            <!--
+                xaml 方式指定 flyout
+            -->
+            <Button Name="button1" Margin="5" Content="按我弹出 Flyout">
+                <Button.Flyout>
+                    <Flyout Placement="Right">
+                        <StackPanel>
+                            <TextBlock Text="我是 Flyout 中的内容" Foreground="White" FontSize="24" />
+                        </StackPanel>
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                                <Setter Property="Background" Value="Blue"/>
+                                <Setter Property="BorderBrush" Value="Red"/>
+                                <Setter Property="BorderThickness" Value="10"/>
+                                <Setter Property="MinHeight" Value="300"/>
+                                <Setter Property="MinWidth" Value="300"/>
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+
+            <!--
+                code-behind 方式指定 flyout
+            -->
+            <TextBlock Name="textBlock1" Margin="5" Text="按我弹出 Flyout" Tapped="textBlock1_Tapped" FontSize="18" />
+
+        </StackPanel>
+    </Grid>
+</Page>

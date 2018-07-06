@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Controls.ScrollViewerDemo.ScrollContentPresenterDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ScrollViewerDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <ScrollViewer Name="scrollViewer" Width="400" Height="400" Background="Blue" HorizontalAlignment="Left"
+                          HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled"
+                          HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <ScrollViewer.Content>
+                    <Image Source="/Assets/StoreLogo.png" Width="1000" />
+                </ScrollViewer.Content>
+            </ScrollViewer>
+
+        </StackPanel>
+    </Grid>
+</Page>

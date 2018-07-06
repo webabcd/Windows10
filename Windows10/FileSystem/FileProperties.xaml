@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.FileProperties"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <ListBox Name="listBox" Width="400" Height="200" HorizontalAlignment="Left" Margin="5" SelectionChanged="listBox_SelectionChanged" />
+
+            <Button Name="btnModifyProperty" Content="修改文件的属性" Margin="5" Click="btnModifyProperty_Click" />
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

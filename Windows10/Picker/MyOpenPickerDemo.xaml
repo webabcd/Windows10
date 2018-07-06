@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Windows10.Picker.MyOpenPickerDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Picker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="5">
+                <Run>
+                    如果需要激活自定义的文件选取窗口，请在弹出的选取器窗口的左侧的导航列表中选择相应的 app
+                </Run>
+                <LineBreak />
+                <Run>
+                    测试时发现如果此 app 作为文件打开选取器激活之前是运行状态的话，则在作为文件打开选取器时会出现控件事件无法触发的情况（但是有的时候是正常的），不知道为什么，这一点开发和测试时要注意
+                </Run>
+            </TextBlock>
+
+            <Button Name="btnMyOpenPicker" Content="弹出文件选择窗口" Click="btnMyOpenPicker_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Windows10.Bind.BindingConverter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                配置 IValueConverter 资源
+            -->
+            <StackPanel.Resources>
+                <local:IntegerLetterConverter x:Key="IntegerLetterConverter"/>
+                <local:FormatConverter x:Key="FormatConverter"/>
+                <x:String x:Key="FormatString">格式化字符串 {0}</x:String>
+            </StackPanel.Resources>
+
+
+            <Slider Name="slider1" Minimum="97" Maximum="122" Value="1" Width="300" Background="White" HorizontalAlignment="Left" Margin="5" />
+            <!--
+                演示如何使用 Binding 的 Converter, ConverterParameter, ConverterLanguage
+                注：ConverterParameter 和 ConverterLanguage 不支持绑定，只能配置为一个静态的值（但是在 C# 端可以实现一些在 xaml 中无法实现的特性，详见后面的例子）
+            -->
+            <TextBox Name="textBox1" Width="300" HorizontalAlignment="Left" Margin="5"
+                     Text="{Binding ElementName=slider1, Path=Value, Mode=TwoWay,
+                                    Converter={StaticResource IntegerLetterConverter},
+                                    ConverterParameter=param, 
+                                    ConverterLanguage=zh}" />
+
+
+            <Slider Name="slider2" Minimum="97" Maximum="122" Value="1" Width="300" Background="White" HorizontalAlignment="Left" Margin="5" />
+            <!--
+                在 C# 端使用 Binding 的 Converter, ConverterParameter, ConverterLanguage
+            -->
+            <TextBox Name="textBox2" Width="300" HorizontalAlignment="Left" Margin="5" />
+            <TextBlock Name="lblMsg" Margin="5" TextWrapping="Wrap" />
+
+
+            <!--
+                演示如何在 ConverterParameter 中通过 {0} 格式化字符串 
+            -->
+            <TextBlock Name="textBlock1" Text="我是“textBlock1”" Margin="5" />
+            <TextBlock Name="textBlock2" Margin="5" Text="{Binding ElementName=textBlock1, Path=Text,
+                                                                   Converter={StaticResource FormatConverter},
+                                                                   ConverterParameter={StaticResource FormatString}}" />
+
+
+        </StackPanel>
+    </Grid>
+</Page>

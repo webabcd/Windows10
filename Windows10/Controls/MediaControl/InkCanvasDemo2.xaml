@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="Windows10.Controls.MediaControl.InkCanvasDemo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.MediaControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <Grid Background="White" Width="480" Height="320" Margin="5" HorizontalAlignment="Left">
+                <!--
+                    Canvas - 在本例中用于绘制选中框（本例中选中框通过右键绘制）
+                -->
+                <Canvas Name="selectionCanvas"/>
+                <!--
+                    InkCanvas - 涂鸦板控件
+                -->
+                <InkCanvas Name="inkCanvas" />
+            </Grid>
+
+            <Button Name="clear" Content="清除全部涂鸦" Margin="5" Click="clear_Click" />
+            <Button Name="cut" Content="剪切选中涂鸦到剪切板" Margin="5" Click="cut_Click" />
+            <Button Name="copy" Content="复制选中涂鸦到剪切板" Margin="5" Click="copy_Click" />
+            <Button Name="paste" Content="从剪切板粘贴涂鸦" Margin="5" Click="paste_Click" />
+            <Button Name="move" Content="移动选中涂鸦" Margin="5" Click="move_Click" />
+            <Button Name="cloneAll" Content="克隆全部涂鸦" Margin="5" Click="cloneAll_Click" />
+            <Button Name="selectAll" Content="选中全部涂鸦" Margin="5" Click="selectAll_Click" />
+            <Button Name="changeColor" Content="改变全部涂鸦的颜色" Margin="5" Click="changeColor_Click" />
+
+        </StackPanel>
+    </Grid>
+</Page>

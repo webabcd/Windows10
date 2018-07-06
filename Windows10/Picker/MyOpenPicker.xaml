@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.Picker.MyOpenPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Picker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnPickLocalFile" Content="选择一个本地文件" Click="btnPickLocalFile_Click" Margin="5" />
+
+            <Button Name="btnPickRemoteFile" Content="选择一个远程文件" Click="btnPickRemoteFile_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

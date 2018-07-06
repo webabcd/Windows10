@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="Windows10.Controls.DateControl.CalendarViewDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.DateControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Page.Resources>
+        <common:NullableBooleanToBooleanConverter x:Key="NullableBooleanToBooleanConverter" />
+    </Page.Resources>
+    
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <CheckBox Name="chkIsOutOfScopeEnabled" Margin="5" Content="IsOutOfScopeEnabled" IsChecked="True" />
+            <CheckBox Name="chkIsGroupLabelVisible" Margin="5" Content="IsGroupLabelVisible" IsChecked="True" />
+            <CheckBox Name="chkIsTodayHighlighted" Margin="5" Content="IsTodayHighlighted" IsChecked="True" />
+            <ComboBox x:Name="cmbSelectionMode" Margin="5" PlaceholderText="SelectionMode" SelectionChanged="cmbSelectionMode_SelectionChanged">
+                <ComboBoxItem>None</ComboBoxItem>
+                <ComboBoxItem>Single</ComboBoxItem>
+                <ComboBoxItem>Multiple</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="cmbDisplayMode" Margin="5" PlaceholderText="DisplayMode" SelectionChanged="cmbDisplayMode_SelectionChanged">
+                <ComboBoxItem>Month</ComboBoxItem>
+                <ComboBoxItem>Year</ComboBoxItem>
+                <ComboBoxItem>Decade</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="cmbFirstDayOfWeek" Margin="5" PlaceholderText="FirstDayOfWeek" SelectionChanged="cmbFirstDayOfWeek_SelectionChanged">
+                <ComboBoxItem>Sunday</ComboBoxItem>
+                <ComboBoxItem>Monday</ComboBoxItem>
+                <ComboBoxItem>Tuesday</ComboBoxItem>
+                <ComboBoxItem>Wednesday</ComboBoxItem>
+                <ComboBoxItem>Thursday</ComboBoxItem>
+                <ComboBoxItem>Friday</ComboBoxItem>
+                <ComboBoxItem>Saturday</ComboBoxItem>
+            </ComboBox>
+
+            <!--
+                CalendarView - 日历控件
+                    IsOutOfScopeEnabled - 是否以不同的颜色显示范围外的日历项
+                    IsGroupLabelVisible - 是否在月的第一天或年的第一月的日历项中显示月份或年份
+                    IsTodayHighlighted - 是否高亮显示当天日历项
+                    FirstDayOfWeek - 指定每周的第一天是周几
+                    SelectionMode - 日历的选择模式（None - 禁止选择, Single - 单选, Multiple - 多选）
+                    DisplayMode - 日历的显示模式（Month - 月, Year - 年, Decade - 十年）
+                    Language - 日历上的显示语言
+                    CalendarIdentifier - 控件使用的日历系统，一个字符串值，在 CalendarIdentifiers 类中有封装
+                    SelectedDatesChanged - 选中的日期发生变化时触发的事件
+                    CalendarViewDayItemChanging - 加载日历项时触发的事件
+            
+                    其他大部分属性都是用于配置显示样式的了，具体说明详见文档
+                    另外，在 CalendarView 控件中没有属性可以直接设置当天日历项的背景色（在本例的 code-behind 中给出了解决办法）
+            -->
+            <CalendarView Name="calendarView" Margin="5" 
+                          IsOutOfScopeEnabled="{x:Bind chkIsOutOfScopeEnabled.IsChecked, Mode=TwoWay, Converter={StaticResource NullableBooleanToBooleanConverter}}" 
+                          IsGroupLabelVisible="{x:Bind chkIsGroupLabelVisible.IsChecked, Mode=TwoWay, Converter={StaticResource NullableBooleanToBooleanConverter}}" 
+                          IsTodayHighlighted="{x:Bind chkIsTodayHighlighted.IsChecked, Mode=TwoWay, Converter={StaticResource NullableBooleanToBooleanConverter}}" 
+                          FirstDayOfWeek="Sunday"
+                          SelectionMode="Single"
+                          DisplayMode="Month"
+                          Language="zh-cn" 
+                          CalendarIdentifier="GregorianCalendar"
+                          SelectedDatesChanged="calendarView_SelectedDatesChanged"
+                          CalendarViewDayItemChanging="calendarView_CalendarViewDayItemChanging" />
+
+        </StackPanel>
+    </Grid>
+</Page>

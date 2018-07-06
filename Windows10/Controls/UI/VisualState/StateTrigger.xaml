@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="Windows10.Controls.UI.VisualState.StateTrigger"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.UI.VisualState"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:custom="using:Windows10.Controls.UI.VisualState" >
+
+    <!--
+        本例用于演示 StateTrigger 的应用，以及如何自定义 StateTrigger
+        StateTrigger 的作用就是：当指定的条件达成时触发对应的 VisualState
+        内置的 StateTrigger 一共有两个，分别是 AdaptiveTrigger 和 StateTrigger，他们都继承自 StateTriggerBase
+    -->
+    <Page.Resources>
+
+        <Style x:Key="MyTextStyle" TargetType="TextBlock" BasedOn="{StaticResource MyTextBlockStyle}">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <ControlTemplate x:Key="MyControlTemplate" TargetType="Button">
+            <Border BorderBrush="Red" BorderThickness="1">
+                <Grid Background="{TemplateBinding Background}">
+                    <ContentPresenter Foreground="Red" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+    </Page.Resources>
+
+    <Grid x:Name="myGrid" Background="Transparent">
+
+        <StackPanel Name="myPanel" Orientation="Horizontal" Margin="10 0 10 10">
+
+            <TextBlock Text="TextBlock 1 " Name="myTextBlock1" Margin="10" />
+            <TextBlock Text="TextBlock 2 " Name="myTextBlock2" Margin="10" />
+            <TextBlock Text="TextBlock 3 " Name="myTextBlock3" Margin="10" />
+
+            <Button Name="myButton" Content="我是 Button" Margin="10" />
+
+            <CheckBox Name="chkIsActive" Content="IsActive" Margin="10" />
+
+        </StackPanel>
+
+        <!--注意：VisualState 不能放到 Page 下面，否则不工作-->
+        <VisualStateManager.VisualStateGroups>
+            <!--
+                给 VisualState 分组是很有必要的，每个 VisualStateGroup 正在使用的 VisualState 只能有一个
+            -->
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--
+                            AdaptiveTrigger - 内置的 StateTrigger
+                                MinWindowWidth - 当窗口的宽度大于等于此值时触发（依赖属性）
+                                MinWindowHeight - 当窗口的高度大于等于此值时触发（依赖属性）
+                        -->
+                        <!--当窗口的的宽度大于等于 720 时，触发此 VisualState（这里没有对应的 VisualState，也就是都恢复为默认状态）-->
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--当窗口的的宽度大于等于 0 时且小于 720 时，触发此 VisualState-->
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="myPanel.Orientation" Value="Vertical" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="ActiveStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--
+                            StateTrigger - 内置的 StateTrigger
+                                IsActive - 是否触发对应的 VisualState（依赖属性）
+                        -->
+                        <!--根据复选框 chkIsActive 的选中状态，来决定是否触发此 VisualState-->
+                        <StateTrigger IsActive="{Binding ElementName=chkIsActive, Path=IsChecked, Mode=OneWay}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="myTextBlock1.Style" Value="{StaticResource MyTextStyle}" />
+                        <Setter Target="myTextBlock2.Style" Value="{StaticResource MyTextStyle}" />
+                        <Setter Target="myTextBlock3.Style" Value="{StaticResource MyTextStyle}" />
+                        <Setter Target="myButton.Template" Value="{StaticResource MyControlTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="DeviceFamilyStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--
+                            MyDeviceFamilyStateTrigger - 自定义的 StateTrigger
+                                DeviceFamily - 当设备类型为指定的值时触发（非依赖属性，如需绑定之类的特性的话，则要将其改为依赖属性）
+                        -->
+                        <!--当设备类型为 Windows.Desktop 时触发此 VisualState-->
+                        <custom:MyDeviceFamilyStateTrigger DeviceFamily="Windows.Desktop" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="myGrid.Background" Value="#FF0000" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="InputTypeStates">
+                <VisualState>
+                    <!--
+                        MyInputTypeStateTrigger - 自定义的 StateTrigger
+                            TargetElement - 需要监听 PointerPressedEvent 事件的 FrameworkElement 对象（非依赖属性，如需绑定之类的特性的话，则要将其改为依赖属性）
+                            PointerType - 监听的 FrameworkElement 触发 PointerPressedEvent 事件后，根据 PointerType 的类型来决定触发指定的 VisualState（非依赖属性，如需绑定之类的特性的话，则要将其改为依赖属性）
+                    -->
+                    <!--当触发了 myButton 的 PointerPressedEvent 事件后，如果其 PointerDeviceType 是 Mouse 类型，则触发此 VisualState-->
+                    <VisualState.StateTriggers>
+                        <!--对 {x:Bind myButton} 不理解的话，请参见“绑定”部分-->
+                        <custom:MyInputTypeStateTrigger TargetElement="{x:Bind myButton}" PointerType="Mouse" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="myGrid.Background" Value="Orange" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </Grid>
+
+</Page>
+

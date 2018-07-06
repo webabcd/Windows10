@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="Windows10.Resource.Qualifiers.Demo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Resource.Qualifiers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+            
+            <!--
+                限定符用于标识某个资源文件使用场景的上下文，本例通过 DeviceFamily 和 Scale 两种限定符来演示实际效果（关于系统支持的全部限定符参见 /Qualifiers/Summary.xaml），规则总结如下
+                1、命名规则
+                    a) 文件夹式: folder/qualifiername-value/qualifiername-value/filename.ext 或者 folder/qualifiername-value/qualifiername-value_qualifiername-value/filename.ext 等
+                    b) 文件名式: folder/filename.qualifiername-value_qualifiername-value.ext 等（多个限定符之间用“_”分隔）
+                    c) 文件夹式和文件名式可以混合使用
+                2、调用规则: 直接引用 folder/filename.ext，系统将自动根据限定符指定的上下文做匹配
+                3、无论是资源名，还是限定符都不区分大小写
+                4、同一个资源的限定符不能重复，否则编译报错。比如 folder/filename.scale-100.png 和 folder/scale-100/filename.png 其实是同名限定符资源，不能共存
+                5、对于非 scale 限定符资源，如果匹配不到，系统则会去调用对应的无限定符资源
+                6、对于 scale 限定符资源，只要有一个 scale 资源就不会去调用对应的无限定符资源。当无法精确匹配时，系统先去找临近的更大比例的，找不到的话再按从大到小的顺序找小比例的
+                7、语言限定符有一个特殊性，其限定符名称可以是 language 或 lang，用文件夹式的话是不需要限定符名称的。比如文件名式 filename.language-en-US.png 或 filename.lang-en-US.png 对应的文件夹式为 en-US/filename.png
+            
+                另外：限定符 TargetSize 用于限定图标的大小，不能和 Scale 共存
+                1、TargetSize 主要用于桌面 Windows 资源管理器中显示的文件类型关联图标或协议图标
+                2、TargetSize 限定的是一个正方形图标，其值的单位是像素，类似 filename.targetsize-16.png, filename.targetsize-32.png 等
+                3、当无法精确匹配时，系统先去找临近的更大像素的，找不到的话再按从大到小的顺序找小像素的
+                4、去 Package.appxmanifest 的“可见资产”看看，标识为“比例”的对应的是 Scale 限定符，标识为“目标大小”的对应的是 TargetSize 限定符
+            -->
+
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resource/Qualifiers/myImage1.png" Width="100" Height="100" HorizontalAlignment="Left" Margin="5" />
+                <Image Source="/Resource/Qualifiers/myImage2.png" Width="100" Height="100" HorizontalAlignment="Left" Margin="5" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <Image Source="/Resource/Qualifiers/myImage3.png" Width="100" Height="100" HorizontalAlignment="Left" Margin="5" />
+                <Image Source="/Resource/Qualifiers/myImage4.png" Width="100" Height="100" HorizontalAlignment="Left" Margin="5" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

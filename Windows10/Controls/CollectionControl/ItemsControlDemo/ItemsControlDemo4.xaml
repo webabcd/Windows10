@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!--
+            GroupStyle - 组样式
+                HidesIfEmpty - 空组是否隐藏
+                HeaderContainerStyle - 组标题的容器样式
+                HeaderTemplate - 组标题的模板
+                HeaderTemplateSelector - 组标题的模板选择器
+        
+            注：
+            ListView 的 Group 的 HeaderContainer 是 ListViewHeaderItem, GridView 的 Group 的 HeaderContainer 是 GridViewHeaderItem
+            ListViewHeaderItem 和 GridViewHeaderItem 均继承自 ListViewBaseHeaderItem, ListViewBaseHeaderItem 继承自 ContentControl
+        -->
+        <GroupStyle x:Key="GroupStyle1" HeaderTemplate="{StaticResource DataTemplateGroupHeader}">
+            <GroupStyle.HeaderContainerStyle>
+                <Style TargetType="ListViewHeaderItem">
+                    <Setter Property="Background" Value="Blue" />
+                </Style>
+            </GroupStyle.HeaderContainerStyle>
+        </GroupStyle>
+        <GroupStyle x:Key="GroupStyle2" HeaderTemplate="{StaticResource DataTemplateGroupHeader}">
+            <GroupStyle.HeaderContainerStyle>
+                <Style TargetType="ListViewHeaderItem">
+                    <Setter Property="Background" Value="Orange" />
+                </Style>
+            </GroupStyle.HeaderContainerStyle>
+        </GroupStyle>
+
+        <DataTemplate x:Key="DataTemplateGroupHeader">
+            <TextBlock Text="{Binding Title}" />
+        </DataTemplate>
+
+        <!--
+            自定义 GroupStyle 选择器（参见 code-behind 中的代码）
+        -->
+        <local:MyGroupStyleSelector x:Key="MyGroupStyleSelector" 
+                                      GroupStyle1="{StaticResource GroupStyle1}"
+                                      GroupStyle2="{StaticResource GroupStyle2}" />
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ItemsControl - 集合控件
+                    ItemsPanel - 用于指定 items 的布局控件，任何 Panel 类型的布局控件均可，所有 items 将在 Panel 内显示（Panel 是所有 items 的容器）
+                        给 ItemsControl 用的，可虚拟化的布局控件有：ItemsStackPanel, ItemsWrapGrid, VirtualizingStackPanel, WrapGrid. 请参见：/Controls/CollectionControl/ItemsControlDemo/LayoutControl/
+                    GroupStyle - 组样式
+                    GroupStyleSelector - 组样式选择器
+            -->
+            <ListView Name="listView" Margin="5" Width="400" Height="400" HorizontalAlignment="Left" ItemsSource="{x:Bind MyData.View}"
+                      GroupStyleSelector="{StaticResource MyGroupStyleSelector}" SelectionChanged="listView_SelectionChanged">
+                <!--
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+                -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" Foreground="Purple" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel  />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

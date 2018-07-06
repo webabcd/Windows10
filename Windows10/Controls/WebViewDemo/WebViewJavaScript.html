@@ -1,0 +1,55 @@
+﻿<!--此 html 用于演示 app 与 js 间的交互-->
+
+<!doctype html>
+<html>
+<head>
+    <title>i am title</title>
+    <script type='text/javascript'>
+
+        // app 调用 js 函数
+        function appToJs(name) {
+            return 'app to js: ' + name;
+        }
+
+        // js 传递数据到 app
+        function jsToApp() {
+            window.external.notify('js to app');
+        }
+
+        // js 调用 wrc
+        function jsToWRC() {
+            if (window.js2wrc_object) {
+                // js 调用 wrc（在 windows runtime component 中定义的方法）
+                var result = js2wrc_object.hello("webabcd");
+                document.getElementById("div").innerHTML = result;
+            }
+        }
+
+        // 弹出 alert 框
+        function showAlert() {
+            // 在 uwp 的 webview 中是不能弹出 alert 框的（可以在 c# 中拐弯抹角的实现，参见本例的 c# 端的代码）
+            alert("hello: alert");
+        }
+
+    </script>
+</head>
+<body>
+    
+    <p>
+        <input type='button' onclick='jsToApp();' value='js 传递数据到 app' />
+    </p>
+
+    <p>
+        <input type='button' onclick='jsToWRC();' value='js 调用 wrc' />
+    </p>
+
+    <p>
+        <div id="div"></div>
+    </p>
+
+    <p>
+        <input type='button' onclick='showAlert();' value='弹出 alert 框' />
+    </p>
+    
+</body>
+</html>

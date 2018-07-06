@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Windows10.Xaml.DeferLoadStrategy.Demo5"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Xaml.DeferLoadStrategy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="local:TitledImage">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:TitledImage">
+                        <Grid>
+                            <Image Source="{TemplateBinding Source}" Width="200" Height="100" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <!--延迟加载元素，当调用 GetTemplateChild 后，它将被加载-->
+                            <ContentPresenter x:Name="TitlePresenter" x:DeferLoadStrategy="Lazy" Content="{TemplateBinding Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--对应的 ControlTemplate 中的延迟加载元素 TitlePresenter 不会被加载-->
+            <local:TitledImage Source="/Assets/SplashScreen.png" />
+
+            <!--对应的 ControlTemplate 中的延迟加载元素 TitlePresenter 会被加载（因为调用了 GetTemplateChild）-->
+            <local:TitledImage Source="/Assets/SplashScreen.png" Title="image title" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

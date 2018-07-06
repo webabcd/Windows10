@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.TextBoxDemo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                TextBox - 文本输入框
+                    Text - 文本值
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                    MaxLength - 最大字符数（默认是 0 代表无限制）
+                    PlaceholderText - 占位符水印
+                    AcceptsReturn - 是否允许输入和显示回车符和换行符
+                    IsSpellCheckEnabled - 是否开启拼写检查功能
+                    IsTextPredictionEnabled - 是否开启输入预测功能
+                    DesiredCandidateWindowAlignment - IME 的对齐方式（IME - Input Method Editor; SIP - Soft Input Panel）
+                        Default - 当使用硬键盘时，IME 会随着光标移动；当使用软键盘时，IME 停靠于 SIP
+                        BottomEdge - 当使用硬键盘时，IME 会与文本编辑控件的底部边缘和左侧对齐（经测试仅微软输入法有效，也许是第三方输入法没有实现某个接口）；当使用软键盘时，IME 停靠于 SIP
+            -->
+            
+            <TextBox Name="textBox1" Margin="5" Height="100"
+                     Header="文本框"
+                     PlaceholderText="enter your text"
+                     MaxLength="32"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     IsSpellCheckEnabled="False"
+                     IsTextPredictionEnabled="True"
+                     DesiredCandidateWindowAlignment="Default" />
+
+            <TextBox Name="textBox2" Margin="5"
+                     Text="textBox2"
+                     TextAlignment="Center"
+                     IsReadOnly ="True">
+                <TextBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="文本框" Foreground="Red" />
+                    </DataTemplate>
+                </TextBox.HeaderTemplate>
+            </TextBox>
+
+
+            <!--
+                InputScope - 指定 SIP（Soft Input Panel）的类型
+            -->
+            <TextBox Name="textBox3" Margin="5" InputScope="Number" />
+
+            <!--
+                在 CodeBehind 端设置此 TextBox 的 InputScope
+            -->
+            <TextBox Name="textBox4" Margin="5" />
+
+
+            <!--
+                TextWrapping - 换行方式
+                    NoWrap - 不换行
+                    Wrap - 换行，必要时可截断单词
+                    WrapWholeWords - 换行，但是绝不截断单词，即使单词可能会显示不全（经测试无效，TextBlock 是支持的）
+            -->
+            <TextBox Width="100" HorizontalAlignment="Left" Text="abcdefghijklmnopq www" Margin="5" TextWrapping="NoWrap" />
+            <TextBox Width="100" HorizontalAlignment="Left" Text="abcdefghijklmnopq www" Margin="5" TextWrapping="Wrap" />
+
+
+            <!--
+                 TextAlignment - 文本的水平对齐方式
+                    Center, Left（默认值）, Right, Justify（两端对齐，经测试无效，TextBlock 是支持的）
+            -->
+            <TextBox Text="i am a &quot;TextBlock&quot;" Margin="5" TextAlignment="Right" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

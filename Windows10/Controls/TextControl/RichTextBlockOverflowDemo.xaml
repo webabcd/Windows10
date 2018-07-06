@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.RichTextBlockOverflowDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TexControlt"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+            
+            <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" 
+                           OverflowContentTarget="{Binding ElementName=txtOverflow}">
+                <Paragraph>
+                    Hololens引领技术革命浪潮
+传统的人机交互，主要是通过键盘和触摸，包括并不能被精确识别的语音等。Hololens的出现，则给新一代体验更好的人机交互指明道路。在《瓦力》这部电影中，城市中每个人的面前都有一个可随时按指令出现的全息屏，可以在上面执行各种任务，不用时马上消失无形。Hololens所指向的未来，正是这部动画片中的场景。在人机交互之外，还有人与人和人与环境的交互。虚拟现实能让远隔万里的人坐在你面前与你促膝长谈，也能让你游览你从未去过也没可能去的地方，如撒哈拉沙漠、马里亚纳海沟、月球、火星。当前的虚拟现实技术能做到这一点，但还是要戴上连着无数电线的重重的头盔，Hololens所做的，是把这些虚拟现实设备小型化和便携化，至少是向前更近了一步。
+想象一下，你在旧金山就能与北京总部进行实景会议，你的一举一动，每个表情，都会被数据传输到北京后进行虚拟场景还原，北京那边也一样。你的各种家庭设备坏了，再也不需要去预约修理，会有技师手把手教你怎么做，与真人在你身边无异。大部分需要人与人之间进行实地交流的场景，都可以被Hololens所接管，所有的情感交流、商务会议、客服维修、团队协作、在线教育，顿时变得简单了，低成本化了。
+在娱乐上Hololens能发挥的作用不必多说，心有多大，世界就有多大。你甚至能在自己的屋子里近距离观摩火山喷发，去火星上走一圈，没准还能碰到外星人，或者通过对环境的研究发现一些科学家们尚未发现的东西。当然，微软在推广Hololens的策略里，似乎也是从娱乐开始的，他们收购了一款名为Minecraft的游戏，应用到这款机器上。
+整个Hololens眼镜相当于一台小电脑，CPU和GPU都有，还有几个摄像头和传感器。Hololens使用的有可能是英特尔尚未发布的Atom芯片，内部代号为Cherry Trail，据说是用14纳米工艺流程制作出来的，体积更小，速度更快，代表了当前半导体工业的最高水准。
+从技术趋势上看，人类与计算机之间的交互方式，面临着一场变革。触屏的广泛应用，根本不能算是迭代，更像是一种过渡状态。一方面人们有抛弃键盘的内在需求，另一方面更加方便快捷的交互技术虽然已研发出来但还未得到应用。如果说键盘是1.0，触屏就是1.5，在Hololens所启示的那个场景实现之后，才是人机交互的2.0时代。也许Hololens会失败，但其指出的这条道路是没错的。
+Hololens打开的这扇门，绝不仅仅是虚拟现实那么简单，这其中隐藏的人机交互方式革命，是怎么畅想也不过分的。用一个产品带动一个庞大的相关产业和技术创新浪潮，在历史上并不鲜见，而Hololens，则是最有希望带动一波技术创新浪潮的那个产品，引领着人们进入激动人心的未来。
+                </Paragraph>
+            </RichTextBlock>
+
+            <!--
+                RichTextBlock - 富文本显示框
+                    OverflowContentTarget - 当此 RichTextBlock 中的内容溢出时，将溢出文字输出到指定的 RichTextBlockOverflow 中（此知识点的演示参见：RichTextBlockOverflowDemo.xaml）
+                    HasOverflowContent - 是否有溢出内容可显示（只读）
+            
+                RichTextBlockOverflow - 用于显示 RichTextBlock 或其他 RichTextBlockOverflow 中的溢出文字
+                    OverflowContentTarget - 当此 RichTextBlockOverflow 中的内容也溢出时，将溢出文字输出到指定的其他 RichTextBlockOverflow 中
+                    HasOverflowContent - 是否有溢出内容可显示（只读）
+                    ContentSource - 获取内容源（只读），即对应的 RichTextBlock 对象
+            -->
+            <RichTextBlockOverflow Name="txtOverflow" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" 
+                                   OverflowContentTarget="{Binding ElementName=txtOverflow2}" Margin="20 0 0 0" />
+
+            <RichTextBlockOverflow Name="txtOverflow2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" 
+                                   OverflowContentTarget="{Binding ElementName=txtOverflow3}" Margin="20 0 0 0" />
+
+            <RichTextBlockOverflow Name="txtOverflow3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" Margin="20 0 0 0" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

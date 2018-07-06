@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.UIElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="5">
+
+            <Grid Name="dragGrid1" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid1_DragStarting">
+                <TextBlock Name="sourceTextBlock1" Text="i am sourceTextBlock1" Margin="20" />
+            </Grid>
+
+            <Grid Name="dragGrid2" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid2_DragStarting">
+                <TextBlock Name="sourceTextBlock2" Text="i am sourceTextBlock2" Margin="20" />
+            </Grid>
+
+            <Grid Name="dragGrid3" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid3_DragStarting">
+                <TextBlock Name="sourceTextBlock3" Text="i am sourceTextBlock3" Margin="20" />
+            </Grid>
+
+            <Grid Name="dragGrid4" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid4_DragStarting">
+                <TextBlock Name="sourceTextBlock4" Text="i am sourceTextBlock4" Margin="20" />
+            </Grid>
+
+            <Grid Name="dropGrid" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid_Drop"
+                  DragEnter="dropGrid_DragEnter">
+                <TextBlock Name="targetTextBlock" TextWrapping="Wrap" MinHeight="300" Margin="20" />
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Windows10.Controls.ButtonControl.ToggleButtonDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ButtonControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+            
+            <!--
+                ToggleButton - 可切换状态的按钮
+                    IsThreeState - 是否支持 3 状态（默认值: false）
+                    IsChecked - 按钮的选中状态: false, true, null（修改此属性后会触发 Checked 事件或 Unchecked 事件或 Indeterminate 事件）
+                    Checked - 按钮变为选中状态后所触发的事件
+                    Unchecked - 按钮变为未选中状态后所触发的事件
+                    Indeterminate - 按钮变为不确定状态后所触发的事件
+            -->
+            <ToggleButton Name="toggleButton1" Content="可切换状态的按钮" Margin="5"
+                          IsThreeState="False"
+                          Checked="toggleButton1_Checked" 
+                          Unchecked="toggleButton1_Unchecked"  
+                          Indeterminate="toggleButton1_Indeterminate" />
+
+            <ToggleButton Name="toggleButton2" Content="可切换状态的按钮" Margin="5"
+                          IsThreeState="True"
+                          Checked="toggleButton2_Checked" 
+                          Unchecked="toggleButton2_Unchecked"  
+                          Indeterminate="toggleButton2_Indeterminate" />
+
+            
+
+            <!--
+                此处文本框显示的结果如下：
+                toggleButton3_Checked
+                toggleButton3_Loaded
+                Page_Loaded
+            -->
+            <TextBlock Name="lblToggleButton3" Margin="5 20 0 0" />
+            
+            <!--
+                对于 IsChecked="True" 的 ToggleButton 控件来说，在它触发 Loaded 事件之前会先触发 Checked 事件
+            -->    
+            <ToggleButton Name="toggleButton3" Content="可切换状态的按钮" IsChecked="True" Loaded="toggleButton3_Loaded" Checked="toggleButton3_Checked" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

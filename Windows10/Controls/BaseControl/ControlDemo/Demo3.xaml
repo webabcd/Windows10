@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.ControlDemo.Demo3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.ControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Page.Resources>
+        <!--
+            ControlTemplate - 控件模板（是 xaml 语言使用的一种方案，其无法在 c# 中定义）
+        -->
+        <ControlTemplate x:Key="MyControlTemplate" TargetType="ContentControl">
+            <Grid x:Name="grid">
+                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                  Content="{TemplateBinding Content}" 
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Margin="{TemplateBinding Padding}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--
+            DataTemplate - 数据模板（是 xaml 语言使用的一种方案，其无法在 c# 中定义）
+        -->
+        <DataTemplate x:DataType="common:Employee" x:Key="MyDataTemplate">
+            <TextBlock x:Name="textBlock" Text="{x:Bind Name}" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <local:MyContentControl x:Name="myContentControl" DataContext="{x:Bind CurrentEmployee}" 
+                                    Template="{StaticResource MyControlTemplate}"
+                                    ContentTemplate="{StaticResource MyDataTemplate}" />
+
+        </StackPanel>
+    </Grid>
+</Page>

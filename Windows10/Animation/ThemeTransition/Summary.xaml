@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeTransition.Summary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeTransition"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Text="请参见本 xaml 中的注释" />
+
+            <!--
+                UIElement.Transitions - 指定 UIElement 的过渡效果
+            
+                <Rectangle>
+                    <Rectangle.Transitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </Rectangle.Transitions>
+                </Rectangle>
+            -->
+
+
+            <!--
+                Panel.ChildrenTransitions - 指定 Panel 的子元素们的过渡效果
+            
+                <WrapGrid>
+                    <WrapGrid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </WrapGrid.ChildrenTransitions>
+                </WrapGrid>
+            -->
+
+
+            <!--
+                ItemsControl.ItemContainerTransitions - 指定 ItemsControl 的项容器的过渡效果
+            
+                <ItemsControl>
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                </ItemsControl>
+            -->
+
+
+            <!--
+                ContentControl.ContentTransitions - 指定 ContentControl 的过渡效果
+            
+                <ContentControl>
+                    <ContentControl.ContentTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </ContentControl.ContentTransitions>
+                </ContentControl>
+            -->
+
+        </StackPanel>
+    </Grid>
+</Page>

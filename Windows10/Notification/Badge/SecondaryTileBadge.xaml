@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Windows10.Notification.Badge.SecondaryTileBadge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Badge"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnUpdateBadgeWidthNumber" Content="以数字的方式更新指定的 Secondary Tile 的 Badge" Click="btnUpdateBadgeWidthNumber_Click" Margin="5" />
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <ComboBox Name="cmbBadgeValue">
+                    <ComboBoxItem Content="activity" IsSelected="True" />
+                    <ComboBoxItem Content="alarm" />
+                    <ComboBoxItem Content="alert" />
+                    <ComboBoxItem Content="attention" />
+                    <ComboBoxItem Content="available" />
+                    <ComboBoxItem Content="away" />
+                    <ComboBoxItem Content="busy" />
+                    <ComboBoxItem Content="error" />
+                    <ComboBoxItem Content="newMessage" />
+                    <ComboBoxItem Content="paused" />
+                    <ComboBoxItem Content="playing" />
+                    <ComboBoxItem Content="unavailable" />
+                </ComboBox>
+                <Button Name="btnUpdateBadgeWidthIcon" Content="以图标的方式更新指定的 Secondary Tile 的 Badge" Click="btnUpdateBadgeWidthIcon_Click" Margin="5 0 0 0" />
+            </StackPanel>
+
+            <Button Name="btnClearBadge" Content="清除指定的 Secondary Tile 的 Badge" Click="btnClearBadge_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

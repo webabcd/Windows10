@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="Windows10.Animation.LinearAnimation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+        <!--
+            线性动画一共有 3 种：ColorAnimation, DoubleAnimation, PointAnimation, 它们均继承自 Timeline
+        
+            Storyboard.TargetName - 附加属性，要进行动画处理的对象的名称
+            Storyboard.TargetProperty - 附加属性，要进行动画处理的对象的属性
+            BeginTime - 时间线在被触发 BeginTime 的时间后才能开始播放
+                TimeSpan - [-][日.]时:分:秒[.1位到7为的秒后的小数]（可为正；可为负；可为空；默认值为 0）
+            From - 动画的起始值
+            To - 动画的结束值
+            By - 动画从起始值开始计算，所需变化的总量（To 优先于 By）
+            Duration - 时间线的持续时间
+                TimeSpan - [-][日.]时:分:秒[.1位到7为的秒后的小数]
+                Automatic - 自动确定
+                Forever - 无限长
+            AutoReverse - 动画完成后是否要原路返回。默认值为 false
+            RepeatBehavior - 动画重复播放的时间、次数或类型
+                TimeSpan - [-][日.]时:分:秒[.1位到7为的秒后的小数]
+                nx - 播放次数。1x, 2x, 3x 
+                Forever - 永久播放
+            SpeedRatio - 时间线的速率的倍数。默认值 1
+            FillBehavior - 动画结束后的行为（System.Windows.Media.Animation.FillBehavior 枚举）
+                FillBehavior.HoldEnd - 动画结束后，UI 保留动画后的状态。默认值
+                FillBehavior.Stop - 动画结束后，UI 恢复为动画前的状态
+        
+        
+            注意：
+            1、在 WinRT 中为了流畅的体验，部分动画被优化成了“独立动画”，即动画不依赖于 UI 线程
+            2、但是也有一部分动画无法优化成“独立动画”，我们把这类动画称作“依赖动画”，其需要在 UI 线程上运行
+            3、通过将 EnableDependentAnimation 设置为 true（默认为 false），开启“依赖动画”
+            4、通过将 Timeline.AllowDependentAnimations 设置为 false（默认为 true），可以全局禁止开启“依赖动画”
+        
+            Independent Animation - 独立动画
+            Dependent Animation - 依赖动画
+        -->
+
+        <Grid.Resources>
+            <BeginStoryboard x:Name="storyboardColor">
+                <Storyboard>
+                    <!--Color 值线性动画-->
+                    <!--
+                        动画要修改的属性是 Ellipse.Fill，Fill 是 Brush 类型，先把其转换为 SolidColorBrush 类型，然后设置 SolidColorBrush 的 Color 属性
+                        所以将 Storyboard.TargetProperty 设置为 (Ellipse.Fill).(SolidColorBrush.Color)，也可以设置为 (Fill).(SolidColorBrush.Color)，也可以设置为 (Ellipse.Fill).Color，也可以设置为 (Fill).(Color)
+                        类似的比如：(UIElement.RenderTransform).(CompositeTransform.TranslateY) 以及 (UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX) 等
+                    -->
+                    <ColorAnimation
+                        Storyboard.TargetName="ellipse" 
+                        Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" 
+                        BeginTime="00:00:00" 
+                        From="Red" 
+                        To="Yellow" 
+                        Duration="0:0:3" 
+                        AutoReverse="true" 
+                        RepeatBehavior="3x">
+                    </ColorAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+
+            <BeginStoryboard x:Name="storyboardDouble">
+                <Storyboard>
+                    <!--Double 值线性动画-->
+                    <!--
+                        动画要修改的属性是 Canvas.Left（附加属性）
+                        将 Storyboard.TargetProperty 设置为 (Canvas.Left)
+                    -->
+                    <DoubleAnimation
+                        Storyboard.TargetName="rectangle" 
+                        Storyboard.TargetProperty="(Canvas.Left)"
+                        From="100"
+                        By="100"
+                        BeginTime="0:0:0"
+                        Duration="00:00:03"
+                        AutoReverse="true"
+                        RepeatBehavior="Forever">
+                    </DoubleAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+
+            <Storyboard x:Name="storyboardPoint">
+                <!--Point 值线性动画-->
+                <!--
+                    动画要修改的属性是 Center
+                    将 Storyboard.TargetProperty 设置为 Center，也可以将其设置为 (EllipseGeometry.Center)
+                -->
+                <PointAnimation 
+                        EnableDependentAnimation="True"
+                        Storyboard.TargetName="ellipseGeometry"
+                        Storyboard.TargetProperty="Center"
+                        BeginTime="00:00:00"
+                        From="50,50"
+                        To="200,200"
+                        Duration="00:00:03"
+                        AutoReverse="true"
+                        RepeatBehavior="Forever">
+                </PointAnimation>
+            </Storyboard>
+        </Grid.Resources>
+
+        <StackPanel Margin="10 0 10 10">
+
+            <Ellipse x:Name="ellipse" Fill="Orange" Width="200" Height="100" HorizontalAlignment="Left" />
+
+            <Canvas Width="400" Height="100" HorizontalAlignment="Left" Margin="0 10 0 0">
+                <Rectangle x:Name="rectangle" Fill="Orange" Width="200" Height="100" Canvas.Left="100" />
+            </Canvas>
+
+            <Path Fill="Orange">
+                <Path.Data>
+                    <EllipseGeometry x:Name="ellipseGeometry" Center="50,50" RadiusX="15" RadiusY="15" />
+                </Path.Data>
+            </Path>
+
+            <!--用于演示如何在 CodeBehind 端定义 Storyboard-->
+            <Ellipse x:Name="ellipse2" Fill="Orange" Width="200" Height="100" HorizontalAlignment="Left" />
+
+        </StackPanel>
+    </Grid>
+</Page>

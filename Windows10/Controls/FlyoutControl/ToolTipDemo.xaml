@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.ToolTipDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ToolTip - 提示框控件
+                    Content - 提示内容
+                    Placement - 提示框的显示位置（Bottom, Right, Mouse, Left, Top）
+                    HorizontalOffset - 水平偏移量
+                    VerticalOffset - 垂直偏移量
+                    IsOpen - 提示框是否是显示状态（如果要设置此属性的话，需要等到宿主加载完之后再设置）
+                    Closed - 提示框关闭后触发的事件
+                    Opened - 提示框打开后触发的事件
+            
+                注：我这里测试 ToolTip 的最大宽度是 320
+            -->
+
+            <TextBlock Name="textBlock1" Text="TextBlock" Margin="5"
+                       ToolTipService.ToolTip="ToolTip 的内容" 
+                       ToolTipService.Placement="Right" />
+
+            <TextBlock Name="textBlock2" Text="TextBlock" Margin="5">
+                <ToolTipService.ToolTip>
+                   <ToolTip Content="ToolTip 的内容" Placement="Mouse" 
+                            HorizontalOffset="120" VerticalOffset="0"
+                            Opened="toolTip_Opened" Closed="toolTip_Closed" />
+                </ToolTipService.ToolTip>
+            </TextBlock>
+            <TextBlock Name="lblMsg" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

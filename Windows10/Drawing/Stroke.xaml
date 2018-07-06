@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="Windows10.Drawing.Stroke"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Drawing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Stroke - 笔划（注：Stroke 属性是 Brush 类型）
+                    StrokeThickness - Stroke 的宽度
+            -->
+            
+
+            <!--
+                StrokeDashArray - 虚线实体和虚线间隙的值的集合
+                    以本例为例：第1条实线长度2，第1条虚线长度4，第2条实线长度6，第2条虚线长度2，第3条实线长度4，第3条虚线长度6
+                    长度为 StrokeDashArray 乘以 StrokeThickness/2
+            -->
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2 4 6" />
+
+            
+            <!--
+                StrokeDashCap - 虚线两端（线帽）的类型（System.Windows.Media.PenLineCap 枚举）
+                    PenLineCap.Flat - 无。默认值
+                    PenLineCap.Round - 直径等于 StrokeThickness
+                    PenLineCap.Square - 高度等于 StrokeThickness 并且 宽度等于 StrokeThickness/2
+                    PenLineCap.Triangle - 底边长等于 StrokeThickness 的等腰直角三角形
+            -->
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeDashCap="Flat" />
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeDashCap="Round" />
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeDashCap="Square" />
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeDashCap="Triangle" />
+
+            
+            <!--
+                StrokeStartLineCap - 虚线起始端（线帽）的类型（System.Windows.Media.PenLineCap 枚举）
+                StrokeEndLineCap - 虚线终结端（线帽）的类型（System.Windows.Media.PenLineCap 枚举）
+            -->
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeStartLineCap="Triangle" StrokeEndLineCap="Round" />
+
+            
+            <!--
+                StrokeDashOffset - 虚线的起始点的偏移位置
+                    以下举例：画一条以虚线间隙为起始的虚线
+            -->
+            <Line X1="0" Y1="0" X2="1000" Y2="0" Margin="0 30 0 0" Stroke="Orange" StrokeThickness="20" StrokeDashArray="2" StrokeDashOffset="10" />
+
+
+            <!--
+                StrokeLineJoin - 图形连接点处的连接类型（System.Windows.Media.PenLineJoin 枚举）
+                    StrokeLineJoin.Bevel - 线形连接
+                    StrokeLineJoin.Miter - 角形连接。默认值
+                    StrokeLineJoin.Round - 弧形连接
+            -->
+            <StackPanel Margin="0 30 0 0" Orientation="Horizontal">
+                <Polyline Points="10,100 50,10 100,100" Stroke="Orange" StrokeThickness="20" HorizontalAlignment="Center" StrokeLineJoin="Bevel" />
+                <Polyline Points="10,100 50,10 100,100" Stroke="Orange" StrokeThickness="20" HorizontalAlignment="Center" StrokeLineJoin="Miter" />
+                <Polyline Points="10,100 50,10 100,100" Stroke="Orange" StrokeThickness="20" HorizontalAlignment="Center" StrokeLineJoin="Round" />
+            </StackPanel>
+
+
+            <!--
+                StrokeMiterLimit - 斜接长度（蓝色线部分）与 StrokeThickness/2 的比值。默认值 10，最小值 1
+            -->
+            <Grid Margin="0 30 0 0" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+
+                <Polyline Grid.Column="0" Points="0,100 50,10 100,100" Stroke="Orange" StrokeThickness="20" StrokeMiterLimit="1" />
+                <Line Grid.Column="0" X1="50" Y1="10" X2="50" Y2="0" Stroke="Blue" />
+                <Polyline Grid.Column="0" Points="0,100 50,10 100,100" Stroke="Red" />
+
+                <Polyline Grid.Column="1" Points="0,100 50,10 100,100" Stroke="Orange" StrokeThickness="20" StrokeMiterLimit="2.0" />
+                <Line Grid.Column="1" X1="50" Y1="10" X2="50" Y2="-10" Stroke="Blue" />
+                <Polyline Grid.Column="1" Points="0,100 50,10 100,100" Stroke="Red" />
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>

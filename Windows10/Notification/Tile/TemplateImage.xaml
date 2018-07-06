@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Windows10.Notification.Tile.TemplateImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Tile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <ComboBox Name="cmbRemoveMargin">
+                    <ComboBoxItem Tag="false" Content="hint-removeMargin='false'" IsSelected="True" />
+                    <ComboBoxItem Tag="true" Content="hint-removeMargin='true'" />
+                </ComboBox>
+                <Button Name="btnSample1" Content="更新 tile 通知" Click="btnSample1_Click" Margin="5 0 0 0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <ComboBox Name="cmbPlacement">
+                    <ComboBoxItem Tag="inline" Content="placement='inline'" IsSelected="True" />
+                    <ComboBoxItem Tag="background" Content="placement='background'" />
+                    <ComboBoxItem Tag="peek" Content="placement='peek'" />
+                </ComboBox>
+                <Button Name="btnSample2" Content="更新 tile 通知" Click="btnSample2_Click" Margin="5 0 0 0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <ComboBox Name="cmbAlign">
+                    <ComboBoxItem Tag="stretch" Content="hint-align='stretch'" IsSelected="True" />
+                    <ComboBoxItem Tag="left" Content="hint-align='left'" />
+                    <ComboBoxItem Tag="center" Content="hint-align='center'" />
+                    <ComboBoxItem Tag="right" Content="hint-align='right'" />
+                </ComboBox>
+                <Button Name="btnSample3" Content="更新 tile 通知" Click="btnSample3_Click" Margin="5 0 0 0" />
+            </StackPanel>
+
+            <Button Name="btnSample4" Content="更新 tile 通知（hint-crop='circle' addImageQuery='true'）" Click="btnSample4_Click" Margin="5" />
+
+            <Button Name="btnSample5" Content="peek 图片和 background 图片相结合" Click="btnSample5_Click" Margin="5" />
+
+            <Button Name="btnSample6" Content="peek 图片和 background 图片相结合，并指定其 hint-overlay" Click="btnSample6_Click" Margin="5" />
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <ComboBox Name="cmbPresentation">
+                    <ComboBoxItem Tag="none" Content="hint-presentation='none'" IsSelected="True" />
+                    <ComboBoxItem Tag="photos" Content="hint-presentation='photos'" />
+                    <ComboBoxItem Tag="people" Content="hint-presentation='people'" />
+                </ComboBox>
+                <Button Name="btnSample7" Content="更新 tile 通知" Click="btnSample7_Click" Margin="5 0 0 0" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

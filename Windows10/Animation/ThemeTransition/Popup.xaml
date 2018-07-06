@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeTransition.Popup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeTransition"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                PopupThemeTransition - 弹出时的过渡效果
+                    FromHorizontalOffset - 初始位置的水平偏移量
+                    FromVerticalOffset - 初始位置的垂直偏移量
+            -->
+            <Popup Name="popup" HorizontalOffset="200" VerticalOffset="10" IsLightDismissEnabled="True">
+                <Popup.Child>
+                    <Border BorderBrush="Red" BorderThickness="1" Background="Blue" Width="200" Height="200">
+                        <TextBlock Text="我是 Popup" HorizontalAlignment="Center" />
+                    </Border>
+                </Popup.Child>
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+            </Popup>
+
+            <Button Name="btnPopup" Content="弹出 Popup" Click="btnPopup_Click" Margin="0 10 0 0" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Windows10.Bind.BindingElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                本例用于演示如何与 Element 绑定，以及 OneTime, OneWay, TwoWay 的区别
+            -->
+
+            <!--
+                OneTime 方式绑定元素
+            -->
+            <TextBox Text="{Binding ElementName=txtOneTime, Path=Text, Mode=OneTime}" />
+            <TextBox Name="txtOneTime" Text="OneTime" Margin="0 10 0 0" />
+            
+
+            <!--
+                OneWay 方式绑定元素（OneWay 是默认方式）
+            -->
+            <TextBox Text="{Binding ElementName=txtOneWay, Path=Text, Mode=OneWay}" Margin="0 30 0 0" />
+            <TextBox Name="txtOneWay" Text="OneWay" Margin="0 10 0 0" />
+
+            <!--
+                TwoWay 方式绑定元素（同时演示一下 Binding 标记的另一种写法，就是直接把 Path 指定的路径放到 Binding 的后面）
+            -->
+            <TextBox Text="{Binding Text, ElementName=txtTwoWay, Mode=TwoWay}" Margin="0 30 0 0" />
+            <TextBox Name="txtTwoWay" Text="TwoWay" Margin="0 10 0 0" />
+
+            <!--
+                TwoWay 方式绑定元素（在 C# 端指定 Binding 对象的方式一）
+            -->
+            <TextBox Name="textBox1" Margin="0 30 0 0" />
+            <TextBox Name="textBox2" Text="TwoWay" Margin="0 10 0 0" />
+
+            <!--
+                TwoWay 方式绑定元素（在 C# 端指定 Binding 对象的方式二）
+            -->
+            <TextBox Name="textBox3" Margin="0 30 0 0" />
+            <TextBox Name="textBox4" Text="TwoWay" Margin="0 10 0 0" />
+
+        </StackPanel>
+    </Grid>
+</Page>

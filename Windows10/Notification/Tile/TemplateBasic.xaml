@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Notification.Tile.TemplateBasic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Tile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnSample1" Content="为不同规格的磁贴指定不同的显示内容" Click="btnSample1_Click" Margin="5" />
+
+            <Button Name="btnSample2" Content="在 binding 节点指定磁贴左下角的名称显示和右下角的图标显示" Click="btnSample2_Click" Margin="5" />
+
+            <Button Name="btnSample3" Content="在 visual 节点指定磁贴左下角的名称显示和右下角的图标显示" Click="btnSample3_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

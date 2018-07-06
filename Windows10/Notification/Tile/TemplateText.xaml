@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Notification.Tile.TemplateText"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Tile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnSample1" Content="文本的样式" Click="btnSample1_Click" Margin="5" />
+
+            <Button Name="btnSample2" Content="水平对齐方式和文本换行" Click="btnSample2_Click" Margin="5" />
+
+            <Button Name="btnSample3" Content="垂直对齐方式" Click="btnSample3_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

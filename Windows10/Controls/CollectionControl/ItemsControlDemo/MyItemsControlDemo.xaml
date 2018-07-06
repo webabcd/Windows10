@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.MyItemsControlDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <Grid Background="{Binding ColorValue}">
+                <Grid Background="Black" VerticalAlignment="Top" Opacity="0.7">
+                    <TextBlock Text="{Binding ColorName}" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <Style x:Key="ItemContainerStyle" TargetType="GridViewItem">
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <ItemsPanelTemplate x:Key="ItemsPanel">
+            <VariableSizedWrapGrid MaximumRowsOrColumns="8" Orientation="Horizontal" ItemWidth="100" ItemHeight="100"  />
+        </ItemsPanelTemplate>
+
+    </Page.Resources>
+
+    <Grid Background="Transparent" Margin="10 0 10 10">
+        <!--
+            使用 MyGridView 控件，其重写了 GridView 的 PrepareContainerForItemOverride() 方法，详见 MyGridView.cs
+        -->
+        <local:MyGridView x:Name="gridView" Width="812" VerticalAlignment="Top" HorizontalAlignment="Left"
+                          ItemTemplate="{StaticResource ItemTemplate}"
+                          ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                          ItemsPanel="{StaticResource ItemsPanel}" 
+                          IsItemClickEnabled="False" 
+                          SelectionMode="None">
+        </local:MyGridView>
+    </Grid>
+</Page>

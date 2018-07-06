@@ -1,0 +1,25 @@
+﻿<Application
+    x:Class="Windows10.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10"
+    
+    RequestedTheme="Dark">
+    <!--
+        上面的 RequestedTheme 被我设置为 Dark 了，关于主题的相关知识点请参见：/Resource/ThemeResourceDemo.xaml
+    -->
+
+    <Application.Resources>
+
+        <!--
+            以 xaml 方式整合外部 ResourceDictionary
+        -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

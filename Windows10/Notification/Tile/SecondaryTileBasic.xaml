@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Notification.Tile.SecondaryTileBasic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Tile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnPinSecondaryTile" Content="固定一个新的 SecondaryTile（可以固定多个）" Click="btnPinSecondaryTile_Click" Margin="5" />
+
+            <Button Name="btnUpdateSecondaryTile" Content="更新所有的 SecondaryTile 通知" Click="btnUpdateSecondaryTile_Click" Margin="5" />
+
+            <Button Name="btnUnpinSecondaryTile" Content="取消固定所有的 SecondaryTile" Click="btnUnpinSecondaryTile_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

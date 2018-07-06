@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeAnimation.SplitOpenSplitClose"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeAnimation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+            <StackPanel.Resources>
+                <!--
+                    注：各种 ThemeAnimation 均继承自 Timeline，但是 Timeline 的相关的控制类属性均无效，因为各种控制类属性是由对应的 ThemeAnimation 来决定的
+                -->
+                
+                <!--
+                    SplitOpenThemeAnimation - 打开“拆分”控件的动画
+                        打开 OpenedTargetName（OpenedTargetName 的内容是 ContentTargetName），关闭 ClosedTargetName
+                
+                    具体的用法参见 ComboBox 的 ControlTemplate
+                -->
+                <Storyboard x:Name="storyboardSplitOpen">
+                    <SplitOpenThemeAnimation 
+                        OpenedTargetName="border" 
+                        ContentTargetName="textBlock" 
+                        ClosedTargetName="rectangle"
+                        ContentTranslationDirection="Left"
+                        ContentTranslationOffset="200"  
+                        OffsetFromCenter="0"
+                        OpenedLength="1"
+                        ClosedLength="0" />
+                </Storyboard>
+
+                <!--
+                    SplitCloseThemeAnimation - 关闭“拆分”控件的动画
+                        关闭 OpenedTargetName（OpenedTargetName 的内容是 ContentTargetName），打开 ClosedTargetName
+                
+                    具体的用法参见 ComboBox 的 ControlTemplate
+                -->
+                <Storyboard x:Name="storyboardSplitClose">
+                    <SplitCloseThemeAnimation
+                        OpenedTargetName="border" 
+                        ContentTargetName="textBlock" 
+                        ClosedTargetName="rectangle"
+                        ContentTranslationDirection="Left"
+                        ContentTranslationOffset="200"  
+                        OffsetFromCenter="0"
+                        OpenedLength="1"
+                        ClosedLength="0" />
+                </Storyboard>
+            </StackPanel.Resources>
+
+            <Rectangle Name="rectangle" Width="400" Height="100" Fill="Orange" HorizontalAlignment="Left" />
+            <Border Name="border" BorderThickness="5" BorderBrush="Red" Background="Blue" CornerRadius="10" Width="400" Height="100" HorizontalAlignment="Left" />
+
+            <Button Name="btnSplitOpen" Content="SplitOpenThemeAnimation Demo" Click="btnSplitOpen_Click" Margin="0 10 0 0" />
+            <Button Name="btnSplitClose" Content="SplitCloseThemeAnimation Demo" Click="btnSplitClose_Click" Margin="0 10 0 0" />
+
+        </StackPanel>
+    </Grid>
+</Page>

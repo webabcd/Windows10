@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="Windows10.Xaml.DeferLoadStrategy.Demo3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Xaml.DeferLoadStrategy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Storyboard x:Name="sb">
+            <ColorAnimation Storyboard.TargetName="ellipse" 
+                            Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" 
+                            BeginTime="00:00:00" 
+                            From="Orange" 
+                            To="Blue" 
+                            Duration="0:0:3" 
+                            AutoReverse="true" 
+                            RepeatBehavior="Forever ">
+            </ColorAnimation>
+        </Storyboard>
+    </Page.Resources>
+    
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--延迟加载元素-->
+            <Ellipse x:Name="ellipse" Fill="Orange" Width="200" Height="100" x:DeferLoadStrategy="Lazy" HorizontalAlignment="Left" Margin="5" />
+
+            <!--启动一个引用了延迟加载元素的动画后，该延迟加载元素就会被加载-->
+            <Button Name="button" Content="开始动画" Click="button_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

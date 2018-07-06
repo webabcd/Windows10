@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Windows10.Controls.SelectionControl.CheckBoxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.SelectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                CheckBox - 复选框控件
+            
+                注：CheckBox 继承自 ToggleButton，关于 ToggleButton 的知识点请参见“/Controls/ButtonControl/ToggleButtonDemo.xaml”
+            -->
+
+            <CheckBox Name="chk1" Margin="5" IsChecked="True" Content="CheckBox1" />
+
+            <CheckBox Name="chk2" Margin="5" IsChecked="False" Content="CheckBox2" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Windows10.Animation.NavigationTransitionInfo.Demo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.NavigationTransitionInfo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                演示如何在通过 bool Navigate(Type sourcePageType, object parameter, NavigationTransitionInfo infoOverride) 导航时，指定 NavigationTransitionInfo 动画效果
+                通过 GoBack(NavigationTransitionInfo transitionInfoOverride) 导航时指定 NavigationTransitionInfo 动画效果也是同理
+                导航目标页先要为 Page 指定 NavigationThemeTransition 过渡效果，然后导航目标页会根据导航时的 NavigationTransitionInfo 类型的参数来设置其 NavigationThemeTransition 的 DefaultNavigationTransitionInfo 属性
+            -->
+            <StackPanel>
+                <Button Name="btnGotoSlideNavigationTransitionInfo" Margin="5" Content="goto SlideNavigationTransitionInfo" Click="btnGotoSlideNavigationTransitionInfo_Click" />
+
+                <Button Name="btnGotoSuppressNavigationTransitionInfo" Margin="5" Content="goto SuppressNavigationTransitionInfo" Click="btnGotoSuppressNavigationTransitionInfo_Click" />
+
+                <Button Name="btnGotoDrillInNavigationTransitionInfo" Margin="5" Content="goto DrillInNavigationTransitionInfo" Click="btnGotoDrillInNavigationTransitionInfo_Click" />
+
+                <Button Name="btnGotoContinuumNavigationTransitionInfo" Margin="5" Content="goto ContinuumNavigationTransitionInfo" Click="btnGotoContinuumNavigationTransitionInfo_Click" />
+
+                <Button Name="btnGotoEntranceNavigationTransitionInfo" Margin="5" Content="goto EntranceNavigationTransitionInfo" Click="btnGotoEntranceNavigationTransitionInfo_Click" />
+
+                <Button Name="btnGotoCommonNavigationTransitionInfo" Margin="5" Content="goto CommonNavigationTransitionInfo" Click="btnGotoCommonNavigationTransitionInfo_Click" />
+            </StackPanel>
+
+
+
+            <!--
+                演示如何在导航目标页设置 NavigationTransitionInfo 动画效果
+            -->
+            <StackPanel Margin="0 30 0 0">
+                <Button Name="btnGotoSlideNavigationTransitionInfo2" Margin="5" Content="goto SlideNavigationTransitionInfo" Click="btnGotoSlideNavigationTransitionInfo_Click2" />
+
+                <Button Name="btnGotoSuppressNavigationTransitionInfo2" Margin="5" Content="goto SuppressNavigationTransitionInfo" Click="btnGotoSuppressNavigationTransitionInfo_Click2" />
+
+                <Button Name="btnGotoDrillInNavigationTransitionInfo2" Margin="5" Content="goto DrillInNavigationTransitionInfo" Click="btnGotoDrillInNavigationTransitionInfo_Click2" />
+
+                <Button Name="btnGotoContinuumNavigationTransitionInfo2" Margin="5" Content="goto ContinuumNavigationTransitionInfo" Click="btnGotoContinuumNavigationTransitionInfo_Click2" />
+
+                <Button Name="btnGotoEntranceNavigationTransitionInfo2" Margin="5" Content="goto EntranceNavigationTransitionInfo" Click="btnGotoEntranceNavigationTransitionInfo_Click2" />
+
+                <Button Name="btnGotoCommonNavigationTransitionInfo2" Margin="5" Content="goto CommonNavigationTransitionInfo" Click="btnGotoCommonNavigationTransitionInfo_Click2" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

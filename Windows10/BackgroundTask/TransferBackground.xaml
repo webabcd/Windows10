@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Windows10.BackgroundTask.TransferBackground"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.BackgroundTask"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <ScrollViewer Name="scrollViewer" Height="100" Margin="5">
+                <TextBlock Name="lblMsg" TextWrapping="Wrap" />
+            </ScrollViewer>
+
+            <Button Name="btnAddDownloadAndRegister" Content="新增一组（3 个）下载任务，并注册指定的后台任务，当这一组下载任务全部完成后触发一个后台任务。" Margin="5" Click="btnAddDownloadAndRegister_Click" />
+            <Button Name="btnRemoveDownloadAndUnregister" Content="取消下载任务并注销指定的后台任务" Margin="5" Click="btnRemoveDownloadAndUnregister_Click" />
+
+            <ListView Name="listView" Height="286" Padding="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0 5" Background="Blue">
+                            <TextBlock Text="{Binding Source}" Margin="5" />
+                            <TextBlock Text="{Binding Destination}" Margin="5" />
+                            <TextBlock Text="{Binding Progress}" Margin="5" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackPanel>
+    </Grid>
+</Page>

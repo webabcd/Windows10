@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="Windows10.Controls.UI.VisualState.VisualStateDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.UI.VisualState"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.Resources>
+
+            <!--
+                在 ControlTemplate 中定义 VisualState 和 VisualStateManager
+            -->
+            <ControlTemplate x:Key="ControlTemplate1" TargetType="Button">
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <!--
+                            VisualStateGroup - 用于分组 VisualState
+                        -->
+                        <VisualStateGroup x:Name="CommonStates">
+                            
+                            <!--
+                                Normal - 正常状态
+                            
+                                注意：
+                                1、本例所列出的 VisualState 的名称都是 Button 控件拥有的，不同的控件的 VisualState 名称和种类可能会不一样
+                                2、写自定义控件时，需要通过 VisualStateManager.GoToState() 来转换 VisualState
+                            -->
+                            <VisualState x:Name="Normal" />
+                            
+                            <!--
+                                Disabled - 无效状态
+                            -->
+                            
+                            <VisualState x:Name="Disabled" />
+                            
+                            <!--
+                                PointerOver - 鼠标经过时的状态（详细的过渡效果在后面的 VisualStateGroup.Transitions 中定义）
+                            -->
+                            <VisualState x:Name="PointerOver">
+                                <Storyboard>
+                                    <ColorAnimation 
+                                        Storyboard.TargetName="borderBrush" 
+                                        Storyboard.TargetProperty="Color" 
+                                        To="Green" />
+                                </Storyboard>
+                            </VisualState>
+                            
+                            <!--
+                                Pressed - 鼠标按下时的状态
+                            -->
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Storyboard>
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="grid">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{StaticResource ButtonPressedBackgroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="contentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState.Storyboard>
+                                <VisualState.Setters>
+                                    <!--
+                                        这部分是 uwp 新增的特性，以前只能通过 Storyboard 来实现
+                                    -->
+                                    <Setter Target="grid.Width" Value="100" />
+                                </VisualState.Setters>
+                                <VisualState.StateTriggers>
+                                    <!--
+                                        这部分是 uwp 新增的特性
+                                        关于 StateTriggers 请参见 /Controls/UI/VisualState/StateTrigger.xaml
+                                    -->
+                                </VisualState.StateTriggers>
+                            </VisualState>
+                            
+                            <!--
+                                VisualTransition - VisualState 变化时的过渡效果（要结合相应的 VisualState 中的 Storyboard 使用）
+                                    From - 变化前的 VisualState 的 Name
+                                    To - 变化后的 VisualState 的 Name
+                                    GeneratedDuration - 一个状态变化到另一个状态的所需时间
+                                    GeneratedEasingFunction - 一个状态变化到另一个状态的缓动效果
+                            -->
+                            <VisualStateGroup.Transitions>
+                                <VisualTransition To="PointerOver" GeneratedDuration="0:0:1">
+                                    <VisualTransition.GeneratedEasingFunction>
+                                        <ElasticEase EasingMode="EaseInOut" />
+                                    </VisualTransition.GeneratedEasingFunction>
+                                </VisualTransition>
+                            </VisualStateGroup.Transitions>
+                        </VisualStateGroup>
+
+                        <VisualStateGroup x:Name="MyStates">
+                            <VisualState x:Name="MyState1" />
+                            <VisualState x:Name="MyState2"/>
+                            <VisualState x:Name="MyState3"/>
+                        </VisualStateGroup>
+                        
+                    </VisualStateManager.VisualStateGroups>
+
+                    <Border x:Name="border" BorderThickness="10">
+                        <Border.BorderBrush>
+                            <SolidColorBrush x:Name="borderBrush" Color="Red" />
+                        </Border.BorderBrush>
+                        <Grid Name="grid" Background="{TemplateBinding Background}" Width="500" Height="200">
+                            <ContentPresenter Name="contentPresenter" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24.667" 
+                                          Foreground="{TemplateBinding Foreground}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+
+        </Grid.Resources>
+
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="5" />
+
+            <Button Name="btnDemo" Content="我是 Button（用于演示 VisualState 和 VisualStateManager）" Margin="5" Background="Blue" Foreground="White" Template="{StaticResource ControlTemplate1}" />
+
+            <Button Name="btnVisualStateManager" Content="将上面的按钮的 VisualState 转到 PointerOver" Click="btnVisualStateManager_Click" Margin="5" />
+
+        </StackPanel>
+
+    </Grid>
+</Page>

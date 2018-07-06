@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Windows10.Controls.ProgressControl.SliderDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ProgressControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <Grid.Resources>
+            <local:MyThumbToolTipValueConverter x:Key="MyThumbToolTipValueConverter" />
+        </Grid.Resources>
+
+        <!--
+            Slider - 滑动条控件
+                Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                Orientation - 滑动条的布局方向
+                    Horizontal - 水平放置
+                    Vertical - 垂直放置
+                IsDirectionReversed - 值的增加方向为左到右或下到上则为 false（默认值），反之为 true
+                IsThumbToolTipEnabled - 是否在 thumb 旁显示当前值的提示
+                ThumbToolTipValueConverter - 在 thumb 旁显示当前值的提示时所使用的 Converter
+                TickPlacement - 如何显示刻度线，Windows.UI.Xaml.Controls.Primitives.TickPlacement枚举（None, TopLeft, BottomRight, Outside, Inline）
+                TickFrequency - 刻度线的间隔
+                StepFrequency - 每一步的间隔
+                SnapsTo - 贴靠方式
+                    StepValues - 按 StepFrequency 做 Snap（默认值）
+                        通过鼠标拖动或鼠标点击控制 Slider 时，其值是 StepFrequency 的整倍数（注：键盘控制时，步长来自于基类 RangeBase 的 SmallChange, LargeChange）
+                    Ticks - 按 TickFrequency 做 Snap
+                        通过鼠标拖动或鼠标点击控制 Slider 时，其值是 TickFrequency 的整倍数（注：键盘控制时，步长来自于基类 RangeBase 的 SmallChange, LargeChange）
+        
+            注：可以通过 Foreground, Background 来设置 Slider 的部分状态的颜色，更多的样式设置还是要去修改控件模板
+        -->
+        <StackPanel Margin="10 0 10 10">
+
+            <Slider Margin="5" Width="100" Value="20" HorizontalAlignment="Left" Foreground="Orange" Background="Red" Style="{StaticResource MySliderStyle}"
+                    Header="Slider" />
+
+            <Slider Margin="5" Height="100" HorizontalAlignment="Left" Foreground="Orange" Background="Red" Style="{StaticResource MySliderStyle}"
+                    Orientation="Vertical" IsDirectionReversed="True" 
+                    IsThumbToolTipEnabled="True" ThumbToolTipValueConverter="{StaticResource MyThumbToolTipValueConverter}">
+                <Slider.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Slider" Foreground="Red" />
+                    </DataTemplate>
+                </Slider.HeaderTemplate>
+            </Slider>
+
+            <Slider Margin="5" Width="800" Minimum="0" Maximum="800" HorizontalAlignment="Left"  Foreground="Orange" Background="Red" Style="{StaticResource MySliderStyle}"
+                    TickPlacement="Inline" TickFrequency="80" 
+                    StepFrequency="100" SnapsTo="StepValues" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.TextBlockDemo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                IsTextSelectionEnabled - 文本是否可以被选中
+                SelectionHighlightColor - 选中文本的颜色
+            -->
+            <TextBlock Name="textBlock1" Margin="5" IsTextSelectionEnabled="True" SelectionHighlightColor="Red">
+                <TextBlock.Inlines>
+                    <Run>abcdefg</Run>
+                    <LineBreak />
+                    <Run>hijklmn</Run>
+                    <LineBreak />
+                    <Run>opqrst</Run>
+                </TextBlock.Inlines>
+            </TextBlock>
+            <!--显示 textBlock1 中被用户选中的文本-->
+            <TextBlock Name="lblMsg1" Margin="5" />
+
+
+            <TextBlock Name="textBlock2" Margin="5" IsTextSelectionEnabled="True" SelectionHighlightColor="Red">
+                <Run>abcdefghijklmn</Run>
+                <LineBreak />
+                <Run>opqrstuvwxyz</Run>
+            </TextBlock>
+            <TextBlock Name="lblMsg2" Margin="5" />
+
+
+            <Grid Background="Red" Margin="5">
+                <TextBlock Name="textBlock3" Text="abcdefghijklmnopqrstuvwxyz" FontSize="24" />
+                <!--用于绘制基线-->
+                <Line Name="line" Stroke="Blue" StrokeThickness="1" X1="0" X2="300" />
+            </Grid>
+            <TextBlock Name="lblMsg3" Margin="5" />
+
+
+            <!--用于显示 Segoe UI Emoji 字符-->
+            <TextBlock Name="textBlock4" Margin="5" FontSize="24" TextWrapping="Wrap" />
+
+
+            <!--用于演示如何计算 TextBlock 的实际宽度和实际高度-->
+            <Grid Name="grid" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="gridColumn1" Width="Auto" />
+                    <ColumnDefinition x:Name="gridColumn2" Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="textBlock5" FontSize="24">
+                    <Run>abc</Run>
+                    <LineBreak />
+                    <Run>xyz</Run>
+                </TextBlock>
+            </Grid>
+            <TextBlock Name="lblMsg5" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

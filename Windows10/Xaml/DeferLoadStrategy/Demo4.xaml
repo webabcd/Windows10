@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Windows10.Xaml.DeferLoadStrategy.Demo4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Xaml.DeferLoadStrategy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="360" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--窗口宽度小于 360 时调用，此处 setter 引用了延迟加载元素，该延迟加载元素将会被加载-->
+                        <Setter Target="textBox.Foreground" Value="Red" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel Margin="10 0 10 10">
+
+            <!--延迟加载元素-->
+            <TextBox Name="textBox" Text="我是 TextBox" x:DeferLoadStrategy="Lazy" />
+
+        </StackPanel>
+    </Grid>
+</Page>

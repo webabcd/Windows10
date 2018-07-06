@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="Windows10.Animation.NavigationTransitionInfo.MyFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.NavigationTransitionInfo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--
+        NavigationThemeTransition - 页与页之间导航时的过渡效果
+            DefaultNavigationTransitionInfo - 具体的过度效果（[ContentProperty(Name = "DefaultNavigationTransitionInfo")]）
+                需要为 DefaultNavigationTransitionInfo 设置一个 NavigationTransitionInfo 类型的对象
+                继承自 NavigationTransitionInfo 的有 SlideNavigationTransitionInfo, SuppressNavigationTransitionInfo, DrillInNavigationTransitionInfo, ContinuumNavigationTransitionInfo, EntranceNavigationTransitionInfo, CommonNavigationTransitionInfo
+    -->
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition x:Name="navigationTransition">
+                <!--
+                <SlideNavigationTransitionInfo />
+                <SuppressNavigationTransitionInfo />
+                <DrillInNavigationTransitionInfo />
+                <ContinuumNavigationTransitionInfo />
+                <EntranceNavigationTransitionInfo />
+                <CommonNavigationTransitionInfo />
+                
+                注：
+                1、以上几种导航过渡效果均继承自 NavigationTransitionInfo，此处在指定 NavigationThemeTransition 的 DefaultNavigationTransitionInfo 时可以选择其一
+                2、如果此处设置了 NavigationTransitionInfo，且外面导航过来时也指定了 NavigationTransitionInfo，则以外面导航过来的 NavigationTransitionInfo 为准
+                3、如果需要外面导航过来时指定的 NavigationTransitionInfo 生效，这里需要先为 Page 设置好 NavigationThemeTransition 过渡效果（无此设置，则认为不启用 NavigationThemeTransition 过渡效果）
+                -->
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Margin="5" TextWrapping="Wrap">
+                <Run>Microsoft HoloLens全息眼镜由Microsoft 公司于北京时间2015年1月22日凌晨与Window10同时发布。</Run>
+                <LineBreak />
+                <Run>2015年6月15日，微软在E3游戏展之前的新闻发布会上展示更完整的现实增强版《Minecraft》。微软此次在咖啡桌和书架上展示了全息的Minecraft城堡，一名佩戴HoloLens的微软员工通过手势在游戏中进行操作。此外，微软还展示了两名玩家如何在同一个Minecraft世界中互动，以及HoloLens用户如何通过语音命令来完成控制。</Run>
+                <LineBreak />
+                <Run>HoloLens的另一个关键之处在于：微软没有打算为用户呈现一个完全不同的世界，而是将某些计算机生成的效果叠加于现实世界之上。用户仍然可以行走自如，随意与人交谈，全然不必担心撞到墙。</Run>
+                <LineBreak />
+                <Run>眼镜将会追踪你的移动和视线，进而生成适当的虚拟对象，通过光线投射到你的眼中。因为设备知道你的方位，你可以通过手势——目前只支持半空中抬起和放下手指点击——与虚拟3D对象交互。</Run>
+                <LineBreak />
+                <Run>有众多硬件帮助HoloLens实现栩栩如生的效果。各种传感器可以追踪你在室内的移动，然后透过层叠的彩色镜片创建出可以从不同角度交互的对象。想在厨房中央查看一辆虚拟摩托的另一侧？没问题，只有走到相应的一侧即可。</Run>
+                <LineBreak />
+                <Run>眼镜通过摄像头对室内物体进行观察，因此设备可以得知桌子、椅子和其他对象的方位，然后其可以在这些对象表面甚至里面投射3D图像。</Run>
+            </TextBlock>
+            
+        </StackPanel>
+    </Grid>
+</Page>

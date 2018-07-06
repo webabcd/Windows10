@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.App2AppCommunication.SharedStorage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.App2AppCommunication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="5" />
+
+            <Button Name="btnSave" Content="将沙盒内的指定文件设置为可共享，并生成 token" Click="btnSave_Click" Margin="5" />
+
+            <Button Name="btnLoad" Content="根据 token 获取文件（为了演示方便，本例就在同一个 app 中演示了，实际上在其他 app 中也是可以根据此 token 获取文件的）" Click="btnLoad_Click" Margin="5" />
+
+            <Button Name="btnDelete" Content="根据 token 将沙盒内的可共享文件设置为不可共享" Click="btnDelete_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

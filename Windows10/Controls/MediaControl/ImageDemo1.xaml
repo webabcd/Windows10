@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="Windows10.Controls.MediaControl.ImageDemo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.MediaControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+     
+            <!--
+                Image - 图片控件
+                    Stretch - 拉伸方式
+                        Fill - 充满容器，不保留长宽比
+                        None - 不做任何处理，如果图片比容器大，则多出的部分被剪裁
+                        Uniform - 等比缩放到容器（默认值）
+                        UniformToFill - 充满容器，且保留长宽比，多出的部分被剪裁
+                    Source - 图片源，一个 ImageSource 对象
+            -->
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="1" Width="150" Height="100">
+                    <Image Name="image1" Source="/Assets/StoreLogo.png" Stretch="Fill" Width="150" Height="100" />
+                </Border>
+
+                <Border BorderBrush="Red" BorderThickness="1" Width="150" Height="100" Margin="20 0 0 0">
+                    <Image Name="image2" Source="/Assets/StoreLogo.png" Stretch="None" Width="150" Height="100" />
+                </Border>
+
+                <Border BorderBrush="Red" BorderThickness="1" Width="150" Height="100" Margin="20 0 0 0">
+                    <!--后台设置 Image 的 Source-->
+                    <Image Name="image3" Stretch="Uniform" Width="150" Height="100" />
+                </Border>
+
+                <Border BorderBrush="Red" BorderThickness="1" Width="150" Height="100" Margin="20 0 0 0">
+                    <!--后台设置 Image 的 Source-->
+                    <Image Name="image4" Stretch="UniformToFill" Width="150" Height="100" />
+                </Border>
+
+                <Border BorderBrush="Red" BorderThickness="1" Width="150" Height="100" Margin="20 0 0 0">
+                    <Image Stretch="Fill" Width="150" Height="100">
+                        <!--BitmapImage 继承自 BitmapSource, BitmapSource 继承自 ImageSource-->
+                        <Image.Source>
+                            <BitmapImage UriSource="/Assets/StoreLogo.png" DecodePixelHeight="10" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+            </StackPanel>
+
+
+            <!--
+                Image - 图片控件
+                    NineGrid - 指定9网格（相当于flash中的9切片）中的4条线，Thickness 类型
+                        Left - 左边的线相对于图片最左端的距离
+                        Top - 上边的线相对于图片最顶端的距离
+                        Right - 右边的线相对于图片最右端的距离
+                        Bottom - 下边的线相对于图片最底端的距离
+            -->
+            <StackPanel Orientation="Horizontal" Margin="0 50 0 0">
+                <Image Source="/Assets/NineGridDemo.png" Width="200" Height="200" />
+
+                <!--通过指定9切片，防止边框被放大或缩小-->
+                <Image Source="/Assets/NineGridDemo.png" Width="200" Height="200" NineGrid="1 1 1 1" Margin="20 0 0 0" />
+            </StackPanel>
+
+            
+            <!--
+                Image - 图片控件
+                    ImageOpened - 成功下载图片源并成功解码后触发的事件
+                    ImageFailed - 下载图片源或解码发生错误时触发的事件
+            -->
+            <StackPanel Orientation="Vertical" Margin="0 50 0 0">
+                <Border BorderBrush="Red" BorderThickness="1" Width="200" Height="200" HorizontalAlignment="Left">
+                    <Image Name="remoteImage" Stretch="Uniform" Source="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" Width="200" Height="200" 
+                           ImageOpened="remoteImage_ImageOpened" ImageFailed="remoteImage_ImageFailed" />
+                </Border>
+                <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="0 10 0 0" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

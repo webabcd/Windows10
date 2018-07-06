@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <node title="C# 6.0 新特性">
+    <node title="C# 6.0 示例 1" url="Windows10.CSharp6.Demo1" />
+    <node title="C# 6.0 示例 2" url="Windows10.CSharp6.Demo2" />
+    <node title="C# 6.0 示例 3" url="Windows10.CSharp6.Demo3" />
+  </node>
+  <node title="C# 7.0 新特性">
+    <node title="C# 7.0 示例 1" url="Windows10.CSharp7.Demo1" />
+    <node title="C# 7.0 示例 2" url="Windows10.CSharp7.Demo2" />
+    <node title="C# 7.0 示例 3" url="Windows10.CSharp7.Demo3" />
+  </node>
+  <node title="UI">
+    <node title="概述" url="Windows10.UI.Summary" />
+    <node title="启动屏幕" url="Windows10.UI.MySplashScreen" />
+    <node title="屏幕方向" url="Windows10.UI.ScreenOrientation" />
+    <node title="窗口全屏" url="Windows10.UI.FullScreen" />
+    <node title="窗口尺寸" url="Windows10.UI.ScreenSize" />
+    <node title="多窗口" url="Windows10.UI.MultipleViews.Demo" />
+    <node title="标题栏" url="Windows10.UI.TitleBarDemo" />
+  </node>
+  <node title="控件 UI">
+    <node title="字体的自动继承的特性" url="Windows10.Controls.UI.FontInherit" />
+    <node title="Style" url="Windows10.Controls.UI.Style" />
+    <node title="ControlTemplate" url="Windows10.Controls.UI.ControlTemplate" />
+    <node title="VisualState 和 VisualStateManager" url="Windows10.Controls.UI.VisualState.VisualStateDemo" />
+    <node title="控件的默认 Style, ControlTemplate, VisualState" url="Windows10.Controls.UI.DefaultUI" />
+    <node title="StateTrigger" url="Windows10.Controls.UI.VisualState.StateTrigger" />
+  </node>
+  <node title="资源">
+    <node title="资源限定符 - 概述" url="Windows10.Resource.Qualifiers.Summary" />
+    <node title="资源限定符 - 示例" url="Windows10.Resource.Qualifiers.Demo" />
+    <node title="StaticResource" url="Windows10.Resource.StaticResourceDemo" />
+    <node title="ThemeResource" url="Windows10.Resource.ThemeResourceDemo" />
+    <node title="CustomResource" url="Windows10.Resource.CustomResourceDemo" />
+    <node title="ResourceDictionary" url="Windows10.Resource.ResourceDictionaryDemo" />
+    <node title="加载外部的 ResourceDictionary 文件" url="Windows10.Resource.RemoteResource" />
+  </node>
+  <node title="绘图">
+    <node title="Shape" url="Windows10.Drawing.Shape" />
+    <node title="Path" url="Windows10.Drawing.Path" />
+    <node title="Stroke" url="Windows10.Drawing.Stroke" />
+    <node title="Brush" url="Windows10.Drawing.Brush" />
+  </node>
+  <node title="动画（Storyboard）">
+    <node title="线性动画" url="Windows10.Animation.LinearAnimation" />
+    <node title="关键帧动画" url="Windows10.Animation.KeyFrameAnimation" />
+    <node title="缓动动画" url="Windows10.Animation.EasingAnimation" />
+  </node>
+  <node title="动画（ThemeAnimation）">
+    <node title="PopInThemeAnimation, PopOutThemeAnimation" url="Windows10.Animation.ThemeAnimation.PopInPopOut" />
+    <node title="FadeInThemeAnimation, FadeOutThemeAnimation" url="Windows10.Animation.ThemeAnimation.FadeInFadeOut" />
+    <node title="PointerDownThemeAnimation, PointerUpThemeAnimation" url="Windows10.Animation.ThemeAnimation.PointerDownPointerUp" />
+    <node title="SwipeHintThemeAnimation, SwipeBackThemeAnimation" url="Windows10.Animation.ThemeAnimation.SwipeHintSwipeBack" />
+    <node title="RepositionThemeAnimation" url="Windows10.Animation.ThemeAnimation.Reposition" />
+    <node title="SplitOpenThemeAnimation, SplitCloseThemeAnimation" url="Windows10.Animation.ThemeAnimation.SplitOpenSplitClose" />
+    <node title="DrillInThemeAnimation, DrillOutThemeAnimation" url="Windows10.Animation.ThemeAnimation.DrillInDrillOut" />
+    <node title="DragItemThemeAnimation, DragOverThemeAnimation, DropTargetItemThemeAnimation" url="Windows10.Animation.ThemeAnimation.DragItemDragOverDropTargetItem" />
+  </node>
+  <node title="动画（ThemeTransition）">
+    <node title="概述" url="Windows10.Animation.ThemeTransition.Summary" />
+    <node title="EntranceThemeTransition" url="Windows10.Animation.ThemeTransition.Entrance" />
+    <node title="ContentThemeTransition" url="Windows10.Animation.ThemeTransition.Content" />
+    <node title="RepositionThemeTransition" url="Windows10.Animation.ThemeTransition.Reposition" />
+    <node title="PopupThemeTransition" url="Windows10.Animation.ThemeTransition.Popup" />
+    <node title="AddDeleteThemeTransition" url="Windows10.Animation.ThemeTransition.AddDelete" />
+    <node title="ReorderThemeTransition" url="Windows10.Animation.ThemeTransition.Reorder" />
+    <node title="PaneThemeTransition" url="Windows10.Animation.ThemeTransition.Pane" />
+    <node title="EdgeUIThemeTransition" url="Windows10.Animation.ThemeTransition.EdgeUI" />
+    <node title="NavigationThemeTransition" url="Windows10.Animation.NavigationTransitionInfo.Demo" />
+  </node>
+  <node title="绑定">
+    <node title="与 Element 绑定" url="Windows10.Bind.BindingElement" />
+    <node title="与 Indexer 绑定" url="Windows10.Bind.BindingIndexer" />
+    <node title="TargetNullValue, FallbackValue" url="Windows10.Bind.TargetNullValueFallbackValue" />
+    <node title="TemplateBinding 绑定" url="Windows10.Bind.TemplateBindingDemo" />
+    <node title="与 RelativeSource 绑定" url="Windows10.Bind.BindingRelativeSource" />
+    <node title="与 StaticResource 绑定" url="Windows10.Bind.BindingStaticResource" />
+    <node title="DataContextChanged" url="Windows10.Bind.DataContextChanged" />
+    <node title="UpdateSourceTrigger" url="Windows10.Bind.UpdateSourceTrigger" />
+    <node title="对绑定的数据做自定义转换" url="Windows10.Bind.BindingConverter" />
+    <node title="x:Bind 绑定" url="Windows10.Bind.BindDemo" />
+    <node title="x:Bind 绑定之 x:Phase" url="Windows10.Bind.PhaseDemo" />
+    <node title="使用绑定过程中的一些技巧" url="Windows10.Bind.Tips" />
+    <node title="通过 Binding 绑定对象" url="Windows10.Bind.BindingModel" />
+    <node title="通过 x:Bind 绑定对象" url="Windows10.Bind.BindModel" />
+    <node title="通过 Binding 绑定集合" url="Windows10.Bind.BindingCollection" />
+    <node title="通过 x:Bind 绑定集合" url="Windows10.Bind.BindCollection" />
+    <node title="通过 Binding 绑定字典表" url="Windows10.Bind.BindingDictionary" />
+  </node>
+  <node title="MVVM（Model-View-ViewModel）">
+    <node title="通过 Binding 或 x:Bind 结合 Command 实现，通过 ButtonBase 触发命令" url="Windows10.MVVM.View.Demo1" />
+    <node title="通过 Binding 或 x:Bind 结合 Command 实现，通过非 ButtonBase 触发命令" url="Windows10.MVVM.View.Demo1_2" />
+    <node title="通过 x:Bind 实现 MVVM（不用 Command）" url="Windows10.MVVM.View.Demo2" />
+  </node>
+  <node title="xaml 特性">
+    <node title="x:DeferLoadStrategy 通过 FindName 加载" url="Windows10.Xaml.DeferLoadStrategy.Demo1" />
+    <node title="x:DeferLoadStrategy 通过绑定加载" url="Windows10.Xaml.DeferLoadStrategy.Demo2" />
+    <node title="x:DeferLoadStrategy 通过 Storyboard 加载" url="Windows10.Xaml.DeferLoadStrategy.Demo3" />
+    <node title="x:DeferLoadStrategy 通过 Setter 加载" url="Windows10.Xaml.DeferLoadStrategy.Demo4" />
+    <node title="x:DeferLoadStrategy 通过 GetTemplateChild 加载" url="Windows10.Xaml.DeferLoadStrategy.Demo5" />
+    <node title="x:Null" url="Windows10.Bind.NullDemo" />
+  </node>
+  <node title="文本类控件">
+    <node title="TextBlock(1)" url="Windows10.Controls.TextControl.TextBlockDemo1" />
+    <node title="TextBlock(2)" url="Windows10.Controls.TextControl.TextBlockDemo2" />
+    <node title="使用自定义字体&#0013;使用 Unicode 编码" url="Windows10.Controls.TextControl.Tips" />
+    <node title="TextBox(1)" url="Windows10.Controls.TextControl.TextBoxDemo1" />
+    <node title="TextBox(2)" url="Windows10.Controls.TextControl.TextBoxDemo2" />
+    <node title="PasswordBox" url="Windows10.Controls.TextControl.PasswordBoxDemo" />
+    <node title="RichTextBlock" url="Windows10.Controls.TextControl.RichTextBlockDemo" />
+    <node title="RichTextBlockOverflow" url="Windows10.Controls.TextControl.RichTextBlockOverflowDemo" />
+    <node title="RichEditBox" url="Windows10.Controls.TextControl.RichEditBoxDemo" />
+    <node title="AutoSuggestBox" url="Windows10.Controls.TextControl.AutoSuggestBoxDemo" />
+  </node>
+  <node title="按钮类控件">
+    <node title="ButtonBase(基类)" url="Windows10.Controls.ButtonControl.ButtonBaseDemo" />
+    <node title="Button" url="Windows10.Controls.ButtonControl.ButtonDemo" />
+    <node title="HyperlinkButton" url="Windows10.Controls.ButtonControl.HyperlinkButtonDemo" />
+    <node title="RepeatButton" url="Windows10.Controls.ButtonControl.RepeatButtonDemo" />
+    <node title="ToggleButton" url="Windows10.Controls.ButtonControl.ToggleButtonDemo" />
+    <node title="AppBarButton" url="Windows10.Controls.ButtonControl.AppBarButtonDemo" />
+    <node title="AppBarToggleButton" url="Windows10.Controls.ButtonControl.AppBarToggleButtonDemo" />
+  </node>
+  <node title="选择类控件">
+    <node title="Selector(基类)&#0013;SelectorItem(基类)" url="Windows10.Controls.SelectionControl.SelectorDemo" />
+    <node title="ComboBox" url="Windows10.Controls.SelectionControl.ComboBoxDemo" />
+    <node title="ListBox" url="Windows10.Controls.SelectionControl.ListBoxDemo" />
+    <node title="RadioButton" url="Windows10.Controls.SelectionControl.RadioButtonDemo" />
+    <node title="CheckBox" url="Windows10.Controls.SelectionControl.CheckBoxDemo" />
+    <node title="ToggleSwitch" url="Windows10.Controls.SelectionControl.ToggleSwitchDemo" />
+  </node>
+  <node title="进度类控件">
+    <node title="RangeBase(基类)" url="Windows10.Controls.ProgressControl.RangeBaseDemo" />
+    <node title="Slider" url="Windows10.Controls.ProgressControl.SliderDemo" />
+    <node title="ProgressBar" url="Windows10.Controls.ProgressControl.ProgressBarDemo" />
+    <node title="ProgressRing" url="Windows10.Controls.ProgressControl.ProgressRingDemo" />
+  </node>
+  <node title="弹出类控件">
+    <node title="FlyoutBase(基类)" url="Windows10.Controls.FlyoutControl.FlyoutBaseDemo" />
+    <node title="Flyout" url="Windows10.Controls.FlyoutControl.FlyoutDemo" />
+    <node title="MenuFlyout" url="Windows10.Controls.FlyoutControl.MenuFlyoutDemo" />
+    <node title="ToolTip" url="Windows10.Controls.FlyoutControl.ToolTipDemo" />
+    <node title="Popup" url="Windows10.Controls.FlyoutControl.PopupDemo" />
+    <node title="PopupMenu" url="Windows10.Controls.FlyoutControl.PopupMenuDemo" />
+    <node title="MessageDialog" url="Windows10.Controls.FlyoutControl.MessageDialogDemo" />
+    <node title="ContentDialog" url="Windows10.Controls.FlyoutControl.ContentDialogDemo" />
+  </node>
+  <node title="布局类控件">
+    <node title="Panel(基类)" url="Windows10.Controls.LayoutControl.PanelDemo" />
+    <node title="Canvas" url="Windows10.Controls.LayoutControl.CanvasDemo" />
+    <node title="RelativePanel" url="Windows10.Controls.LayoutControl.RelativePanelDemo" />
+    <node title="StackPanel" url="Windows10.Controls.LayoutControl.StackPanelDemo" />
+    <node title="Grid" url="Windows10.Controls.LayoutControl.GridDemo" />
+    <node title="VariableSizedWrapGrid" url="Windows10.Controls.LayoutControl.VariableSizedWrapGridDemo" />
+    <node title="Border" url="Windows10.Controls.LayoutControl.BorderDemo" />
+    <node title="Viewbox" url="Windows10.Controls.LayoutControl.ViewboxDemo" />
+    <node title="SplitView" url="Windows10.Controls.LayoutControl.SplitViewDemo" />
+  </node>
+  <node title="导航类控件">
+    <node title="AppBar" url="Windows10.Controls.NavigationControl.AppBarDemo" />
+    <node title="CommandBar" url="Windows10.Controls.NavigationControl.CommandBarDemo" />
+    <node title="Frame" url="Windows10.Controls.NavigationControl.FrameDemo" />
+  </node>
+  <node title="日期类控件">
+    <node title="CalendarView" url="Windows10.Controls.DateControl.CalendarViewDemo" />
+    <node title="DatePicker" url="Windows10.Controls.DateControl.DatePickerDemo" />
+    <node title="TimePicker" url="Windows10.Controls.DateControl.TimePickerDemo" />
+  </node>
+  <node title="图标类控件">
+    <node title="IconElement(基类)" url="Windows10.Controls.IconControl.IconElementDemo" />
+    <node title="SymbolIcon" url="Windows10.Controls.IconControl.SymbolIconDemo" />
+    <node title="FontIcon" url="Windows10.Controls.IconControl.FontIconDemo" />
+    <node title="PathIcon" url="Windows10.Controls.IconControl.PathIconDemo" />
+    <node title="BitmapIcon" url="Windows10.Controls.IconControl.BitmapIconDemo" />
+  </node>
+  <node title="ScrollViewer">
+    <node title="ScrollViewer" url="Windows10.Controls.ScrollViewerDemo.ScrollViewerDemo" />
+    <node title="ScrollBar" url="Windows10.Controls.ScrollViewerDemo.ScrollBarDemo" />
+    <node title="ScrollContentPresenter" url="Windows10.Controls.ScrollViewerDemo.ScrollContentPresenterDemo" />
+    <node title="Chaining - 锁链" url="Windows10.Controls.ScrollViewerDemo.Chaining" />
+    <node title="Rail - 轨道" url="Windows10.Controls.ScrollViewerDemo.Rail" />
+    <node title="Inertia - 惯性" url="Windows10.Controls.ScrollViewerDemo.Inertia" />
+    <node title="Snap - 对齐" url="Windows10.Controls.ScrollViewerDemo.Snap" />
+    <node title="Zoom - 缩放" url="Windows10.Controls.ScrollViewerDemo.Zoom" />
+  </node>
+  <node title="集合类控件 - FlipView, Pivot, Hub">
+    <node title="FlipView" url="Windows10.Controls.CollectionControl.FlipViewDemo" />
+    <node title="Pivot" url="Windows10.Controls.CollectionControl.PivotDemo" />
+    <node title="Hub" url="Windows10.Controls.CollectionControl.HubDemo" />
+  </node>
+  <node title="集合类控件 - ItemsControl">
+    <node title="基础知识" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo1" />
+    <node title="数据绑定" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo2" />
+    <node title="ItemsPresenter" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsPresenterDemo" />
+    <node title="GridViewItemPresenter, ListViewItemPresenter" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemPresenterDemo" />
+    <node title="项模板选择器" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo3" />
+    <node title="数据分组" url="Windows10.Controls.CollectionControl.ItemsControlDemo.ItemsControlDemo4" />
+    <node title="自定义 ItemsControl（自定义 GirdView 使其每个 item 占用不同大小的空间）" url="Windows10.Controls.CollectionControl.ItemsControlDemo.MyItemsControlDemo" />
+    <node title="自定义 ContentPresenter 实现类似 GridViewItemPresenter 和 ListViewItemPresenter 的效果" url="Windows10.Controls.CollectionControl.ItemsControlDemo.MyItemPresenterDemo" />
+  </node>
+  <node title="集合类控件 - ItemsControl 的布局控件">
+    <node title="ItemsStackPanel" url="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.ItemsStackPanelDemo" />
+    <node title="ItemsWrapGrid" url="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.ItemsWrapGridDemo" />
+    <node title="OrientedVirtualizingPanel(基类)" url="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.OrientedVirtualizingPanelDemo" />
+    <node title="VirtualizingStackPanel" url="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.VirtualizingStackPanelDemo" />
+    <node title="WrapGrid" url="Windows10.Controls.CollectionControl.ItemsControlDemo.LayoutControl.WrapGridDemo" />
+  </node>
+  <node title="集合类控件 - SemanticZoom">
+    <node title="SemanticZoom" url="Windows10.Controls.CollectionControl.SemanticZoomDemo.SemanticZoomDemo" />
+    <node title="ISemanticZoomInformation" url="Windows10.Controls.CollectionControl.SemanticZoomDemo.ISemanticZoomInformationDemo" />
+  </node>
+  <node title="集合类控件 - ListViewBase">
+    <node title="基础知识" url="Windows10.Controls.CollectionControl.ListViewBaseDemo.ListViewBaseDemo1" />
+    <node title="拖动项" url="Windows10.Controls.CollectionControl.ListViewBaseDemo.ListViewBaseDemo2" />
+    <node title="增量加载" url="Windows10.Controls.CollectionControl.ListViewBaseDemo.ListViewBaseDemo3" />
+    <node title="分步绘制（大数据量流畅滚动）" url="Windows10.Controls.CollectionControl.ListViewBaseDemo.ListViewBaseDemo4" />
+    <node title="ListView" url="Windows10.Controls.CollectionControl.ListViewDemo" />
+    <node title="GridView" url="Windows10.Controls.CollectionControl.GridViewDemo" />
+  </node>
+  <node title="媒体类控件">
+    <node title="Image(1)" url="Windows10.Controls.MediaControl.ImageDemo1" />
+    <node title="Image(2)" url="Windows10.Controls.MediaControl.ImageDemo2" />
+    <node title="MediaElement" url="Windows10.Controls.MediaControl.MediaElementDemo" />
+    <node title="通过处理 Pointer 相关事件实现一个简单的涂鸦板" url="Windows10.Controls.MediaControl.InkSimple" />
+    <node title="InkCanvas 基础知识" url="Windows10.Controls.MediaControl.InkCanvasDemo1" />
+    <node title="InkCanvas 涂鸦编辑" url="Windows10.Controls.MediaControl.InkCanvasDemo2" />
+    <node title="InkCanvas 保存和加载" url="Windows10.Controls.MediaControl.InkCanvasDemo3" />
+    <node title="InkCanvas 手写识别" url="Windows10.Controls.MediaControl.InkCanvasDemo4" />
+  </node>
+  <node title="WebView">
+    <node title="基础知识" url="Windows10.Controls.WebViewDemo.WebViewDemo1" />
+    <node title="加载 html, http, https, ms-appx-web:///, embedded resource, ms-appdata:///, ms-local-stream://" url="Windows10.Controls.WebViewDemo.WebViewDemo2" />
+    <node title="加载指定 HttpMethod 的请求，自定义请求的 http header" url="Windows10.Controls.WebViewDemo.WebViewDemo3" />
+    <node title="app 与 js 的交互" url="Windows10.Controls.WebViewDemo.WebViewDemo4" />
+    <node title="对 WebView 中的内容截图" url="Windows10.Controls.WebViewDemo.WebViewDemo5" />
+    <node title="通过 Share Contract 分享 WebView 中的被选中的内容" url="Windows10.Controls.WebViewDemo.WebViewDemo6" />
+    <node title="监听页面的进入全屏事件和退出全屏事件，监听导航至不支持 uri 协议的事件，监听导航至不支持类型的文件的事件" url="Windows10.Controls.WebViewDemo.WebViewDemo7" />
+    <node title="监听用新窗口打开 uri 的事件，监听获取特殊权限的事件" url="Windows10.Controls.WebViewDemo.WebViewDemo8" />
+  </node>
+  <node title="控件基类 - DependencyObject">
+    <node title="CoreDispatcher" url="Windows10.Controls.BaseControl.DependencyObjectDemo.CoreDispatcherDemo" />
+    <node title="依赖属性的设置与获取" url="Windows10.Controls.BaseControl.DependencyObjectDemo.DependencyPropertyDemo" />
+    <node title="依赖属性的变化回调" url="Windows10.Controls.BaseControl.DependencyObjectDemo.RegisterPropertyChangedCallbackDemo" />
+  </node>
+  <node title="控件基类 - UIElement">
+    <node title="Pointer 相关事件" url="Windows10.Controls.BaseControl.UIElementDemo.PointerDemo" />
+    <node title="Tap 相关事件" url="Windows10.Controls.BaseControl.UIElementDemo.TapDemo" />
+    <node title="Key 相关事件" url="Windows10.Controls.BaseControl.UIElementDemo.KeyDemo" />
+    <node title="Focus 相关事件" url="Windows10.Controls.BaseControl.UIElementDemo.FocusDemo" />
+    <node title="Manipulate 手势处理" url="Windows10.Controls.BaseControl.UIElementDemo.ManipulateDemo" />
+    <node title="路由事件的注册，路由事件的冒泡，命中测试的可见性" url="Windows10.Controls.BaseControl.UIElementDemo.EventDemo" />
+    <node title="Transform3D（3D变换）" url="Windows10.Controls.BaseControl.UIElementDemo.Transform3DDemo" />
+    <node title="Projection（3D投影）" url="Windows10.Controls.BaseControl.UIElementDemo.ProjectionDemo" />
+    <node title="RenderTransform（2D变换）" url="Windows10.Controls.BaseControl.UIElementDemo.RenderTransformDemo" />
+    <node title="Clip（剪裁）" url="Windows10.Controls.BaseControl.UIElementDemo.ClipDemo" />
+    <node title="获取 UIElement 的位置" url="Windows10.Controls.BaseControl.UIElementDemo.TransformToVisualDemo" />
+    <node title="UIElement 的布局相关（Measure, Arrange）" url="Windows10.Controls.BaseControl.UIElementDemo.LayoutDemo" />
+    <node title="UIElement 的非完整像素布局（UseLayoutRounding）" url="Windows10.Controls.BaseControl.UIElementDemo.UseLayoutRoundingDemo" />
+    <node title="UIElement 的其他特性（Visibility, Opacity, CacheMode）" url="Windows10.Controls.BaseControl.UIElementDemo.OthersDemo" />
+    <node title="拖放的基本应用" url="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo1" />
+    <node title="手动开启 UIElement 的拖放操作" url="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo2" />
+    <node title="与 CanDrag 相关的事件（DragStartingEventArgs, DropCompletedEventArgs）" url="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo3" />
+    <node title="与 AllowDrop 相关的事件（DragEventArgs）" url="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo4" />
+  </node>
+  <node title="控件基类 - FrameworkElement">
+    <node title="基础知识" url="Windows10.Controls.BaseControl.FrameworkElementDemo.Demo1" />
+    <node title="相关事件" url="Windows10.Controls.BaseControl.FrameworkElementDemo.Demo2" />
+    <node title="HorizontalAlignment 和 VerticalAlignment" url="Windows10.Controls.BaseControl.FrameworkElementDemo.Demo3" />
+  </node>
+  <node title="控件基类 - Control">
+    <node title="基础知识" url="Windows10.Controls.BaseControl.ControlDemo.Demo1" />
+    <node title="焦点相关" url="Windows10.Controls.BaseControl.ControlDemo.Demo2" />
+    <node title="运行时获取 ControlTemplate 和 DataTemplate 中的元素" url="Windows10.Controls.BaseControl.ControlDemo.Demo3" />
+  </node>
+  <node title="控件基类 - ContentControl, UserControl, Page">
+    <node title="ContentPresenter" url="Windows10.Controls.BaseControl.ContentControlDemo.ContentPresenterDemo" />
+    <node title="ContentControl" url="Windows10.Controls.BaseControl.ContentControlDemo.ContentControlDemo" />
+    <node title="UserControl" url="Windows10.Controls.BaseControl.UserControlDemo.UserControlDemo" />
+    <node title="Page" url="Windows10.Controls.BaseControl.PageDemo.PageDemo" />
+  </node>
+  <node title="自定义控件">
+    <node title="自定义控件的基础知识，依赖属性和附加属性" url="Windows10.Controls.CustomControl.Demo1" />
+    <node title="自定义控件的 Layout 系统" url="Windows10.Controls.CustomControl.Demo2" />
+    <node title="自定义控件的控件模板和事件处理的相关知识点" url="Windows10.Controls.CustomControl.Demo3" />
+  </node>
+  <node title="本地化和全球化">
+    <node title="本地化 - Demo" url="Windows10.Localization.LocalizationDemo" />
+    <node title="本地化 - 改变语言" url="Windows10.Localization.Language" />
+    <node title="全球化 - Demo" url="Windows10.Localization.GlobalizationDemo" />
+    <node title="全球化 - 格式化数字" url="Windows10.Localization.NumberFormatting" />
+  </node>
+  <node title="用户和账号">
+    <node title="获取用户的信息" url="Windows10.UserAndAccount.UserInfo" />
+    <node title="获取用户的同意" url="Windows10.UserAndAccount.UserVerifier" />
+    <node title="数据账号的添加和管理" url="Windows10.UserAndAccount.DataAccount" />
+    <node title="OAuth 2.0 验证" url="Windows10.UserAndAccount.OAuth20" />
+    <node title="微软账号的登录和注销" url="Windows10.UserAndAccount.MicrosoftAccount" />
+  </node>
+  <node title="文件系统">
+    <node title="获取文件夹和文件" url="Windows10.FileSystem.FolderFileAccess" />
+    <node title="分组文件夹，排序过滤文件夹和文件，搜索文件" url="Windows10.FileSystem.FolderFileQuery" />
+    <node title="获取文件夹的属性" url="Windows10.FileSystem.FolderProperties" />
+    <node title="获取文件夹的缩略图" url="Windows10.FileSystem.FolderThumbnail" />
+    <node title="获取文件的属性，修改文件的属性" url="Windows10.FileSystem.FileProperties" />
+    <node title="获取文件的缩略图" url="Windows10.FileSystem.FileThumbnail" />
+    <node title="创建文件夹，重命名文件夹，删除文件夹，在指定的文件夹中创建文件" url="Windows10.FileSystem.FolderOperation" />
+    <node title="创建文件，复制文件，移动文件，重命名文件，删除文件" url="Windows10.FileSystem.FileOperation" />
+    <node title="打开文件，获取指定的本地 uri 的文件，通过 StreamedFileDataRequest 或远程 uri 创建文件或替换文件" url="Windows10.FileSystem.FileOperation2" />
+    <node title="读写文本数据" url="Windows10.FileSystem.ReadWriteText" />
+    <node title="读写二进制数据" url="Windows10.FileSystem.ReadWriteBinary" />
+    <node title="读写流数据" url="Windows10.FileSystem.ReadWriteStream" />
+    <node title="获取 Package 中的文件" url="Windows10.FileSystem.PackageData.Demo" />
+    <node title="可移动存储中的文件操作" url="Windows10.FileSystem.RemovableDevice.Demo" />
+    <node title="“库”管理" url="Windows10.FileSystem.StorageLibrary.StorageLibraryDemo" />
+    <node title="Application Data 中的文件操作" url="Windows10.FileSystem.AppData.FileDemo" />
+    <node title="Application Data 中的“设置”操作" url="Windows10.FileSystem.AppData.SettingsDemo" />
+    <node title="通过 uri 引用 Application Data 中的媒体" url="Windows10.FileSystem.AppData.MediaReference" />
+    <node title="读写“最近访问列表”和“未来访问列表”" url="Windows10.FileSystem.Token.TokenDemo" />
+    <node title="管理以及使用索引" url="Windows10.FileSystem.Indexer.IndexerDemo" />
+  </node>
+  <node title="Picker（选取器）">
+    <node title="FileOpenPicker（文件选取窗口）" url="Windows10.Picker.FileOpenPickerDemo" />
+    <node title="FolderPicker（文件夹选取窗口）" url="Windows10.Picker.FolderPickerDemo" />
+    <node title="FileSavePicker（文件保存窗口）" url="Windows10.Picker.FileSavePickerDemo" />
+    <node title="自定义文件打开选取器" url="Windows10.Picker.MyOpenPickerDemo" />
+    <node title="自定义文件保存选取器" url="Windows10.Picker.MySavePickerDemo" />
+    <node title="ContactPicker（联系人选取窗口）" url="Windows10.Picker.ContactPickerDemo" />
+    <node title="通过 ContactPicker 选取联系人，并获取其完整信息" url="Windows10.Picker.ContactPicker2" />
+    <node title="CachedFileUpdater（缓存文件更新程序）" url="Windows10.Picker.CachedFileUpdaterDemo" />
+  </node>
+  <node title="关联启动">
+    <node title="使用外部程序打开一个文件" url="Windows10.AssociationLaunching.LaunchFile" />
+    <node title="使用外部程序打开一个 Uri" url="Windows10.AssociationLaunching.LaunchUri" />
+    <node title="关联指定的文件类型" url="Windows10.AssociationLaunching.FileTypeAssociation" />
+    <node title="关联指定的协议" url="Windows10.AssociationLaunching.ProtocolAssociation" />
+  </node>
+  <node title="应用间通信">
+    <node title="分享" url="Windows10.App2AppCommunication.ShareSource" />
+    <node title="通过协议打开指定的 app 并传递数据以及获取返回数据" url="Windows10.App2AppCommunication.LaunchUriForResults" />
+    <node title="将本 app 沙盒内的文件共享给其他 app 使用" url="Windows10.App2AppCommunication.SharedStorage" />
+    <node title="剪切板 - 基础, 复制/粘贴 text 内容" url="Windows10.App2AppCommunication.Clipboard" />
+    <node title="剪切板 - 复制/粘贴 html 内容" url="Windows10.App2AppCommunication.ClipboardCopyHtml" />
+    <node title="剪切板 - 复制/粘贴 bitmap 内容，延迟复制" url="Windows10.App2AppCommunication.ClipboardCopyImage" />
+    <node title="剪切板 - 复制/粘贴文件" url="Windows10.App2AppCommunication.ClipboardCopyFile" />
+  </node>
+  <node title="通知（Toast）">
+    <node title="基础" url="Windows10.Notification.Toast.Basic" />
+    <node title="按计划显示 toast 通知" url="Windows10.Notification.Toast.Schedule" />
+    <node title="纯文本 toast, 短时 toast, 长时 toast" url="Windows10.Notification.Toast.Text" />
+    <node title="图文 toast" url="Windows10.Notification.Toast.TextAndImage" />
+    <node title="带按钮的 toast" url="Windows10.Notification.Toast.ActionButton" />
+    <node title="带输入的 toast（文本输入框，下拉选择框）" url="Windows10.Notification.Toast.ActionInput" />
+    <node title="通过 toast 打开协议" url="Windows10.Notification.Toast.LaunchProtocol" />
+    <node title="通过 toast 选择在指定的时间之后延迟提醒或者取消延迟提醒" url="Windows10.Notification.Toast.SnoozeAndDismiss" />
+    <node title="提示音" url="Windows10.Notification.Toast.Audio" />
+    <node title="特定场景" url="Windows10.Notification.Toast.Scenario" />
+  </node>
+  <node title="通知（Tile）">
+    <node title="application tile 基础" url="Windows10.Notification.Tile.ApplicationTileBasic" />
+    <node title="secondary tile 基础" url="Windows10.Notification.Tile.SecondaryTileBasic" />
+    <node title="按计划显示 tile 通知" url="Windows10.Notification.Tile.Schedule" />
+    <node title="轮询服务端以更新 tile 通知" url="Windows10.Notification.Tile.Periodic" />
+    <node title="secondary tile 模板之基础" url="Windows10.Notification.Tile.TemplateBasic" />
+    <node title="secondary tile 模板之文本" url="Windows10.Notification.Tile.TemplateText" />
+    <node title="secondary tile 模板之图片" url="Windows10.Notification.Tile.TemplateImage" />
+    <node title="secondary tile 模板之分组" url="Windows10.Notification.Tile.TemplateGroup" />
+  </node>
+  <node title="通知（Badge）">
+    <node title="application 的 badge 通知" url="Windows10.Notification.Badge.ApplicationBadge" />
+    <node title="secondary 的 badge 通知" url="Windows10.Notification.Badge.SecondaryTileBadge" />
+    <node title="轮询服务端以更新 badge 通知" url="Windows10.Notification.Badge.Periodic" />
+  </node>
+  <node title="锁屏">
+    <node title="将 Application 的 Badge 通知和 Tile 通知发送到锁屏" url="Windows10.LockScreen.ApplicationNotification" />
+    <node title="将 secondary tile 的 Badge 通知和 Tile 通知发送到锁屏" url="Windows10.LockScreen.SecondaryTileNotification" />
+  </node>
+  <node title="后台任务">
+    <node title="后台任务的 Demo（与 app 不同进程）" url="Windows10.BackgroundTask.Demo" />
+    <node title="后台任务的 Demo（与 app 相同进程）" url="Windows10.BackgroundTask.DemoInProcess" />
+    <node title="通过 toast 激活后台任务" url="Windows10.BackgroundTask.Toast" />
+    <node title="定时激活后台任务" url="Windows10.BackgroundTask.Time" />
+    <node title="前台程序激活后台任务" url="Windows10.BackgroundTask.Fore" />
+    <node title="后台下载任务" url="Windows10.BackgroundTask.TransferDownload" />
+    <node title="后台下载任务（任务分组，并行或串行执行，组完成后通知）" url="Windows10.BackgroundTask.TransferGroup" />
+    <node title="后台下载任务（任务分组，组完成后触发后台任务）" url="Windows10.BackgroundTask.TransferBackground" />
+    <node title="后台上传任务" url="Windows10.BackgroundTask.TransferUpload" />
+    <node title="推送通知" url="Windows10.BackgroundTask.PushNotification" />
+  </node>
+  <node title="信息">
+    <node title="ProfileInfo" url="Windows10.Information.ProfileInfo" />
+  </node>
+  <node title="工具">
+    <node title="查找指定类或接口的所在程序集的所有子类和子接口" url="Windows10.Tools.FindSubClass" />
+  </node>
+</root>

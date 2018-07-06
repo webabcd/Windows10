@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Windows10.Bind.DataContextChanged"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button x:Name="btnChange" Content="改变 listBox 的数据上下文" Click="btnChange_Click" Margin="5" />
+
+            <ListBox x:Name="listBox" ItemsSource="{Binding}" DataContextChanged="listBox_DataContextChanged" Background="Orange" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

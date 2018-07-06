@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Windows10.Controls.CustomControl.Demo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CustomControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:myControls="using:MyControls">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                演示自定义控件的基础知识，依赖属性和附加属性
+                本例所用到的自定义控件请参看：MyControls/MyControl1.cs
+            -->
+            
+            <!--
+                依赖属性和附加属性可以用于绑定
+            -->
+            <myControls:MyControl1 x:Name="control1" Background="Blue" BorderBrush="Yellow" BorderThickness="1" Width="200" HorizontalAlignment="Left" Margin="5"
+                                   Title="{Binding Value, ElementName=slider}"
+                                   myControls:MyAttachedProperty.SubTitle="{Binding Value, ElementName=slider}">
+            </myControls:MyControl1>
+            <Slider Name="slider" Width="200" Minimum="0" Maximum="200" IsThumbToolTipEnabled="False" HorizontalAlignment="Left" Margin="5" Foreground="Orange" Background="White" Style="{StaticResource MySliderStyle}" />
+
+
+            <!--
+                依赖属性和附加属性可以用于 Storyboard 动画
+                但是无法通过 Storyboard 对自定义附加属性做动画，在文档中找到了这样一句话“However, an existing limitation of the Windows Runtime XAML implementation is that you cannot animate a custom attached property.”
+            -->
+            <myControls:MyControl1 x:Name="control2" Background="Blue" BorderBrush="Yellow" BorderThickness="1" Width="200" HorizontalAlignment="Left" Margin="5">
+                <myControls:MyControl1.Resources>
+                    <BeginStoryboard x:Name="storyboard1">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="control2" Storyboard.TargetProperty="Title" Duration="0:0:10" RepeatBehavior="Forever">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="w" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="we" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="web" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:4" Value="weba" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:5" Value="webab" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:6" Value="webabc" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:7" Value="webabcd" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </myControls:MyControl1.Resources>
+            </myControls:MyControl1>
+
+            <!--
+                在 code-behind 中设置依赖属性和附加属性
+            -->
+            <myControls:MyControl1 x:Name="control3" Background="Blue" BorderBrush="Yellow" BorderThickness="1" Width="200" HorizontalAlignment="Left" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

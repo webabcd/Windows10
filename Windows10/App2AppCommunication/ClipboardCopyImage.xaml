@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Windows10.App2AppCommunication.ClipboardCopyImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.App2AppCommunication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+            <Image Name="imgBitmap" Stretch="None" HorizontalAlignment="Left" Margin="5" />
+
+            <Button Name="btnCopyImage" Content="复制图片内容到剪切板" Click="btnCopyImage_Click" Margin="5" />
+
+            <Button Name="btnCopyImageWithDeferral" Content="复制数据提供器到剪切板，当“粘贴”操作被触发时由数据提供器生成用于粘贴的图片数据" Click="btnCopyImageWithDeferral_Click" Margin="5" />
+
+            <Button Name="btnPasteImage" Content="粘贴剪切板中的图片内容" Click="btnPasteImage_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

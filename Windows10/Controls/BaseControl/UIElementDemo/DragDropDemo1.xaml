@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.UIElementDemo.DragDropDemo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.UIElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="5">
+
+            <!--
+                用于演示如何 drag 一个元素，并传递文本数据
+            -->
+            <Grid Name="dragGrid1" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid1_DragStarting" 
+                  DropCompleted="dragGrid1_DropCompleted">
+                <TextBlock Name="sourceTextBlock" Text="i am webabcd" Margin="20" />
+            </Grid>
+
+            <!--
+                用于演示如何 drag 一个元素，并传递图片数据
+            -->
+            <Grid Name="dragGrid2" Background="Orange" Margin="5"
+                  CanDrag="True"  
+                  DragStarting="dragGrid2_DragStarting" 
+                  DropCompleted="dragGrid2_DropCompleted">
+                <Image Name="sourceImage" Source="/Assets/hololens.jpg" Width="50" Height="50" Margin="20" />
+            </Grid>
+
+            <!--
+                用于演示如何将一个可 drag 的元素 drop 到此，并获取传递过来的数据
+            -->
+            <Grid Name="dropGrid" Background="Blue" Margin="5"
+                  AllowDrop="True"
+                  Drop="dropGrid_Drop"
+                  DragEnter="dropGrid_DragEnter"
+                  DragOver="dropGrid_DragOver"
+                  DragLeave="dropGrid_DragLeave">
+                <Image Name="targetImage" Width="400" Height="300" Margin="20" />
+                <TextBlock Name="targetTextBlock" TextWrapping="Wrap" MinHeight="300" Margin="20" />
+            </Grid>
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

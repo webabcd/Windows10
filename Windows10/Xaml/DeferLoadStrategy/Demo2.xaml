@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.Xaml.DeferLoadStrategy.Demo2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Xaml.DeferLoadStrategy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBox Name="textBox1" Margin="5" />
+            
+            <!--延迟加载元素-->
+            <TextBox Name="textBox2" x:DeferLoadStrategy="Lazy" Text="我是 TextBox" Margin="5" />
+
+            <!--将 textBox2 与 textBox1 绑定后，textBox2 就会被加载-->
+            <Button Name="button" Content="将 textBox1 的 Text 绑定到 textBox2 的 Text" Click="button_Click" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

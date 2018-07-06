@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Windows10.Controls.UI.FontInherit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    FontSize="100">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                本例演示字体的自动继承的特性
+                Font 相关的设置来自 Windows.UI.Xaml.Controls.Control
+            -->
+
+            <!--
+                继承了 Page 的关于 Font 的设置
+            -->
+            <TextBlock Text="FontSize = 100" />
+
+            <UserControl FontSize="50">
+                <!--
+                    继承了 UserControl 的关于 Font 的设置
+                -->
+                <TextBlock Text="FontSize = 50" />
+            </UserControl>
+
+        </StackPanel>
+    </Grid>
+</Page>

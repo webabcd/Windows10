@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="Windows10.Bind.TemplateBindingDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                演示 TemplateBinding 的用法
+                TemplateBinding 是一个简单版的 Binding，用于在 ControlTemplate 中做属性之间的绑定（如果需要 Binding 的其他特性该怎么做呢？参见 BindingRelativeSource.xaml）
+            -->
+
+            <StackPanel.Resources>
+                <Style x:Key="ButtonStyle" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <StackPanel>
+                                    <!--
+                                        ContentPresenter 的 Width 绑定 Button 的 Width
+                                        ContentPresenter 的 Height 绑定 Button 的 Width
+                                    -->
+                                    <ContentPresenter HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Background="Orange"
+                                                      Width="{TemplateBinding Width}" Height="{TemplateBinding Width}" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Content="我是 Button" Width="128" Style="{StaticResource ButtonStyle}" />
+
+        </StackPanel>
+    </Grid>
+</Page>

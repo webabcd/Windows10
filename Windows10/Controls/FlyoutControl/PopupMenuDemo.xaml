@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.PopupMenuDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <TextBlock Name="lblDemo" Margin="5">
+                鼠标右键我或触摸 press-and-hold 我，以弹出 PopupMenu
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</Page>

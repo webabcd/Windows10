@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ItemsControlDemo.MyItemPresenterDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.ItemsControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="MyGridViewItemPresenterTemplate" TargetType="GridViewItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewItem">
+                        <!--
+                            自定义 ContentPresenter 实现类似 GridViewItemPresenter 和 ListViewItemPresenter 的效果
+                        -->
+                        <local:MyItemPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <GridView x:Name="gridView" SelectionMode="Single" Margin="10 0 10 10" 
+                  ItemContainerStyle="{StaticResource MyGridViewItemPresenterTemplate}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="100" Width="100" Background="Blue">
+                        <TextBlock x:Name="lblName" Text="{Binding Name}" Foreground="Yellow" />
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>

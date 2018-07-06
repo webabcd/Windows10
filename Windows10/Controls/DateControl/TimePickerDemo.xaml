@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Windows10.Controls.DateControl.TimePickerDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.DateControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <!--
+                TimePicker - 时间选择控件
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                    TimeChanged - 选中的时间发生变化时触发的事件
+            -->
+            <TimePicker Name="timePicker1" Header="Time" TimeChanged="timePicker1_TimeChanged" Margin="5" />
+
+            <TimePicker Name="timePicker2" Header="Time" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

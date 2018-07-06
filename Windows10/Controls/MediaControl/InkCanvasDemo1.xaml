@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Windows10.Controls.MediaControl.InkCanvasDemo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.MediaControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <Border Background="White" Width="480" Height="320" Margin="5" HorizontalAlignment="Left">
+                <!--
+                    InkCanvas - 涂鸦板控件
+                -->
+                <InkCanvas Name="inkCanvas" />
+            </Border>
+
+            <ComboBox Name="drawingColor" Header="Color" SelectedIndex="0" SelectionChanged="UpdateDefaultDrawingAttributes_Handler" Margin="5">
+                <x:String>Red</x:String>
+                <x:String>Green</x:String>
+                <x:String>Blue</x:String>
+            </ComboBox>
+            <Slider Name="drawingSize" Foreground="Orange" Background="Red" Style="{StaticResource MySliderStyle}" Header="Size" Minimum="1" Maximum="20" Value="5" ValueChanged="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <CheckBox Name="drawingDrawAsHighlighter" Content="DrawAsHighlighter" IsChecked="False" Checked="UpdateDefaultDrawingAttributes_Handler" Unchecked="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <CheckBox Name="drawingFitToCurve" Content="FitToCurve" IsChecked="True" Checked="UpdateDefaultDrawingAttributes_Handler" Unchecked="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <ToggleSwitch Name="drawingPenTip" Style="{StaticResource MyToggleSwitchStyle}" OnContent="PenTipShape.Circle" OffContent="PenTipShape.Rectangle" IsOn="True" Toggled="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <CheckBox Name="drawingPenTipTransform" Content="通过 PenTipTransform 转换 PenTip 来实现笔尖形状的自定义" IsChecked="False" Checked="UpdateDefaultDrawingAttributes_Handler" Unchecked="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <CheckBox Name="chkErasing" Content="将输入指定为擦除模式" IsChecked="False" Checked="UpdateDefaultDrawingAttributes_Handler" Unchecked="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <CheckBox Name="chkIsInputEnabled" Content="IsInputEnabled" IsChecked="True" Checked="UpdateDefaultDrawingAttributes_Handler" Unchecked="UpdateDefaultDrawingAttributes_Handler" Margin="5" />
+            <Button Name="buttonClear" Content="全部清除"  Click="buttonClear_Click" />
+
+        </StackPanel>
+    </Grid>
+</Page>

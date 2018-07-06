@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Windows10.Bind.BindDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:common="using:Windows10.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                关于 x:Bind 的相关说明：
+                1、Binding 是在运行时（RunTime）绑定；而 x:Bind 是在编译时（BuildTime）绑定（其会在编译时自动生成一些辅助代码，参见对应的 g.cs 代码），所以 x:Bind 的效率要高
+                2、x:Bind 是强类型绑定，类型必须比配；Binding 在绑定时如果类型不必配，会做自动转换
+                3、x:Bind 只具有 Binding 的一部分功能，如下: Path, Mode. FallbackValue, TargetNullValue, Converter, ConverterParameter, ConverterLanguage
+                4、x:Bind 的 Mode 的默认值是 OneTime；Binding 的 Mode 的默认值是 OneWay
+                5、x:Bind 的数据上下文是其所属的 Page 或 UserControl, 不能为 x:Bind 指定其他的数据上下文
+                6、x:Bind 在 DataTemplate 中使用时，必须指定 DataTemplate 的 DataType；而 Binding 则不必
+                7、x:Bind 只能在 xaml 中使用，无法在 CodeBehind 中使用
+                8、x:Bind 支持事件绑定到方法
+                9、仔细看看上面的说明，x:Bind 与 Binding 的大部分不同的本质原因是，他们一个是编译时绑定，一个是运行时绑定
+            -->
+            
+            <!--绑定到属性-->
+            <TextBlock Name="textBlock" Text="{x:Bind Path=CurrentEmployee.Name, Mode=OneWay}" Margin="5" />
+
+            <!--事件绑定到方法，无参数-->
+            <Button Content="修改 CurrentEmployee 的 MyName" Click="{x:Bind EventBindNoArgs}" Margin="5" />
+
+            <!--事件绑定到方法，参数与对应的事件的参数相同-->
+            <Button Content="修改 CurrentEmployee 的 MyName" Click="{x:Bind EventBindRegularArgs}" Margin="5" />
+
+            <!--事件绑定到方法，参数与对应的事件的参数相同，但是其中的事件参数为 object 类型-->
+            <Button Content="修改 CurrentEmployee 的 MyName" Click="{x:Bind EventBindBaseArgs}" Margin="5" />
+
+            <!--事件绑定到方法，也可以绑定到指定对象中的指定方法-->
+            <Button Content="修改 CurrentEmployee 的 MyName" Click="{x:Bind CurrentEmployee.ChangeName}" Margin="5" />
+
+            <!--在 DataTemplate 中使用 x:Bind 的注意事项：必须要指定 DataTemplate 的 DataType-->
+            <ListView x:Name="listView" ItemsSource="{x:Bind AllEmployees}" Margin="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <TextBlock Text="{x:Bind Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--可以与索引器绑定-->
+            <TextBlock Name="textBlock2" Text="{x:Bind Path=AllEmployees[0].Name, Mode=OneWay}" Margin="5" />
+
+            <!--可以与 Element 绑定-->
+            <TextBlock Name="textBlock3" Text="{x:Bind textBlock2.Text, Mode=OneWay}" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

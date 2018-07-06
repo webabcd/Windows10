@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Windows10.FileSystem.FolderFileQuery"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.FileSystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnFolderGroup" Content="分组文件夹" Click="btnFolderGroup_Click" Margin="5" />
+
+            <Button Name="btnFolderFileOrderFilter" Content="排序过滤文件夹和文件" Click="btnFolderFileOrderFilter_Click" Margin="5" />
+
+            <Button Name="btnFileSearch" Content="搜索文件" Click="btnFileSearch_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

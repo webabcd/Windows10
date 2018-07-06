@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Windows10.Controls.SelectionControl.ToggleSwitchDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.SelectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+            
+            <!--
+                ToggleSwitch - 状态切换控件
+                    Header - 可以设置一个纯文本，不能命中测试，空 Header 的话不会占用任何空间
+                    HeaderTemplate - 可以将 Header 设置为任何 xaml，且支持命中测试
+                    OffContent, OffContentTemplate - 关闭状态时的显示内容
+                    OnContent, OnContentTemplate - 打开状态时的显示内容
+                    IsOn - 是否是 On 的状态
+                    Toggled - “打开/关闭”状态改变后触发的事件
+            -->
+            
+            <ToggleSwitch Name="toggleSwitch1" Margin="5" Header="wifi1" OnContent="OnContent" OffContent="OffContent" IsOn="True"
+                          Toggled="toggleSwitch1_Toggled" 
+                          Style="{StaticResource MyToggleSwitchStyle}" />
+
+            <ToggleSwitch Name="toggleSwitch2" Margin="5" IsOn="True" Style="{StaticResource MyToggleSwitchStyle}">
+                <ToggleSwitch.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="wifi2" Foreground="Yellow" />
+                    </DataTemplate>
+                </ToggleSwitch.HeaderTemplate>
+                <ToggleSwitch.OnContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="OnContent" Foreground="Orange" />
+                    </DataTemplate>
+                </ToggleSwitch.OnContentTemplate>
+                <ToggleSwitch.OffContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="OffContent" Foreground="Blue" />
+                    </DataTemplate>
+                </ToggleSwitch.OffContentTemplate>
+            </ToggleSwitch>
+
+        </StackPanel>
+    </Grid>
+</Page>

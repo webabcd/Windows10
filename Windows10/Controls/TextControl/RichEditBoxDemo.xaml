@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Windows10.Controls.TextControl.RichEditBoxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.TextControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnBold" Margin="5" Content="加粗" Click="btnBold_Click" />
+                <Button Name="btnItalic" Margin="5" Content="斜体" Click="btnItalic_Click" />
+                <TextBox Name="txtSearch" Margin="5" Width="200" />
+                <Button Name="btnSearch" Margin="5" Content="搜索" Click="btnSearch_Click" />
+            </StackPanel>
+
+            <!--
+                RichEditBox - 富文本编辑器控件
+            -->
+            <RichEditBox x:Name="txtEditor" Width="480" Height="320" HorizontalAlignment="Left" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

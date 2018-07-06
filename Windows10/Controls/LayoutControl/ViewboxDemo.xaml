@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.ViewboxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                Viewbox - 容器控件，用于控制子元素如何拉伸
+                    Child - 容器里的内容（[ContentProperty(Name = "Child")]）
+                    Stretch - 拉伸方式（Windows.UI.Xaml.Media.Stretch 枚举）
+                        Fill - 充满容器，不保留长宽比
+                        None - 不做任何处理，如果内容比容器大，则多出的部分被剪裁
+                        Uniform - 等比缩放到容器（默认值）
+                        UniformToFill - 充满容器，且保留长宽比，多出的部分被剪裁
+            
+                    StretchDirection - 如何决定是否放大或缩小（Windows.UI.Xaml.Controls.StretchDirection 枚举）
+                        UpOnly - 需要的时候执行放大操作，永远不会执行缩小操作
+                        DownOnly - 需要的时候执行缩小操作，永远不会执行放大操作
+                        Both - 需要的时候即可执行放大操作，又可执行缩小操作（默认值）
+            -->
+
+            <Border BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1" Width="100" Height="100" Margin="5">
+                <Viewbox Width="100" Height="100" Stretch="Fill">
+                    <StackPanel>
+                        <TextBlock Text="webabcd" />
+                    </StackPanel>
+                </Viewbox>
+            </Border>
+
+            <Border BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1" Width="100" Height="100" Margin="5">
+                <Viewbox Width="100" Height="100" Stretch="None" >
+                    <StackPanel>
+                        <TextBlock Text="webabcd" />
+                    </StackPanel>
+                </Viewbox>
+            </Border>
+
+            <Border BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1" Width="100" Height="100" Margin="5">
+                <Viewbox Width="100" Height="100" Stretch="Uniform" >
+                    <StackPanel>
+                        <TextBlock Text="webabcd" />
+                    </StackPanel>
+                </Viewbox>
+            </Border>
+
+            <Border BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1" Width="100" Height="100" Margin="5">
+                <Viewbox Width="100" Height="100" Stretch="UniformToFill" >
+                    <StackPanel>
+                        <TextBlock Text="webabcd" />
+                    </StackPanel>
+                </Viewbox>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Page>

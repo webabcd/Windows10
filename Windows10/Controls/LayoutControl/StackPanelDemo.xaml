@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Windows10.Controls.LayoutControl.StackPanelDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.LayoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel HorizontalAlignment="Left" Margin="10 0 10 10">
+
+            <!--
+                StackPanel - 流式布局控件
+                    Orientation - 控件内元素的排列方向
+                        Horizontal - 水平排列
+                        Vertical - 垂直排列
+                    BorderBrush - 边框画笔
+                    BorderThickness - 边框宽度（左 上 右 下）
+                    CornerRadius - 边框的角半径（左上 右上 右下 左下）
+                    Padding - 内容与边框的间距（左 上 右 下）
+            -->
+
+            <StackPanel Background="Orange" Margin="5"
+                        Orientation="Vertical" BorderBrush="Red" BorderThickness="1 2 3 4" CornerRadius="10 20 30 40" Padding="10 20 30 40">
+                <TextBlock Text="abc" Margin="5" />
+                <TextBlock Text="xyz" Margin="5" />
+                <TextBlock Text="123" Margin="5" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

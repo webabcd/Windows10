@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="Windows10.Controls.IconControl.SymbolIconDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.IconControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                SymbolIcon - 符号图标
+                    Symbol - 显示图标的命名常量（枚举值）
+            
+                注：关于 Symbol 枚举的各种值的显示效果请参见 https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.ui.xaml.controls.symbol.aspx 或者本目录下的“Symbol 枚举.mht”文件
+            -->
+            
+            <SymbolIcon Symbol="Accept" HorizontalAlignment="Left" Margin="5" />
+
+            <SymbolIcon Symbol="Find" HorizontalAlignment="Left" Margin="5" />
+
+            <SymbolIcon Symbol="Favorite" HorizontalAlignment="Left" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

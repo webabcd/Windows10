@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="Windows10.Controls.BaseControl.UIElementDemo.RenderTransformDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.BaseControl.UIElementDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid Margin="10 0 10 10">
+
+            <!--
+                RenderTransform - 2D 变换（位移，旋转，缩放，扭曲等）
+            -->
+
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+
+                        <!--RotateTransform - 旋转变换（顺时针）-->
+                        <!--
+                            Angle - 旋转角度。默认值 0
+                            CenterX - 旋转中心点的 X 轴坐标。默认值 0
+                            CenterY - 旋转中心点的 Y 轴坐标。默认值 0
+                        -->
+                        <RotateTransform Angle="15" CenterX="100" CenterY="50" />
+
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <Grid Margin="400 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <!--
+                    RenderTransformOrigin - 位置变换的中心点（这是一个相对值，元素左上角为 0,0，元素右下角为 1,1，支持小于 0 或大于 1 的值）
+                        这个值是 Point 类型，在 xaml 中可以用逗号或空格分隔
+                -->
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <RotateTransform Angle="15" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <Grid Margin="800 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+
+                        <!--TranslateTransform - 平移变换-->
+                        <!--
+                            X - 水平方向上移动的距离。默认值 0
+                            Y - 垂直方向上移动的距离。默认值 0
+                        -->
+                        <TranslateTransform X="100" Y="10" />
+
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <Grid Margin="0 200 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+
+                        <!--ScaleTransform - 缩放变换-->
+                        <!--
+                            ScaleX - X 轴方向上缩放的倍数。默认值 1
+                            ScaleY - Y 轴方向上缩放的倍数。默认值 1
+                            CenterX - 缩放中心点的 X 轴坐标。默认值 0
+                            CenterY - 缩放中心点的 Y 轴坐标。默认值 0
+                        -->
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.3" CenterX="100" CenterY="50" />
+
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <Grid Margin="400 200 0 0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+
+                        <!--SkewTransform - 扭曲变换（典型应用：在 二维 对象中模拟 三维 深度）-->
+                        <!--
+                            CenterX - 扭曲中心点的 X 轴坐标。默认值 0
+                            CenterY - 扭曲中心点的 Y 轴坐标。默认值 0
+                            AngleX - X 轴扭曲角度，Y 轴绕原点旋转（逆时针）。CenterX 对此值所产生的呈现结果没有影响。默认值 0
+                            AngleY - Y 轴扭曲角度，X 轴绕原点旋转（顺时针）。CenterY 对此值所产生的呈现结果没有影响。默认值 0
+                        -->
+                        <SkewTransform AngleX="30" AngleY="5" CenterX="0" CenterY="0" />
+
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <Grid Margin="800 200 0 0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+
+                        <!--TransformGroup - 多个 Transform 组成的复合变换-->
+                        <TransformGroup>
+                            <TranslateTransform X="100" Y="10" />
+                            <RotateTransform Angle="15" CenterX="100" CenterY="50" />
+                        </TransformGroup>
+
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <!--
+                CompositeTransform - 将多种变换方式合而为一
+                    CenterX - 变换中心点的 X 坐标
+                    CenterY - 变换中心点的 Y 坐标
+                    Rotation - 顺时针旋转角度
+                    ScaleX - 沿 X 轴方向上的缩放比例
+                    ScaleY - 沿 Y 轴方向上的缩放比例
+                    SkewX - X 轴扭曲角度
+                    SkewY - Y 轴扭曲角度
+                    TranslateX - 沿 X 轴方向上的平移距离
+                    TranslateY - 沿 Y 轴方向上的平移距离
+            -->
+            <Grid Margin="0 400 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+                        <CompositeTransform SkewX="30" Rotation="60" ScaleX="0.6" ScaleY="0.3" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+            <!--
+                MatrixTransform - 仿射矩阵变换
+            
+                |X|             |M11（默认值 1）      M21（默认值 0）       0|
+                |Y| = |x y 1| * |M12（默认值 0）      M22（默认值 1）       0|
+                |1|             |OffsetX（默认值 0）  OffsetY（默认值 0）   1|
+            
+                X = x * M11 + y * M12 + OffsetX
+                Y = x * M21 + y * M22 + OffsetY
+            
+                利用 MatrixTransform 实现平移、旋转、缩放、扭曲的 Demo 详见 http://www.cnblogs.com/webabcd/archive/2008/11/03/1325150.html
+            -->
+            <Grid Margin="400 400 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Width="200" Height="100" StrokeDashArray="3,1" Stroke="Blue" StrokeThickness="3" />
+                <Rectangle Width="200" Height="100" Fill="Yellow" Stroke="Red" StrokeThickness="3" Opacity="0.3">
+                    <Rectangle.RenderTransform>
+                        <!--
+                            m11, m12, m21, m22, offsetX, offsetY
+                        -->
+                        <MatrixTransform Matrix="1, 0.5, 0, 1, 30, 10" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

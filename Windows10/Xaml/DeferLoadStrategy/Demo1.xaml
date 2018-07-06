@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Windows10.Xaml.DeferLoadStrategy.Demo1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Xaml.DeferLoadStrategy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="5" />
+            
+            <!--
+                x:DeferLoadStrategy="Lazy" - 其仅作用于 UIElement，可以指定一个 UIElement 为一个延迟加载元素
+                1、标记为延迟加载的元素必须要指定其 x:Name
+                2、UIElement 不是在任何情况下都能标记为 x:DeferLoadStrategy="Lazy" 的，不是只有 FindName 才能加载延迟加载元素，具体参见文档：https://msdn.microsoft.com/en-us/windows/uwp/xaml-platform/x-deferloadstrategy-attribute
+                3、将 UIElement 标记为 x:DeferLoadStrategy="Lazy" 的好处是可以减少页面的启动时间，带来的问题是会增加内存的使用量，每个延迟加载元素大约多耗费 600 字节左右的内存
+                4、延迟加载元素在加载后，会触发其 Loading 事件
+            -->
+            <TextBlock Name="textBlock" Margin="5" x:DeferLoadStrategy="Lazy" />
+
+        </StackPanel>
+    </Grid>
+</Page>

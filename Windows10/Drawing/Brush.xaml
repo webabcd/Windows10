@@ -1,0 +1,162 @@
+﻿<Page
+    x:Class="Windows10.Drawing.Brush"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Drawing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" HorizontalAlignment="Left">
+
+            <!--
+                Windows.UI.Xaml.Media.Brush - 画笔
+            -->
+            
+
+            <!--
+                SolidColorBrush - 单色画笔
+                    Color - 颜色
+                        格式如下：
+                        预定义的Color的名称。如：Red, Green, Blue
+                        #RGB。如：#F00
+                        #ARGB（A为Alpha值）。如：#FF00, #F0F0, #F00F
+                        #RGB。如：#FF0000, #00FF00, #0000FF
+                        #ARGB（A为Alpha值）。如：#FFFF0000, #FF00FF00, #FF0000FF
+            -->
+            <Ellipse Margin="10" Width="200" Height="100" Stroke="Yellow" StrokeThickness="3" HorizontalAlignment="Left">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="#88FF0000" />
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+            <!--
+                ImageBrush - 图像画笔
+                    ImageSource - 图片地址
+                    Stretch - 拉伸方式
+                    AlignmentX - 水平方向的对齐方式。Center（默认值）, Left, Right
+                    AlignmentY - 垂直方向的对齐方式。Center（默认值）, Top, Bottom
+            -->
+            <Rectangle Width="100" Height="100" Stroke="Red" StrokeThickness="1" HorizontalAlignment="Left" Margin="0 10 0 0">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Assets/Logo.png" AlignmentX="Right" AlignmentY="Bottom" Stretch="Fill" />
+                </Rectangle.Fill>
+            </Rectangle>
+
+
+            <WebView x:Name="webView" Source="http://webabcd.cnblogs.com" Width="300" Height="100" LoadCompleted="webView_LoadCompleted" HorizontalAlignment="Left" Margin="0 10 0 0" />
+            <!--
+                WebView - 浏览器画笔
+                    SourceName - WebView 指向的 http 地址
+            
+                注：如果需要显示 WebView 的最新结果，需要调用 WebViewBrush.Redraw() 方法
+            -->
+            <Rectangle Width="300" Height="100" Stroke="Red" HorizontalAlignment="Left" Margin="0 10 0 0">
+                <Rectangle.Fill>
+                    <WebViewBrush x:Name="webViewBrush"  SourceName="webView"/>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            
+            <!--
+                演示 LinearGradientBrush 如何使用（注：不支持 RadialGradientBrush）
+            -->
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="0 10 0 0">
+                <Grid>
+                    <Rectangle Width="200" Height="100" HorizontalAlignment="Left">
+                        <Rectangle.Fill>
+                            <!--
+                                LinearGradientBrush - 线性渐变画笔
+                                    StartPoint - 线性渐变的起点。默认渐变方向为对角线方向，默认值为左上角0,0
+                                    EndPoint - 线性渐变的终点。默认渐变方向为对角线方向，默认值为右下角1,1
+                                    GradientStop - 渐变中，过渡点的设置
+                                        Color - 过渡点的颜色
+                                        Offset - 过渡点的位置。相对于渐变线的比值。最小值0.0（默认值），最大值1.0
+                                    ColorInterpolationMode - 插入渐变颜色的方式（System.Windows.Media.ColorInterpolationMode 枚举）
+                                        ScRgbLinearInterpolation - scRGB
+                                        SRgbLinearInterpolation - sRGB。默认值
+                            -->
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" ColorInterpolationMode="SRgbLinearInterpolation">
+                                <GradientStop Color="Red" Offset="0.0" />
+                                <GradientStop Color="Green" Offset="0.25" />
+                                <GradientStop Color="Blue" Offset="0.75" />
+                                <GradientStop Color="Yellow" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Line X1="0" Y1="0" X2="200" Y2="100" Stroke="Black" HorizontalAlignment="Left" />
+                </Grid>
+
+                <Grid Margin="10 0 0 0">
+                    <Rectangle Width="200" Height="100" HorizontalAlignment="Left">
+                        <Rectangle.Fill>
+                            <!--
+                                MappingMode - 指定线性渐变的起点（StartPoint）和终点（EndPoint）相对于输出区域是相对的还是绝对的（System.Windows.Media.BrushMappingMode 枚举）
+                                    MappingMode.RelativeToBoundingBox - 相对坐标。默认值
+                                    MappingMode.Absolute - 绝对坐标
+                            -->
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="200,100" MappingMode="Absolute">
+                                <GradientStop Color="Red" Offset="0.0" />
+                                <GradientStop Color="Green" Offset="0.25" />
+                                <GradientStop Color="Blue" Offset="0.75" />
+                                <GradientStop Color="Yellow" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Line X1="0" Y1="0" X2="200" Y2="100" Stroke="Black" HorizontalAlignment="Left" />
+                </Grid>
+
+                <Grid Margin="10 0 0 0">
+                    <Rectangle Width="200" Height="100" HorizontalAlignment="Left">
+                        <Rectangle.Fill>
+                            <!--
+                                SpreadMethod - 线性渐变线（黑色线）之外， 输出区域之内的渐变方式（System.Windows.Media.GradientSpreadMethod枚举）
+                                    GradientSpreadMethod.Pad - 用线性渐变线末端的颜色值填充剩余空间。默认值       
+                            -->
+                            <LinearGradientBrush StartPoint="0.4,0.5" EndPoint="0.6,0.5" SpreadMethod="Pad">
+                                <GradientStop Color="Red" Offset="0.0" />
+                                <GradientStop Color="Green" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Line X1="80" Y1="50" X2="120" Y2="50" Stroke="Black" HorizontalAlignment="Left" />
+                </Grid>
+
+                <Grid Margin="10 0 0 0">
+                    <Rectangle Width="200" Height="100" HorizontalAlignment="Left">
+                        <Rectangle.Fill>
+                            <!--
+                                SpreadMethod - 线性渐变线（黑色线）之外， 输出区域之内的渐变方式（System.Windows.Media.GradientSpreadMethod枚举）
+                                    GradientSpreadMethod.Reflect - 相邻填充区域，以 相反方向 重复渐变，直至填充满整个剩余空间
+                            -->
+                            <LinearGradientBrush StartPoint="0.4,0.5" EndPoint="0.6,0.5" SpreadMethod="Reflect">
+                                <GradientStop Color="Red" Offset="0.0" />
+                                <GradientStop Color="Green" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Line X1="80" Y1="50" X2="120" Y2="50" Stroke="Black" HorizontalAlignment="Left" />
+                </Grid>
+
+                <Grid Margin="10 0 0 0">
+                    <Rectangle Width="200" Height="100" HorizontalAlignment="Left">
+                        <Rectangle.Fill>
+                            <!--
+                                SpreadMethod - 线性渐变线（黑色线）之外， 输出区域之内的渐变方式（System.Windows.Media.GradientSpreadMethod枚举）
+                                    GradientSpreadMethod.Repeat - 相邻填充区域，以 相同方向 重复渐变，直至填充满整个剩余空间
+                            -->
+                            <LinearGradientBrush StartPoint="0.4,0.5" EndPoint="0.6,0.5" SpreadMethod="Repeat">
+                                <GradientStop Color="Red" Offset="0.0" />
+                                <GradientStop Color="Green" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Line X1="80" Y1="50" X2="120" Y2="50" Stroke="Black" HorizontalAlignment="Left" />
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

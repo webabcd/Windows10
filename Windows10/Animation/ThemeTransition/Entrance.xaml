@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeTransition.Entrance"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeTransition"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                EntranceThemeTransition - 页面间跳转时的过渡效果
+                    FromHorizontalOffset - 初始位置的水平偏移量
+                    FromVerticalOffset - 初始位置的垂直偏移量
+                    IsStaggeringEnabled - 当包含多个子元素时，是否需要错开呈现它们
+            -->
+            <Frame Name="frame" Width="400" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition IsStaggeringEnabled="False" />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+
+            <Button Name="btnGotoFrame1" Content="导航至 Frame1" Click="btnGotoFrame1_Click" Margin="0 10 0 0" />
+            <Button Name="btnGotoFrame2" Content="导航至 Frame2" Click="btnGotoFrame2_Click" Margin="0 10 0 0" />
+
+            <ItemsControl x:Name="itemsControl" Margin="0 10 0 0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid>
+                            <WrapGrid.ChildrenTransitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                                </TransitionCollection>
+                            </WrapGrid.ChildrenTransitions>
+                        </WrapGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.Items>
+                    <Rectangle Width="100" Height="100" Fill="Red" />
+                    <Rectangle Width="100" Height="100" Fill="Green" />
+                    <Rectangle Width="100" Height="100" Fill="Blue" />
+                </ItemsControl.Items>
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <Border BorderBrush="Orange" BorderThickness="1">
+                            <ItemsPresenter Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
+
+        </StackPanel>
+    </Grid>
+</Page>

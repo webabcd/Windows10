@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Windows10.UI.FullScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="0 10 0 0" />
+
+            <Button Name="btnFullScreen" Content="全屏/取消全屏" Click="btnFullScreen_Click" Margin="0 10 0 0" />
+
+            <Button Name="btnShowStandardSystemOverlays" Content="在全屏状态下，显示系统 UI，比如标题栏和任务栏" Click="btnShowStandardSystemOverlays_Click" Margin="0 10 0 0" />
+
+            <CheckBox Name="chkFullScreenSystemOverlayMode" Content="全屏状态下的，系统边缘手势的响应模式 unchecked:FullScreenSystemOverlayMode.Standard, checked:FullScreenSystemOverlayMode.Minimal" Click="chkFullScreenSystemOverlayMode_Click" Margin="0,10,0,0" />
+
+            <CheckBox Name="chkPreferredLaunchWindowingMode" Content="窗口的启动模式 unchecked:ApplicationViewWindowingMode.Auto, unchecked:ApplicationViewWindowingMode.FullScreen" Click="chkPreferredLaunchWindowingMode_Click" Margin="0,10,0,0" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

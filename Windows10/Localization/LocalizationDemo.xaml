@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="Windows10.Localization.LocalizationDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Localization"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <local:LocalizedStrings x:Key="Localized"/>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock>
+                <Run>本地化资源文件，以下举例说明：</Run>
+                <LineBreak />
+                <Run>1、在 en 目录下的是英文资源文件，在 zh-hans 目录下的是简体中文（zh 代表中文，hans 代表简体中文）资源文件（关于限定符的详细说明请参见 /Resource/Qualifiers/）</Run>
+                <LineBreak />
+                <Run>2、Resources.lang-en.resw 代表英文资源文件，Resources.lang-zh-hans.resw 代表简体中文资源文件（关于限定符的详细说明请参见 /Resource/Qualifiers/）</Run>
+                <LineBreak />
+                <Run>3、Package.appxmanifest 中引用的字符串也支持本地化，引用方式：ms-resource:Hello 或 ms-resource:///Resources/Hello</Run>
+                <LineBreak />
+                <Run>4、Tile 和 Toast 中引用的字符串也支持本地化，引用方式：ms-resource:Hello 或 ms-resource:///Resources/Hello</Run>
+                <LineBreak />
+                <Run>5、当无法找到某语言对应的资源时，系统会自动使用 Package.appxmanifest 中设置的默认语言所对应的资源</Run>
+            </TextBlock>
+
+            <!--
+                通过 x:Uid 本地化控件的各个属性，请参看资源文件中的 HelloTextBlock.FontSize 和 HelloTextBlock.Text
+            -->
+            <TextBlock x:Uid="HelloTextBlock" Margin="5" />
+
+            <!--
+                图片的本地化
+            -->
+            <Image Source="/Localization/Logo.png" Width="200" Height="100" Margin="5" HorizontalAlignment="Left" />
+
+            <!--
+                code - behind 方式获取本地化资源
+            -->
+            <TextBlock x:Name="lblMsg1" Margin="5" />
+
+            <!--
+                code - behind 方式获取本地化资源
+            -->
+            <TextBlock x:Name="lblMsg2" Margin="5" />
+
+            <!--
+                code - behind 方式获取本地化资源
+            -->
+            <TextBlock x:Name="lblMsg3" Margin="5" />
+
+            <!--
+                code - behind 方式获取本地化资源
+            -->
+            <TextBlock x:Name="lblMsg4" Margin="5" />
+
+            <!--
+                code - behind 方式获取本地化资源
+            -->
+            <TextBlock x:Name="lblMsg5" Margin="5" />
+
+            <!--
+                绑定本地化资源
+            -->
+            <TextBlock x:Name="lblMsg6" Margin="5" Text="{Binding [Hello], Source={StaticResource Localized}}" />
+
+        </StackPanel>
+    </Grid>
+</Page>

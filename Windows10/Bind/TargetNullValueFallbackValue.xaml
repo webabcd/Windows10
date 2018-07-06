@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Windows10.Bind.TargetNullValueFallbackValue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                FallbackValue - 当绑定失败时显示的值
+            -->
+            <TextBlock Name="textBlock1" Text="{Binding Path=MyName, FallbackValue='绑定失败时的默认值'}" Margin="5" />
+
+            <!--
+                TargetNullValue - 当绑定数据为 null 时显示的值
+            -->
+            <TextBlock Name="textBlock2" Text="{Binding Path=MyName, TargetNullValue='绑定数据的返回值为 null'}" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

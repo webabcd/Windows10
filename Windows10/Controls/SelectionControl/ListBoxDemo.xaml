@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Windows10.Controls.SelectionControl.ListBoxDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.SelectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:common="using:Windows10.Common">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+
+            <!--
+                ListBox - 列表框控件
+            -->
+
+            <!--
+                通过 xaml 方式为 ListBox 添加数据
+                
+                注：如果需要 ListBox 的 item 横向排列的话，可以参考 /Controls/CollectionControl/FlipViewDemo.xaml 中用于显示小点点的 ListBox 的实现
+            -->
+            <ListBox x:Name="listBox1" Margin="5" Width="200" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListBox.Items>
+                    <ListBoxItem Content="ListBoxItem1" />
+                    <ListBoxItem Content="ListBoxItem2" />
+                    <ListBoxItem Content="ListBoxItem3" />
+                    <ListBoxItem Content="ListBoxItem4" />
+                    <ListBoxItem Content="ListBoxItem5" />
+                </ListBox.Items>
+            </ListBox>
+
+            <ListBox x:Name="listBox2" Margin="5" ItemsSource="{x:Bind Employees}" Width="200" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="common:Employee">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Name}" />
+                            <TextBlock Text="{x:Bind Age}" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Name="lblMsg2" Margin="5" Width="300" TextWrapping="Wrap" />
+
+        </StackPanel>
+    </Grid>
+</Page>

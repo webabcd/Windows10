@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Windows10.Bind.BindingIndexer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Bind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--演示如何绑定集合中的某个元素-->
+            <TextBlock Name="textBlock" Text="{Binding Path=[3]}" />
+
+            <!--演示如何绑定集合中的某个对象的某个属性-->
+            <TextBlock Name="textBlock2" Text="{Binding Path=[5].Name}" Margin="0 10 0 0" />
+
+            <!--演示如何绑定 string 类型的索引器-->
+            <TextBlock Name="textBlock3" Text="{Binding Path=[webabcd]}" Margin="0 10 0 0" />
+
+            <!--演示如何绑定字典表中指定 key 的数据-->
+            <TextBlock Name="textBlock4" Text="{Binding Path=[hello]}" Margin="0 10 0 0" />
+
+            <!--演示如何在 C# 端绑定索引器-->
+            <TextBox Name="textBox" Margin="0 10 0 0" />
+
+        </StackPanel>
+    </Grid>
+</Page>

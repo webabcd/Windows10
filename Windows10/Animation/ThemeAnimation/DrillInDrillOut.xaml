@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Windows10.Animation.ThemeAnimation.DrillInDrillOut"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Animation.ThemeAnimation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+            <StackPanel.Resources>
+                <!--
+                    注：各种 ThemeAnimation 均继承自 Timeline，但是 Timeline 的相关的控制类属性均无效，因为各种控制类属性是由对应的 ThemeAnimation 来决定的
+                -->
+
+                <!--
+                    DrillInThemeAnimation - 有层次关系的，从上级到下级的导航动画（master 到 details）
+                        EntranceTarget, EntranceTargetName - 需要动画显示的元素（details）
+                        ExitTarget, ExitTargetName - 需要动画消失的元素（master）
+                -->
+                <Storyboard x:Name="storyboardDrillIn">
+                    <DrillInThemeAnimation EntranceTargetName="borderDetails" ExitTargetName="borderMaster" />
+                </Storyboard>
+
+                <!--
+                    DrillOutThemeAnimation - 有层次关系的，从下级到上级的导航动画（details 到 master）
+                        EntranceTarget, EntranceTargetName - 需要动画显示的元素（master）
+                        ExitTarget, ExitTargetName - 需要动画消失的元素（details）
+                -->
+                <Storyboard x:Name="storyboardDrillOut">
+                    <DrillOutThemeAnimation EntranceTarget="{x:Bind borderMaster}" ExitTarget="{x:Bind borderDetails}" />
+                </Storyboard>
+            </StackPanel.Resources>
+
+            <Border Name="borderMaster" BorderThickness="5" BorderBrush="Red" Background="Blue" CornerRadius="10" Width="400" Height="100" HorizontalAlignment="Left">
+                <Border.Child>
+                    <TextBlock Text="Master" TextAlignment="Center" VerticalAlignment="Center" />
+                </Border.Child>
+            </Border>
+
+            <Border Name="borderDetails" BorderThickness="5" BorderBrush="Red" Background="Blue" CornerRadius="10" Width="400" Height="100" HorizontalAlignment="Left" Margin="10 5 0 0">
+                <Border.Child>
+                    <TextBlock Text="Details" TextAlignment="Center" VerticalAlignment="Center" />
+                </Border.Child>
+            </Border>
+
+            <Button Name="btnDrillIn" Content="DrillInThemeAnimation Demo" Click="btnDrillIn_Click" Margin="0 30 0 0" />
+            <Button Name="btnDrillOut" Content="DrillOutThemeAnimation Demo" Click="btnDrillOut_Click" Margin="0 10 0 0" />
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.ListViewDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+
+    xmlns:common="using:Windows10.Common">
+
+    <Page.Resources>
+        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <!--
+                            ListViewItemPresenter - ListViewItem 的 Presenter（继承自 ContentPresenter, 请参见 /Controls/BaseControl/ContentControlDemo/ContentPresenterDemo.xaml）
+                                有好多属性，详见文档
+                                默认样式就是 generic.xaml 中的 <Style TargetType="ListViewItem"> 节点
+                                如果需要自定义的话，那么就在 generic.xaml 中的 <Style TargetType="ListViewItem" x:Key="ListViewItemExpanded"> 节点的基础上修改
+                                如果还不能满足要求的话就通过继承 ContentPresenter 来实现自定义的 ContentPresenter
+                        -->
+                        <!--
+                            此处的 TemplatedParent 是 ListViewItem
+                            这里借用 Tag 保存一下 ListViewItem 的 IsSelected，之后的数据模板可以绑定 ListViewItemPresenter 的 Tag，从而实现数据模板间接绑定 ListViewItem 的 IsSelected
+                            此处通过 Tag 属性做中转，如果 Tag 有别的用处的话，那么就自己写个附加属性做中转吧
+                        -->
+                        <ListViewItemPresenter Margin="10" SelectedBackground="Red" SelectedPointerOverBackground="Red"
+                                               Tag="{Binding IsSelected, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+
+        <!--
+            ListView - ListView 控件（继承自 ListViewBase, 请参见 /Controls/CollectionControl/ListViewBaseDemo/）
+                ListView 的默认布局控件是 ItemsStackPanel，请参见 /Controls/CollectionControl/ItemsControlDemo/LayoutControl/ItemsStackPanelDemo.xaml
+                ListView 的 ItemContainer 是 ListViewItem
+        -->
+
+        <ListView x:Name="listView" Margin="10 0 10 10" 
+                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                  SelectionMode="Multiple"
+                  ItemsSource="{x:Bind Employees}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="common:Employee">
+                    <StackPanel Height="100" Width="100" Background="Blue">
+                        <TextBlock x:Name="lblName" Text="{x:Bind Name}" />
+                        <TextBlock x:Name="lblIsMale" Text="{x:Bind IsMale}" />
+                        <!--
+                            这里有个需求：当 ListViewItem 的 IsSelected 为 true 时显示，反之则不显示
+                            此处的 TemplatedParent 是 ListViewItemPresenter，而不是 ListViewItem，所以需要 ListViewItemPresenter 中转一下（ListViewItemPresenter 的 TemplatedParent 是 ListViewItem）
+                            此处通过 Tag 属性做中转，如果 Tag 有别的用处的话，那么就自己写个附加属性做中转吧
+                        
+                            如果以后 uwp 支持了 FindAncestor 的话，就可以不用中转了，直接这样写就行了
+                            {Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}}
+                        -->
+                        <TextBlock x:Name="lblAge" Text="{x:Bind Age}" 
+                                   Visibility="{Binding Path=Tag, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <!--
+            通过 xaml 方式为 ListView 添加 item
+            <ListView>
+                <ListViewItem>
+                    <TextBlock Text="item1"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="item2"/>
+                </ListViewItem>
+                <ListViewItem>
+                    <TextBlock Text="item3"/>
+                </ListViewItem>
+            </ListView>
+        -->
+
+    </Grid>
+</Page>

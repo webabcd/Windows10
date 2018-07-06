@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Windows10.Controls.CollectionControl.SemanticZoomDemo.ISemanticZoomInformationDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.CollectionControl.SemanticZoomDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+
+        <Button Name="btnDisplayZoomedOutView" Content="切换至 ZoomedInView 视图" Click="btnDisplayZoomedOutView_Click" VerticalAlignment="Top" Margin="10 0 10 10" />
+        
+        <SemanticZoom x:Name="semanticZoom" IsZoomedInViewActive="False" Margin="10 50 10 10">
+
+            <SemanticZoom.ZoomedInView>
+                <local:MyFlipView Name="flipView" Width="600" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" FontSize="32" />
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                    <FlipView.ItemContainerStyle>
+                        <Style TargetType="FlipViewItem">
+                            <Setter Property="Background" Value="Blue" />
+                        </Style>
+                    </FlipView.ItemContainerStyle>
+                </local:MyFlipView>
+            </SemanticZoom.ZoomedInView>
+
+            <SemanticZoom.ZoomedOutView>
+                <GridView Name="gridView">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="Orange" Width="100" Height="100">
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+            
+        </SemanticZoom>
+        
+    </Grid>
+</Page>

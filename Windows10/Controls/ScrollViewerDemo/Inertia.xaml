@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Windows10.Controls.ScrollViewerDemo.Inertia"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ScrollViewerDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <CheckBox Name="chkIsScrollInertiaEnabled" Content="IsScrollInertiaEnabled" IsChecked="True" Margin="5" />
+
+            <!--
+                Inertia: 惯性，在触摸模式下，用一个加速度滚动内容，松手后内容会具有惯性滚动效果
+                
+                IsScrollInertiaEnabled - 是否启用惯性效果，默认值为 true
+            -->
+
+            <ScrollViewer Name="scrollViewer" Width="400" Height="400" Margin="5" HorizontalAlignment="Left"
+                          HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled"
+                          HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"
+                          IsScrollInertiaEnabled="{Binding IsChecked, ElementName=chkIsScrollInertiaEnabled}">
+                <Image Source="/Assets/StoreLogo.png" Width="1000" />
+            </ScrollViewer>
+
+        </StackPanel>
+    </Grid>
+</Page>

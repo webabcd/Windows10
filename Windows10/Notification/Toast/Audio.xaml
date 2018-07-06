@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="Windows10.Notification.Toast.Audio"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Notification.Toast"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="cmbLoop" Header="loop" Margin="5">
+                    <ComboBoxItem IsSelected="True">false</ComboBoxItem>
+                    <ComboBoxItem>true</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="cmbSilent" Header="silent" Margin="5">
+                    <ComboBoxItem IsSelected="True">false</ComboBoxItem>
+                    <ComboBoxItem>true</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="cmbSrc" Header="src" Margin="5">
+                    <ComboBoxItem IsSelected="True">ms-winsoundevent:Notification.Default</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.IM</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Mail</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Reminder</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.SMS</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm2</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm3</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm4</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm5</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm6</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm7</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm8</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm9</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Alarm10</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call2</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call3</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call4</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call5</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call6</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call7</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call8</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call9</ComboBoxItem>
+                    <ComboBoxItem>ms-winsoundevent:Notification.Looping.Call10</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <Button Name="buttonShowToast1" Content="显示 toast（系统提示音）" Click="buttonShowToast1_Click" Margin="5" />
+
+            <Button Name="buttonShowToast2" Content="显示 toast（ms-appx 或 ms-appdata 地址的音频文件）" Click="buttonShowToast2_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

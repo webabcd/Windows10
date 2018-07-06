@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:local="using:MyControls">
+
+    <Style TargetType="local:MyControl1">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MyControl1">
+                    <!--
+                        绑定基类中定义的依赖属性
+                    -->
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel>
+                            
+                            <!--
+                                绑定自定义依赖属性
+                            -->
+                            <TextBlock Text="{TemplateBinding Title}" Foreground="White" FontSize="24" />
+
+                            <!--
+                                绑定自定义附加属性
+                            -->
+                            <TextBlock Text="{TemplateBinding local:MyAttachedProperty.SubTitle}" Foreground="Orange" FontSize="24" />
+
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

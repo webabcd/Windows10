@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Windows10.Controls.ButtonControl.RepeatButtonDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ButtonControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="5" />
+
+            <!--
+                RepeatButton - 按住后会重复触发 Click 事件的按钮
+                    Delay - 按住按钮后，会先触发一次 Click 事件，然后在此属性指定的时间后开始重复触发 Click 事件，单位毫秒，默认值 250
+                    Interval - 重复触发 Click 事件时，这个重复时间的间隔，单位毫秒，默认值 250
+            
+                注：Button 的 ClickMode 默认为 Release，而 RepeatButton 的 ClickMode 默认为 Press
+            -->
+            <RepeatButton Name="repeatButton" Content="按住" Delay="1000" Interval="250" Click="repeatButton_Click" Margin="5" />
+
+        </StackPanel>
+    </Grid>
+</Page>

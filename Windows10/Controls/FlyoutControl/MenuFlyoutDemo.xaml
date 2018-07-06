@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Windows10.Controls.FlyoutControl.MenuFlyoutDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.FlyoutControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!--
+            MenuFlyout - 菜单弹出框控件
+                Items - MenuFlyout 中包含的 item（MenuFlyoutItem, ToggleMenuFlyoutItem, MenuFlyoutSeparator）
+        -->
+        <MenuFlyout x:Key="MyMenuFlyout" Placement="Right">
+            
+            <!--
+                MenuFlyoutItem - MenuFlyout 中的 item
+                    Text, Click, Command, CommandParameter
+            
+                ToggleMenuFlyoutItem - MenuFlyout 中的可以 toggle 的 item
+                    IsChecked, Text, Click, Command, CommandParameter
+            
+                MenuFlyoutSubItem - 支持 sub item 的 item
+                    Text, Items
+            
+                MenuFlyoutSeparator - MenuFlyout 中的分隔符
+            -->
+            
+            <MenuFlyoutItem Name="menuFlyoutItem1" Text="MenuFlyoutItem" Click="menuFlyoutItem1_Click" />
+            <MenuFlyoutSeparator/>
+            <ToggleMenuFlyoutItem Name="toggleMenuFlyoutItem1" Text="ToggleMenuFlyoutItem1" IsChecked="False" Click="toggleMenuFlyoutItem1_Click" />
+            <ToggleMenuFlyoutItem Name="toggleMenuFlyoutItem2" Text="ToggleMenuFlyoutItem2" IsChecked="True" Click="toggleMenuFlyoutItem2_Click" />
+
+            <MenuFlyoutSubItem Text="item">
+                <MenuFlyoutItem Text="item 1" />
+                <MenuFlyoutItem Text="item 2" />
+                <MenuFlyoutSubItem Text="item 3">
+                    <MenuFlyoutItem Text="item 3 - 1" />
+                    <MenuFlyoutItem Text="item 3 - 2" />
+                </MenuFlyoutSubItem>
+            </MenuFlyoutSubItem>
+
+            <!--
+                MenuFlyout.MenuFlyoutPresenterStyle - 用于定义 MenuFlyout 的样式
+            -->
+            <MenuFlyout.MenuFlyoutPresenterStyle>
+                <Style TargetType="MenuFlyoutPresenter">
+                    <Setter Property="BorderBrush" Value="Red" />
+                    <Setter Property="BorderThickness" Value="5" />
+                </Style>
+            </MenuFlyout.MenuFlyoutPresenterStyle>
+        </MenuFlyout>
+
+    </Page.Resources>
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="button1" Margin="5" Content="Options" Flyout="{StaticResource MyMenuFlyout}" />
+
+            <TextBlock Name="textBlock1" Margin="5 20 5 5" Text="按我弹出 Flyout" Tapped="textBlock1_Tapped" FontSize="18" />
+            
+        </StackPanel>
+    </Grid>
+</Page>

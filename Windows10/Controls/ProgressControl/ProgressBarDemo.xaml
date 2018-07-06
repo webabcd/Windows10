@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Windows10.Controls.ProgressControl.ProgressBarDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.ProgressControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <!--
+                ProgressBar - 进度条控件
+                    IsIndeterminate - 是否是无法确定进度的进度条
+                    ShowPaused - 显示暂停状态
+                    ShowError - 显示错误状态
+            
+                注：可以通过 Foreground, Background 来设置 ProgressBar 的部分状态的颜色，更多的样式设置还是要去修改控件模板
+            -->
+
+            <ProgressBar IsIndeterminate="True" Width="200" HorizontalAlignment="Left" 
+                         Foreground="Orange" Background="Red"
+                         ShowPaused="{Binding IsChecked, ElementName=radPaused}"
+                         ShowError="{Binding IsChecked, ElementName=radError}" />
+
+            <ProgressBar IsIndeterminate="False" Width="200" Minimum="0" Maximum="100" Value="50"  HorizontalAlignment="Left" Margin="0 20 0 0"  
+                         Foreground="Orange" Background="Red"
+                         ShowPaused="{Binding IsChecked, ElementName=radPaused}"
+                         ShowError="{Binding IsChecked, ElementName=radError}"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <RadioButton x:Name="radRunning" GroupName="ProgressState" Content="Running" IsChecked="True"/>
+                <RadioButton x:Name="radPaused" GroupName="ProgressState" Content="Paused"/>
+                <RadioButton x:Name="radError" GroupName="ProgressState" Content="Error"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

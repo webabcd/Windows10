@@ -1,0 +1,143 @@
+﻿<Page
+    x:Class="Windows10.Drawing.Path"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Drawing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10" HorizontalAlignment="Left">
+
+            <!--
+                Windows.UI.Xaml.Shapes.Path - 路径，以下演示如何通过 Path 绘制图形
+                    Data - 要绘制的 Windows.UI.Xaml.Media.Geometry 数据（Geometry 有很多派生类，后面会一一介绍，其实都不太常用，最常用的就是直接画路径，见最后面）
+            -->
+            
+            <Path Fill="Yellow" Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        EllipseGeometry - 椭圆
+                            Center - 原点坐标
+                            RadiusX - X轴半径
+                            RadiusY - Y轴半径
+                    -->
+                    <EllipseGeometry Center="50,25" RadiusX="50" RadiusY="25" />
+                </Path.Data>
+            </Path>
+
+            <Path Fill="Yellow" Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        RectangleGeometry - 矩形
+                            Rect - 左上角点的坐标，矩形宽，矩形高
+                    -->
+                    <RectangleGeometry Rect="100,0,100,50" />
+                </Path.Data>
+            </Path>
+
+            <Path Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        LineGeometry - 线
+                            StartPoint - 起点坐标
+                            EndPoint - 终点坐标
+                    -->
+                    <LineGeometry StartPoint="200,0" EndPoint="300,50" />
+                </Path.Data>
+            </Path>
+
+            <Path Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        PathGeometry - 路径，一个可能由弧、曲线、椭圆、直线、矩形组成的复杂图形
+                    -->
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <!--
+                                StartPoint - 起点坐标
+                            -->
+                            <PathFigure StartPoint="300,0">
+                                <PathFigure.Segments>
+                                    <!--
+                                        Path 的 Segment 集合
+                                    -->
+                                    <PathSegmentCollection>
+                                        <!--
+                                            LineSegment - 单一线段
+                                            PolyLineSegment - 线段集合
+                                            ArcSegment - 弧（椭圆的一部分）
+                                            BezierSegment - 两点之间的一条三次贝塞尔曲线
+                                            QuadraticBezierSegment - 两点之间的一条二次贝塞尔曲线
+                                            PolyBezierSegment - 一条或多条三次贝塞尔曲线
+                                            PolyQuadraticBezierSegment - 一条或多条二次贝塞尔曲线
+                                        -->
+                                        <!--
+                                            ArcSegment
+                                                Size - 弧的 X 轴和 Y 轴半径
+                                                Point - 该 Segment 的终点坐标，即下一个 Segment 的起点坐标
+                                                SweepDirection - 绘制方向（Clockwise - 顺时针绘制；Counterclockwise - 逆时针绘制）
+                                                RotationAngle - 椭圆围绕 x 轴旋转的角度（这个需要自己写几个示例去理解）
+                                                IsLargeArc - 绘制的弧大于 180 度则为 true，反之则为 false（只读）
+                                        -->
+                                        <ArcSegment Size="100,25" Point="400,50" />
+                                        <!--
+                                            LineSegment
+                                                Point - 该 Segment 的终点坐标，即下一个 Segment 的起点坐标
+                                        -->
+                                        <LineSegment Point="500,100" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <Path Fill="Yellow" Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        本例演示 GeometryGroup 的 EvenOdd 填充规则
+                        GeometryGroup - 由一个或多个 Geometry 组成
+                            FillRule - 填充规则（System.Windows.Media.FillRule 枚举）
+                                EvenOdd - 确定一个点是否位于填充区域内的规则，具体方法是从该点沿任意方向画一条无限长的射线，然后计算该射线在给定形状中因交叉而形成的路径段数。如果该数为奇数，则点在内部；如果为偶数，则点在外部。
+                                Nonzero - 确定一个点是否位于填充区域内的规则，具体方法是从该点沿任意方向画一条无限长的射线，然后检查形状段与该射线的交点。从零开始计数，每当线段从左向右穿过该射线时加 1，而每当路径段从右向左穿过该射线时减 1。计算交点的数目后，如果结果为零，则说明该点位于路径外部。否则，它位于路径内部。
+                    -->
+                    <GeometryGroup FillRule="EvenOdd">
+                        <LineGeometry StartPoint="200,0" EndPoint="300,100" />
+                        <EllipseGeometry Center="250,50" RadiusX="50" RadiusY="50" />
+                        <RectangleGeometry Rect="200, 0, 100, 100" />
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+
+            <Path Fill="Yellow" Stroke="Blue" StrokeThickness="6" Margin="5">
+                <Path.Data>
+                    <!--
+                        本例演示 GeometryGroup 的 Nonzero 填充规则
+                        GeometryGroup - 由一个或多个 Geometry 组成
+                            FillRule - 填充规则（System.Windows.Media.FillRule 枚举）
+                                EvenOdd - 确定一个点是否位于填充区域内的规则，具体方法是从该点沿任意方向画一条无限长的射线，然后计算该射线在给定形状中因交叉而形成的路径段数。如果该数为奇数，则点在内部；如果为偶数，则点在外部。
+                                Nonzero - 确定一个点是否位于填充区域内的规则，具体方法是从该点沿任意方向画一条无限长的射线，然后检查形状段与该射线的交点。从零开始计数，每当线段从左向右穿过该射线时加 1，而每当路径段从右向左穿过该射线时减 1。计算交点的数目后，如果结果为零，则说明该点位于路径外部。否则，它位于路径内部。
+                    -->
+                    <GeometryGroup FillRule="Nonzero">
+                        <LineGeometry StartPoint="200,0" EndPoint="300,100" />
+                        <EllipseGeometry Center="250,50" RadiusX="50" RadiusY="50" />
+                        <RectangleGeometry Rect="200, 0, 100, 100" />
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+
+
+            
+            <!--
+                演示 Path 最常用的用法，即直接画
+                1、直接指定 Geometry 数据
+                2、一般都是要借助工具，最流行的是“Metro Studio”，其 4.0 以上的版本可以在设计完后显示对应的 Geometry 代码
+            -->
+            <Path Fill="Black" Stroke="White" StrokeThickness="6" Data="M 10,100 L 100,100 100,50 Z M 10,10 100,10 100,40 Z" Margin="5" /> 
+
+        </StackPanel>
+    </Grid>
+</Page>

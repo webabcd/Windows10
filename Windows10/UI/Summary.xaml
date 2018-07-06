@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="Windows10.UI.Summary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" TextWrapping="Wrap" Margin="0 10 10 10">
+                <Run>1、UWP - Universal Windows Platform</Run>
+                <LineBreak />
+                <Run>2、设计 UWP 应用时，要以有效像素（effective pixels）进行设计，而不是以物理像素（physical pixels）进行设计。因为系统会根据设备的像素密度和观看距离自动缩放</Run>
+                <LineBreak />
+                <Run>3、有效分辨率 - 以有效像素为单位的分辨率；物理分辨率 - 以物理像素为单位的分辨率</Run>
+                <LineBreak />
+                <Run>4、对于有效分辨率的理解可以参考 ios 的逻辑分辨率的概念，比如 iPhone 4s 的物理分辨率为 960 * 640，其逻辑分辨率为 480 * 320（设计时按照此分辨率设计）</Run>
+                <LineBreak />
+                <Run>5、有效分辨率和物理分辨率之间的比例是如何决定的呢？由系统根据设备的像素密度和观看距离来决定比例</Run>
+                <LineBreak />
+                <Run>6、当系统缩放 UI 时，会按 4 的倍数（multiples of 4, 从字面上理解不一定是整倍数）进行缩放。若要确保缩放后保持清晰的外观，请将你的设计贴靠到 4*4 像素网格，使 UI 元素的边距、大小和位置为 4 个有效像素的倍数</Run>
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</Page>

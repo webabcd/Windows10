@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="Windows10.Controls.WebViewDemo.WebViewDemo4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Windows10.Controls.WebViewDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <StackPanel Margin="10 0 10 10">
+
+            <TextBlock Name="lblMsg" Margin="5" />
+
+            <Button Name="btnAppToJavaScript" Content="app 调用 WebView 加载的 html 中的 JavaScript 函数" Click="btnAppToJavaScript_Click" Margin="5" />
+
+            <Button Name="btnEval" Content="通过 eval 访问 DOM" Click="btnEval_Click" Margin="5" />
+
+            <Button Name="btnRegisterJavaScript" Content="通过 eval 向 html 注册 JavaScript 脚本" Click="btnRegisterJavaScript_Click" Margin="5" />
+
+            <!--
+                通过 ms-appx-web 加载包内的 html 页面
+            -->
+            <WebView Name="webView" Width="480" Height="320" Source="ms-appx-web:///Controls/WebViewDemo/WebViewJavaScript.html" HorizontalAlignment="Left" Margin="5" 
+                     NavigationStarting="WebView_NavigationStarting" NavigationCompleted="WebView_NavigationCompleted" />
+
+        </StackPanel>
+    </Grid>
+</Page>
