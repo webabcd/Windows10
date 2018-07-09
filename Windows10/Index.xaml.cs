@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -45,6 +46,9 @@ namespace Windows10
     {
         // 本页所用到的 GridView 的垂直方向上的滚动值
         private double _scrollViewerVerticalOffset = 0;
+
+        // 生成 README.md
+        private StringBuilder _readmemd = new StringBuilder();
 
         public Index()
         {
@@ -67,6 +71,20 @@ namespace Windows10
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             gridViewDetails.Loaded += gridViewDetails_Loaded;
+
+
+            // 构造 github 的 README.md 文件
+            foreach (var item1 in items)
+            {
+                _readmemd.AppendLine("#### " + item1.Title);
+                int i = 1;
+                foreach (var item2 in item1.Items)
+                {
+                    _readmemd.AppendLine(i.ToString() + ". " + item2.Title);
+                    i++;
+                }
+                _readmemd.AppendLine();
+            }
         }
 
         // 导航到其它页之前，保存本页所用到的 GridView 的垂直方向上的滚动值
