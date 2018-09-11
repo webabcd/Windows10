@@ -396,5 +396,3 @@ SelectorItem(基类)
 #### 工具
 1. 查找指定类或接口的所在程序集的所有子类和子接口
 
-
-[![GitHub version](https://badge.fury.io/gh/webabcd%2Fwindows10.svg)](https://badge.fury.io/gh/webabcd%2Fwindows10)
